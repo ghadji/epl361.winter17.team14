@@ -1,87 +1,104 @@
-<!DOCTYPE html>
-<html >
+﻿<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Onsen UI</title>
-  
-  
-  <link rel='stylesheet prefetch' href='https://unpkg.com/onsenui/css/onsenui.css'>
-<link rel='stylesheet prefetch' href='https://unpkg.com/onsenui/css/onsen-css-components.css'>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./Stylesheets/onsenui.css" type="text/css">
+    <link rel="stylesheet" href="./Stylesheets/onsen-css-components.css" type="text/css">
+    <link rel="stylesheet" href="./Stylesheets/font_awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="./Stylesheets/ionicons/css/ionicons.min.css" type="text/css" />
+    <link rel="stylesheet" href="./Stylesheets/material-design-iconic-font/css/material-design-iconic-font.min.css" type="text/css" />
+    <link rel="stylesheet" href="./Stylesheets/StyleSheet1.css" type="text/css" />
 
-  
-  
+    <script src="./js/onsenui.js" type="text/javascript"></script>
+    <script src="./js/index.js" type="text/javascript"></script>
+
+    <title>Onsen UI</title>
+
 </head>
-
 <body>
-  <ons-splitter>
-  <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
-    <ons-page>
-      <ons-list>
-        <ons-list-item onclick="fn.load('home.html')" tappable>
-          Home
-        </ons-list-item>
-        <ons-list-item onclick="fn.load('settings.html')" tappable>
-          Settings
-        </ons-list-item>
-        <ons-list-item onclick="fn.load('about.html')" tappable>
-          About
-        </ons-list-item>
-      </ons-list>
-    </ons-page>
-  </ons-splitter-side>
-  <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
-</ons-splitter>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="75%" collapse swipeable>
+            <ons-page>
+                <ons-list style="border-collapse:collapse;">
+                    <ons-list-item class="boldStyle">
+                        <ons-icon icon="fa-circle" size="40px" style="margin:10px"></ons-icon>
+                        *NAME*
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('home.html')"  class="mainStyle" tappable>
+                        <ons-icon icon="fa-feed" class="menuNewsFeed"></ons-icon>
+                        News feed
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('settings.html')" class="mainStyle" tappable>
+                        <ons-icon icon="fa-cog" class="menuSettings"></ons-icon>
+                        Settings
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('about.html')" class="mainStyle" tappable>
+                        <ons-icon icon="fa-plus" class="menuAddSource"></ons-icon>
+                        Add Sources
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
 
-<template id="home.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">
-        Main
-      </div>
-    </ons-toolbar>
-    <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-      Swipe right to open the menu!
-    </p>
-  </ons-page>
-</template>
+    <!-- The page when there is no source to read from-->
+    <template id="home.html">
+        <ons-page>
+            <ons-toolbar class="toolbarHeader">
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
 
-<template id="settings.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">
-        Settings
-      </div>
-    </ons-toolbar>
-  </ons-page>
-</template>
+                </div>
+            </ons-toolbar>
+            <p class="transperentParagraph">
+                Swipe right to add sources.
+            </p>
+            <p class="transperentParagraph">
+                <br />
+                <ons-icon icon="fa-list" class="listIcon"></ons-icon>
+                </p>
+            <p class="transperentParagraph" style="font-weight:bold; font-size:70px; margin-top:1%; margin-bottom:2%;">
+                Oops!
+            </p>
+            <p class="transperentParagraph">
+                There is no source to read from.
+            </p>
+        </ons-page>
+    </template>
 
-<template id="about.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="fn.open()">
-          <ons-icon icon="md-menu"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">
-        About
-      </div>
-    </ons-toolbar>
-  </ons-page>
-</template>
-  <script src='https://unpkg.com/onsenui/js/onsenui.js'></script>
-
-    <script  src="js/index.js"></script>
-
+    <!--The page for the settings-->
+    <template id="settings.html">
+        <ons-page>
+            <ons-toolbar class="toolbarHeader">
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Settings
+                </div>
+            </ons-toolbar>
+        </ons-page>
+    </template>
+    <template id="about.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    About
+                </div>
+            </ons-toolbar>
+        </ons-page>
+    </template>
 </body>
 </html>
