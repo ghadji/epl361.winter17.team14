@@ -1,0 +1,49 @@
+﻿.listIcon {
+    font-size: 100px;
+    text-align: center;
+    margin-top: 25%;
+    margin-bottom: 2%;
+    color: #90A4AE;
+}
+
+.menuNewsFeed {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 18px;
+}
+
+.menuSettings {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 18px;
+}
+
+.menuAddSource {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 18px;
+}
