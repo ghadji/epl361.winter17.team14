@@ -1,4 +1,7 @@
-﻿.listIcon {
+﻿/*
+ * The icon at the newsfeed page (when there is no source)
+ */
+.listIcon {
     font-size: 100px;
     text-align: center;
     margin-top: 25%;
@@ -6,6 +9,9 @@
     color: #90A4AE;
 }
 
+/*
+ * The icon inside the menu for the news feed
+ */
 .menuNewsFeed {
     background-color: #90A4AE;
     color: white;
@@ -20,6 +26,9 @@
     font-size: 18px;
 }
 
+/*
+ * The icon inside the menu for the settings option
+ */
 .menuSettings {
     background-color: #90A4AE;
     color: white;
@@ -34,6 +43,9 @@
     font-size: 18px;
 }
 
+/*
+ * The icon inside the menu to add a source
+ */
 .menuAddSource {
     background-color: #90A4AE;
     color: white;
