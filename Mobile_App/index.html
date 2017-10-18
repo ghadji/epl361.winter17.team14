@@ -19,14 +19,14 @@
 
 </head>
 
-<body>
+<body">
     <ons-splitter>
         <ons-splitter-side id="menu" side="left" width="75%" collapse swipeable>
-            <ons-page>
+            <ons-page >
                 <ons-list style="border-collapse:collapse;">
                     <ons-list-item class="boldStyle">
                         <ons-icon icon="fa-circle" size="40px" style="margin:10px"></ons-icon>
-                        <p>*NAME*</p>
+                        <p>eyeReader</p>
                     </ons-list-item>
 
                     <ons-list-item onclick="fn.load('home.html')" class="menuStyle" tappable>
@@ -49,10 +49,22 @@
                         </div>
                     </ons-row>
 
-                    <ons-list-item class="menuStyle">
+                    <ons-list-item class="menuStyle" onclick="fn.addSource()">
                         <ons-icon icon="fa-plus" class="menuAddSource"></ons-icon>
                         <p>Add Sources</p>
                     </ons-list-item>
+                    <div id="newSourceDiv">
+
+                        <ons-input max="100" id="newSourceInput" style="margin-left:5%;" placeholder="URL">
+                        </ons-input>
+
+                        <ons-button class="pull-right" id="newSourceBtn" onclick="fn.addSourceToList()">
+                            <ons-icon icon="fa-check" fixed-width="true"></ons-icon>
+                        </ons-button>
+                    </div>
+                    <ons-list>
+                        <ons-lazy-repeat id="sourcesList"></ons-lazy-repeat>
+                    </ons-list>
                 </ons-list>
             </ons-page>
         </ons-splitter-side>
@@ -61,7 +73,7 @@
 
     <!-- The page when there is no source to read from-->
     <template id="home.html">
-        <ons-page>
+        <ons-page >
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -90,7 +102,7 @@
 
     <!--The page for the settings-->
     <template id="settings.html">
-        <ons-page>
+        <ons-page >
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -105,8 +117,8 @@
     </template>
 
     <!--The page for the displaySettings-->
-    <template id="displaySettings.html">
-        <ons-page>
+    <template id="displaySettings.html" onload="fn.setCurrentData()">
+        <ons-page id="app_page">
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -122,9 +134,21 @@
                 <div style="float:left" class="mainStyle">
                     Night Mode
                 </div> 
-                <div style="float:right; padding: 10% 60px 10% 0px;">
+                <div style="float:right; padding-left:20px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
-                        <input id="NightModeToggle" type="checkbox" onchange="fn.nightMode()">
+                        <input type="checkbox" onchange="fn.nightMode(this)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <div style="float:left" class="mainStyle">
+                    Cache News
+                </div>
+                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                    <label class="switch">
+                        <input type="checkbox">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -134,20 +158,17 @@
                 <div style="float:left" class="mainStyle">
                     Font Size
                 </div>
-                <div style="float:right; padding: 10% 60px 10% 0px;">
-                    <ons-button style="text-align: center;" onclick="fn.showPopover(this)">Click Me</ons-button>
-                    <ons-popover animation="fade-ios" direction="down" id="fontSizePopover" cancelable>
-                        <div style="padding: 10px; text-align: center;">
-                        </div>
-                    </ons-popover>
+                <div style="float:right; padding-left:65px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                    
                 </div>
             </div>
+
         </ons-page>
     </template>
 
     <!--The page for About-->
     <template id="about.html">
-        <ons-page>
+        <ons-page >
             <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -161,9 +182,9 @@
         </ons-page>
     </template>
 
-    <!--The page for the otherSettings-->
+    <!--The page for the Filtering-->
     <template id="otherSettings.html">
-        <ons-page>
+        <ons-page >
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -174,6 +195,35 @@
                     Filtering
                 </div>
             </ons-toolbar>
+            <div>
+                <div style="float:left" class="mainStyle">
+                    Markup Toxic
+                </div>
+                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <div style="float:left" class="mainStyle">
+                    Hide Toxic
+                </div>
+                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <div style="float:left" class="mainStyle">
+                    Toxic Tolerance
+                </div>
+            </div>
         </ons-page>
     </template>
 </body>
