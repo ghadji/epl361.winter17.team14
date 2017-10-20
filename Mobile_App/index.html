@@ -8,7 +8,7 @@
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
-    <link rel="stylesheet" href="./stylesheets/StyleSheet1.css" type="text/css" />
+    <link rel="stylesheet" href="./stylesheets/generalStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/iconStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/formStyling.css" type="text/css" />
 
@@ -20,10 +20,11 @@
 </head>
 
 <body">
+
     <ons-splitter>
         <ons-splitter-side id="menu" side="left" width="75%" collapse swipeable>
-            <ons-page >
-                <ons-list style="border-collapse:collapse;">
+            <ons-page id="sideMenu">
+                <ons-list id="sidemenuList" style="border-collapse:collapse;">
                     <ons-list-item class="boldStyle">
                         <ons-icon icon="fa-circle" size="40px" style="margin:10px"></ons-icon>
                         <p>eyeReader</p>
@@ -44,36 +45,44 @@
                         <div onclick="fn.load('displaySettings.html')" class="detailedList" tappable>
                             Display
                         </div>
-                        <div onclick="fn.load('otherSettings.html')" class="detailedList" tappable>
+                        <div onclick="fn.load('filteringSettings.html')" class="detailedList" tappable>
                             <p>Filtering</p>
                         </div>
                     </ons-row>
 
-                    <ons-list-item class="menuStyle" onclick="fn.addSource()">
+                    <ons-list-item class="menuStyle">
                         <ons-icon icon="fa-plus" class="menuAddSource"></ons-icon>
                         <p>Add Sources</p>
                     </ons-list-item>
-                    <div id="newSourceDiv">
-
-                        <ons-input max="100" id="newSourceInput" style="margin-left:5%;" placeholder="URL">
-                        </ons-input>
-
-                        <ons-button class="pull-right" id="newSourceBtn" onclick="fn.addSourceToList()">
-                            <ons-icon icon="fa-check" fixed-width="true"></ons-icon>
-                        </ons-button>
-                    </div>
-                    <ons-list>
-                        <ons-lazy-repeat id="sourcesList"></ons-lazy-repeat>
-                    </ons-list>
                 </ons-list>
             </ons-page>
         </ons-splitter-side>
-        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+        <ons-splitter-content id="content" page="welcomePage.html"></ons-splitter-content>
     </ons-splitter>
+
+    <!-- Welcome screen for first visit-->
+    <template id="welcomePage.html">
+        <ons-navigator title="Navigator" id="welcomeScreenNavigator">
+            <ons-page id="welcomePage">
+                <ons-toolbar class="toolbarHeader">
+                </ons-toolbar>
+           
+                <p class="transperentParagraph" style="font-weight:bold; font-size:30px; margin-top:1%; margin-bottom:2%;">
+                    Welcome to eyeReader!
+                </p>
+                <image src="./images/eyeReader_icon.png" style="width:250px; height:250px;"></image>
+                    <div style="text-align: center">
+                      <ons-button modifier="outline" onclick="fn.goToHome()">
+                        Let's Start
+                      </ons-button>
+                    </div>
+            </ons-page>
+        </ons-navigator>
+    </template>
 
     <!-- The page when there is no source to read from-->
     <template id="home.html">
-        <ons-page >
+        <ons-page id="NoSourcePage">
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -102,7 +111,7 @@
 
     <!--The page for the settings-->
     <template id="settings.html">
-        <ons-page >
+        <ons-page>
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -118,7 +127,7 @@
 
     <!--The page for the displaySettings-->
     <template id="displaySettings.html" onload="fn.setCurrentData()">
-        <ons-page id="app_page">
+        <ons-page id="displaySettingsPage">
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -136,7 +145,7 @@
                 </div> 
                 <div style="float:right; padding-left:20px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
-                        <input type="checkbox" onchange="fn.nightMode(this)">
+                        <input id="NightModeToggle" type="checkbox" onchange="fn.nightMode(this)">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -148,7 +157,7 @@
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
-                        <input type="checkbox">
+                        <input id="CacheNewsToggle" type="checkbox" onchange="fn.cacheNews(this)">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -158,8 +167,10 @@
                 <div style="float:left" class="mainStyle">
                     Font Size
                 </div>
-                <div style="float:right; padding-left:65px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
-                    
+                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                    <ons-button tappable modifier="longdivider" onclick="ons.openActionSheet({ buttons: ['Label 1', 'Label 2', 'Label 3', 'Cancel'], destructive: 2, cancelable: true })">
+                        eg 18px
+                    </ons-button>
                 </div>
             </div>
 
@@ -168,7 +179,7 @@
 
     <!--The page for About-->
     <template id="about.html">
-        <ons-page >
+        <ons-page>
             <ons-toolbar>
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -183,8 +194,8 @@
     </template>
 
     <!--The page for the Filtering-->
-    <template id="otherSettings.html">
-        <ons-page >
+    <template id="filteringSettings.html">
+        <ons-page id="filteringSettingsPage">
             <ons-toolbar class="toolbarHeader">
                 <div class="left">
                     <ons-toolbar-button onclick="fn.open()">
@@ -201,7 +212,7 @@
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
-                        <input type="checkbox">
+                        <input id="MarkupToxicToggle" type="checkbox" onclick="fn.markupToxic(this)">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -213,7 +224,7 @@
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
-                        <input type="checkbox">
+                        <input id="HideToxicToggle" type="checkbox" onclick="fn.hideToxic(this)">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -223,6 +234,17 @@
                 <div style="float:left" class="mainStyle">
                     Toxic Tolerance
                 </div>
+                <ons-row>
+                  <ons-col width="60px" style="text-align: center; line-height: 31px;">
+                    <ons-icon icon="fa-thermometer-empty"></ons-icon>
+                  </ons-col>
+                  <ons-col>
+                    <ons-range id="ToxicToleranceSlider" style="width: 100%;" ></ons-range>
+                  </ons-col>
+                  <ons-col width="60px" style="text-align: center; line-height: 31px;">
+                    <ons-icon icon="fa-thermometer-full"></ons-icon>
+                  </ons-col>
+                </ons-row>
             </div>
         </ons-page>
     </template>
