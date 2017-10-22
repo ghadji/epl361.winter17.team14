@@ -8,79 +8,62 @@
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
-    <link rel="stylesheet" href="./stylesheets/generalStyling.css" type="text/css" />
+    <link rel="stylesheet" href="./stylesheets/StyleSheet1.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/iconStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/formStyling.css" type="text/css" />
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/onsen/2.6.1/js/onsenui.min.js'></script>
     <script src="./js/index.js" type="text/javascript"></script>
 
-    <title>Onsen UI</title>
+    <title>eyeReader</title>
 
 </head>
 
-<body">
+<body>
 
+
+    <!--Side Menu splitter-->
     <ons-splitter>
-        <ons-splitter-side id="menu" side="left" width="75%" collapse swipeable>
+        <ons-splitter-side id="menu" side="left" width="70%" collapse swipeable>
             <ons-page id="sideMenu">
                 <ons-list id="sidemenuList" style="border-collapse:collapse;">
                     <ons-list-item class="boldStyle">
-                        <ons-icon icon="fa-circle" size="40px" style="margin:10px"></ons-icon>
-                        <p>eyeReader</p>
+                        <ons-icon icon="fa-circle" size="200%" style="margin:5%"></ons-icon>
+                        <fontChangeTag>eyeReader</fontChangeTag>
                     </ons-list-item>
 
                     <ons-list-item onclick="fn.load('home.html')" class="menuStyle" tappable>
                         <ons-icon icon="fa-feed" class="menuNewsFeed"></ons-icon>
-                        <p>News feed</p>
+                        <fontChangeTag>News feed</fontChangeTag>
                     </ons-list-item>
 
 
                     <ons-list-item onclick="fn.toggleSettings()" class="menuStyle" tappable>
                         <ons-icon icon="fa-cog" class="menuSettings"></ons-icon>
-                        <p>Settings</p>
+                        <fontChangeTag>Settings</fontChangeTag>
                     </ons-list-item>
                     
                     <ons-row id="settingsSubmenu">
                         <div onclick="fn.load('displaySettings.html')" class="detailedList" tappable>
-                            Display
+                            <fontChangeTag>Display</fontChangeTag>
                         </div>
                         <div onclick="fn.load('filteringSettings.html')" class="detailedList" tappable>
-                            <p>Filtering</p>
+                            <fontChangeTag>Filtering</fontChangeTag>
                         </div>
                     </ons-row>
 
-                    <ons-list-item class="menuStyle">
+                    <ons-list-item onclick="fn.load('addSources.html')" class="menuStyle" tappable>
                         <ons-icon icon="fa-plus" class="menuAddSource"></ons-icon>
-                        <p>Add Sources</p>
+                        <fontChangeTag>Add Sources</fontChangeTag>
                     </ons-list-item>
+
                 </ons-list>
             </ons-page>
         </ons-splitter-side>
-        <ons-splitter-content id="content" page="welcomePage.html"></ons-splitter-content>
+        <ons-splitter-content id="content" page="displaySettings.html"></ons-splitter-content>
     </ons-splitter>
 
-    <!-- Welcome screen for first visit-->
-    <template id="welcomePage.html">
-        <ons-navigator title="Navigator" id="welcomeScreenNavigator">
-            <ons-page id="welcomePage">
-                <ons-toolbar class="toolbarHeader">
-                </ons-toolbar>
-           
-                <p class="transperentParagraph" style="font-weight:bold; font-size:30px; margin-top:1%; margin-bottom:2%;">
-                    Welcome to eyeReader!
-                </p>
-                <image src="./images/eyeReader_icon.png" style="width:250px; height:250px;"></image>
-                    <div style="text-align: center">
-                      <ons-button modifier="outline" onclick="fn.goToHome()">
-                        Let's Start
-                      </ons-button>
-                    </div>
-            </ons-page>
-        </ons-navigator>
-    </template>
-
-    <!-- The page when there is no source to read from-->
+    <!--News Feed page-->
     <template id="home.html">
         <ons-page id="NoSourcePage">
             <ons-toolbar class="toolbarHeader">
@@ -94,13 +77,13 @@
                 </div>
             </ons-toolbar>
             <p class="transperentParagraph">
-                Swipe right to add sources.
+                <fontChangeTag>Swipe right to add sources.</fontChangeTag>
             </p>
             <p class="transperentParagraph">
                 <br />
                 <ons-icon icon="fa-list" class="listIcon"></ons-icon>
                 </p>
-            <p class="transperentParagraph" style="font-weight:bold; font-size:70px; margin-top:1%; margin-bottom:2%;">
+            <p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
                 Oops!
             </p>
             <p class="transperentParagraph">
@@ -109,7 +92,7 @@
         </ons-page>
     </template>
 
-    <!--The page for the settings-->
+    <!--Settings page (not currently used)-->
     <template id="settings.html">
         <ons-page>
             <ons-toolbar class="toolbarHeader">
@@ -119,13 +102,13 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    <p>Settings</p>
+                    <fontChangeTag>Settings</fontChangeTag>
                 </div>
             </ons-toolbar>
         </ons-page>
     </template>
 
-    <!--The page for the displaySettings-->
+    <!--Display Settings page-->
     <template id="displaySettings.html" onload="fn.setCurrentData()">
         <ons-page id="displaySettingsPage">
             <ons-toolbar class="toolbarHeader">
@@ -135,25 +118,25 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    Display
+                    <fontChangeTag>Display</fontChangeTag>
                 </div>
             </ons-toolbar>
 
-            <div>
-                <div style="float:left" class="mainStyle">
-                    Night Mode
+            <ons-row>
+                <div class="mainStyle">
+                    <fontChangeTag>Night Mode</fontChangeTag>
                 </div> 
-                <div style="float:right; padding-left:20px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
                         <input id="NightModeToggle" type="checkbox" onchange="fn.nightMode(this)">
                         <span class="slider round"></span>
                     </label>
                 </div>
-            </div>
+            </ons-row>
 
-            <div>
-                <div style="float:left" class="mainStyle">
-                    Cache News
+            <ons-row>
+                <div class="mainStyle">
+                    <fontChangeTag>Cache News</fontChangeTag>
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
@@ -161,23 +144,23 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
-            </div>
+            </ons-row>
 
-            <div>
-                <div style="float:left" class="mainStyle">
-                    Font Size
+            <ons-row>
+                <div class="mainStyle">
+                    <fontChangeTag>Font Size</fontChangeTag>
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
-                    <ons-button tappable modifier="longdivider" onclick="ons.openActionSheet({ buttons: ['Label 1', 'Label 2', 'Label 3', 'Cancel'], destructive: 2, cancelable: true })">
-                        eg 18px
+                    <ons-button id="fontSizeBtn" tappable onclick="fn.openFontSizeSheet()">
+                        <fontChangeTag>Example</fontChangeTag>
                     </ons-button>
                 </div>
-            </div>
+            </ons-row>
 
         </ons-page>
     </template>
 
-    <!--The page for About-->
+    <!--About page-->
     <template id="about.html">
         <ons-page>
             <ons-toolbar>
@@ -187,13 +170,13 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    <p>About</p>
+                    <fontChangeTag>About</fontChangeTag>
                 </div>
             </ons-toolbar>
         </ons-page>
     </template>
 
-    <!--The page for the Filtering-->
+    <!--Filtering Settings page-->
     <template id="filteringSettings.html">
         <ons-page id="filteringSettingsPage">
             <ons-toolbar class="toolbarHeader">
@@ -203,12 +186,12 @@
                     </ons-toolbar-button>
                 </div>
                 <div class="center">
-                    Filtering
+                    <fontChangeTag>Filtering</fontChangeTag>
                 </div>
             </ons-toolbar>
-            <div>
+            <ons-row>
                 <div style="float:left" class="mainStyle">
-                    Markup Toxic
+                    <fontChangeTag>Markup Toxic</fontChangeTag>
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
@@ -216,11 +199,11 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
-            </div>
+            </ons-row>
 
-            <div>
+            <ons-row>
                 <div style="float:left" class="mainStyle">
-                    Hide Toxic
+                    <fontChangeTag>Hide Toxic</fontChangeTag>
                 </div>
                 <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
                     <label class="switch">
@@ -228,11 +211,11 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
-            </div>
+            </ons-row>
 
-            <div>
+            <ons-row>
                 <div style="float:left" class="mainStyle">
-                    Toxic Tolerance
+                    <fontChangeTag>Toxic Tolerance</fontChangeTag>
                 </div>
                 <ons-row>
                   <ons-col width="60px" style="text-align: center; line-height: 31px;">
@@ -245,9 +228,45 @@
                     <ons-icon icon="fa-thermometer-full"></ons-icon>
                   </ons-col>
                 </ons-row>
-            </div>
+            </ons-row>
         </ons-page>
     </template>
+
+    <!--Add Sources page-->
+    <template id="addSources.html">
+        <ons-page id="addSources">
+            <ons-toolbar class="toolbarHeader">
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    <fontChangeTag>Settings</fontChangeTag>
+                </div>
+            </ons-toolbar>
+
+            <ons-list id="sourcesList">
+                <ons-list-item tappable>
+                  <label class="left">
+                    <ons-checkbox input-id="source1"></ons-checkbox>
+                  </label>
+                  <label for="source1" class="center">
+                    <fontChangeTag>www.sigmalive.com</fontChangeTag>
+                  </label>
+                </ons-list-item>
+                <ons-list-item tappable>
+                  <label class="left">
+                    <ons-checkbox input-id="source2"></ons-checkbox>
+                  </label>
+                  <label for="source2" class="center">
+                    <fontChangeTag>www.ant1iwo.com</fontChangeTag>
+                  </label>
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </template>
+
 </body>
 
 </html>

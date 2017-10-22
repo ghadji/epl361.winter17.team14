@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet prefetch' href='https://unpkg.com/onsenui/css/onsenui.css'>
+    <link rel='stylesheet prefetch' href='https://unpkg.com/onsenui/css/onsen-css-components.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
+    <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+    <link rel="stylesheet" href="./stylesheets/StyleSheet1.css" type="text/css" />
+    <link rel="stylesheet" href="./stylesheets/iconStyling.css" type="text/css" />
+    <link rel="stylesheet" href="./stylesheets/formStyling.css" type="text/css" />
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/onsen/2.6.1/js/onsenui.min.js'></script>
+    <script src="./js/index.js" type="text/javascript"></script>
+
+    <title>eyeReader</title>
+</head>
+<body>
+
+    
+    <!-- Welcome page-->
+            <ons-page id="welcomePage">
+                <ons-toolbar class="toolbarHeader">
+                </ons-toolbar>
+           
+                <p class="transperentParagraph" style="font-weight:bold; font-size:30px; margin-top:1%; margin-bottom:2%;">
+                    Welcome to eyeReader!
+                </p>
+                <image src="./images/eyeReader_icon.png" style="width:250px; height:250px;"></image>
+                <div style="text-align: center">
+                  <ons-button modifier="outline" onclick="fn.goToHome()">
+                    Let's Start
+                  </ons-button>
+                </div>
+            </ons-page>
+
+
+</body>
+</html>

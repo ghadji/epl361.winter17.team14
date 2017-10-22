@@ -62,11 +62,17 @@
     margin: 8px 0px 8px 60px;
 }
 
+
 /*
  *Changes the color of the pages in Night Mode
  */
 .page--night_mode_bg__background{
 	background-color:#2e2e2e;
+	transition: background-color 0.5s ease;
+}
+
+.page--normal_mode_bg__background{
+	transition: background-color 0.5s ease;
 }
 
 /*
@@ -74,7 +80,13 @@
  */
 .list--night_mode_bg{
 	background-color:#2e2e2e;
+	transition: background-color 0.5s ease;
 }
+
+.list--normal_mode_bg{
+	transition: background-color 0.5s ease;
+}
+
 
 /*.p--night_mode_text__color{
 	color : white;
@@ -85,4 +97,32 @@
  */
 .range--material__input{
 	background-image: linear-gradient(#455A64,#455A64);
+}
+
+/*
+ *changes the color of the checked checkbox
+ */
+.checkbox--material__input:checked + .checkbox--material__checkmark:before {
+  background-color: #455A64;
+  border: none;
+}
+
+fontChangeTag{
+	font-size:20px
+}
+
+.action-sheet-button--changeFontSizeDefault{
+	font-size:20px
+}
+
+.action-sheet-button--changeFontSize22{
+	font-size:22px
+}
+
+.action-sheet-button--changeFontSize24{
+	font-size:24px
+}
+
+.action-sheet-button--changeFontSize26{
+	font-size:26px
 }
