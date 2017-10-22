@@ -1,3 +1,5 @@
+ons.platform.select('android');
+
 /*array that will contain all methods that will be used from HTML side*/
 window.fn = {};
 
@@ -51,22 +53,28 @@ window.fn.hideToxic = function (el) {
 
 /*goes from welcome page to home page*/
 window.fn.goToHome = function () {
-    var nav = document.getElementById('welcomeScreenNavigator');
-    nav.pushPage('home.html', { animation: 'slide' });
+    //var nav = document.getElementById('welcomeScreenNavigator');
+    //nav.pushPage('home.html', { animation: 'slide' });
+    window.location = './index.html';
 }
 
 /*enables/disables night mode*/
 function setNightMode() {
     var value = JSON.parse(window.localStorage.getItem('isNightMode'));
     var pages = document.getElementsByTagName('ons-page');
-    var list = document.getElementById('sidemenuList');
+    var sidemenuList = document.getElementById('sidemenuList');
     var paragraphs = document.getElementsByTagName('TextTag');
     for (var i = 0; i < pages.length; i++) {
-        if (value)
+        if (value) {
+            ons.modifier.remove(pages[i], 'normal_mode_bg');
             ons.modifier.add(pages[i], 'night_mode_bg');
-        else
+        }
+        else {
             ons.modifier.remove(pages[i], 'night_mode_bg');
+            ons.modifier.add(pages[i], 'normal_mode_bg');
+        }
     }
+    value ? ons.modifier.add(sidemenuList, 'night_mode_bg') : ons.modifier.remove(sidemenuList, 'night_mode_bg');
     for (var i = 0; i < paragraphs.length; i++) {
         if (value)
             paragraphs[i].classList.add('night_mode_text');
@@ -75,14 +83,71 @@ function setNightMode() {
             paragraphs[i].classList.remove('night_mode_text');
         //ons.modifier.remove(paragraphs[i], 'night_mode_text');
     }
-    if (value)
-        ons.modifier.add(list, 'night_mode_bg');
-    else 
-
-        ons.modifier.remove(list, 'night_mode_bg');
 };
 
+function setSourcesNightMode() {
+    var value = JSON.parse(window.localStorage.getItem('isNightMode'));
+    var sourcesList = document.getElementById('sourcesList');
+    value ? ons.modifier.add(sourcesList, 'night_mode_bg') : ons.modifier.remove(sourcesList, 'night_mode_bg');
+}
+
+window.fn.openFontSizeSheet = function () {
+    ons.openActionSheet({
+        cancelable: true,
+        buttons: [
+          {
+              label: 'Default',
+              modifier: 'changeFontSizeDefault'
+          },
+          {
+              label: 'Example - 22px',
+              modifier: 'changeFontSize22'
+          },
+          {
+              label: 'Example - 24px',
+              modifier: 'changeFontSize24'
+          },
+          {
+              label: 'Example - 26px',
+              modifier: 'changeFontSize26'
+          },
+          {
+              label: 'Cancel'
+          }
+        ]
+    }).then(function (index) { window.fn.changeFontSize(index) })
+};
+
+window.fn.changeFontSize = function (index) {
+    var el = document.getElementsByTagName("fontChangeTag");
+    for (var i = 0; i < el.length; i++) {
+        switch (index) {
+            case 0: el[i].style.fontSize = '20px';
+                break;
+            case 1: el[i].style.fontSize = '22px';
+                break;
+            case 2: el[i].style.fontSize = '24px';
+                break;
+            case 3: el[i].style.fontSize = '26px';
+                break;
+        }
+    }
+    window.localStorage.setItem('fontSizeIndex', index);
+}
+
+function setFontSize() {
+    var value = JSON.parse(window.localStorage.getItem('fontSizeIndex'));
+    window.fn.changeFontSize(value);
+}
+
 /*EVENT LISTENERS*/
+document.addEventListener('preopen', function (event) {
+    var page = event.target;
+    setNightMode();
+    if (page.matches('#addSources'))
+        setSourcesNightMode();
+});
+
 document.addEventListener('init', function (event) {
     var page = event.target;
     if (page.matches('#displaySettingsPage')) {
@@ -90,9 +155,11 @@ document.addEventListener('init', function (event) {
                             JSON.parse(window.localStorage.getItem('isNightMode'));
         document.getElementById('CacheNewsToggle').checked =
                             JSON.parse(window.localStorage.getItem('isCachingNews'));
-    } else if (page.matches('#sideMenu')) {
+    }
+    if (page.matches('#sideMenu')) {
         document.getElementById('settingsSubmenu').style.display = 'none';
-    } else if (page.matches('#filteringSettingsPage')) {
+    }
+    if (page.matches('#filteringSettingsPage')) {
         document.getElementById('MarkupToxicToggle').checked =
                             JSON.parse(window.localStorage.getItem('isMarkupToxic'));
         document.getElementById('HideToxicToggle').checked =
@@ -100,7 +167,10 @@ document.addEventListener('init', function (event) {
         document.getElementById('ToxicToleranceSlider').value =
                             JSON.parse(window.localStorage.getItem('toxicToleranceValue'));
     }
+    if (page.matches('#addSources'))
+        setSourcesNightMode();
     setNightMode();
+    setFontSize();
 });
 
 document.addEventListener('postclose', function (event) {
@@ -113,5 +183,5 @@ document.addEventListener('hide', function (event) {
     var page = event.target;
     if (page.matches('#filteringSettingsPage'))
         window.localStorage.setItem('toxicToleranceValue', document.getElementById('ToxicToleranceSlider').value);
-})
+});
 /*EVENT LISTENERS*/
