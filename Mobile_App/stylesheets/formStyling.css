@@ -1,12 +1,12 @@
 ﻿
-/*toggled*/
+/*TOGGLE SWITCH CSS*/
 
 /* 
  * The switch - the box around the slider 
  */
 .switch {
-    width: 60px;
-    height: 34px;
+    width: 40%;
+    height: 32%;
 }
 
     /* 
@@ -15,6 +15,12 @@
     .switch input {
         display: none;
     }
+	
+.switchPosition{
+	text-align:right; 
+	padding-top:12%;  
+	padding-right:10%;
+}
 
 /* The slider */
 
@@ -26,17 +32,17 @@
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
-    height: 28px;
-    width: 55px;
+    height: 400%;
+    width: 100%;
 }
 
     .slider:before {
         position: absolute;
         content: "";
-        height: 20px;
-        width: 20px;
-        left: 4px;
-        bottom: 4px;
+        height: 79%;
+        width: 40%;
+        left: 6%;
+        bottom: 12%;
         background-color: white;
         transition: .4s;
     }
@@ -50,14 +56,27 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(120%);
 }
 
 /* Rounded sliders */
+
 .slider.round {
-    border-radius: 34px;
+    border-radius: 999px;
 }
 
     .slider.round:before {
         border-radius: 50%;
     }
+
+/*END OF TOGGLE SWITCH CSS*/
+
+.fontSizeButtonPosition{
+	text-align:right; 
+	padding-right:10%; 
+	padding-top:10%;
+}
+
+.button--material{
+	background-color:#455a64;
+}

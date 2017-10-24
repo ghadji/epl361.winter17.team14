@@ -8,7 +8,7 @@
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css'>
     <link rel="stylesheet prefetch" href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
-    <link rel="stylesheet" href="./stylesheets/StyleSheet1.css" type="text/css" />
+    <link rel="stylesheet" href="./stylesheets/generalStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/iconStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/formStyling.css" type="text/css" />
 
@@ -123,38 +123,38 @@
             </ons-toolbar>
 
             <ons-row>
-                <div class="mainStyle">
+                <ons-col width="50%" class="mainStyle">
                     <fontChangeTag>Night Mode</fontChangeTag>
-                </div> 
-                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                </ons-col> 
+                <ons-col class="switchPosition">
                     <label class="switch">
                         <input id="NightModeToggle" type="checkbox" onchange="fn.nightMode(this)">
                         <span class="slider round"></span>
                     </label>
-                </div>
+                </ons-col>
             </ons-row>
 
             <ons-row>
-                <div class="mainStyle">
+                <ons-col width="50%" class="mainStyle">
                     <fontChangeTag>Cache News</fontChangeTag>
-                </div>
-                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                </ons-col>
+                <ons-col class="switchPosition">
                     <label class="switch">
                         <input id="CacheNewsToggle" type="checkbox" onchange="fn.cacheNews(this)">
                         <span class="slider round"></span>
                     </label>
-                </div>
+                </ons-col>
             </ons-row>
 
             <ons-row>
-                <div class="mainStyle">
+                <ons-col width="50%" class="mainStyle">
                     <fontChangeTag>Font Size</fontChangeTag>
-                </div>
-                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                </ons-col>
+                <ons-col class="fontSizeButtonPosition">
                     <ons-button id="fontSizeBtn" tappable onclick="fn.openFontSizeSheet()">
                         <fontChangeTag>Example</fontChangeTag>
                     </ons-button>
-                </div>
+                </ons-col>
             </ons-row>
 
         </ons-page>
@@ -190,39 +190,39 @@
                 </div>
             </ons-toolbar>
             <ons-row>
-                <div style="float:left" class="mainStyle">
+                <ons-col width="50%" class="mainStyle">
                     <fontChangeTag>Markup Toxic</fontChangeTag>
-                </div>
-                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                </ons-col>
+                <ons-col width="50%"  class="switchPosition">
                     <label class="switch">
                         <input id="MarkupToxicToggle" type="checkbox" onclick="fn.markupToxic(this)">
                         <span class="slider round"></span>
                     </label>
-                </div>
+                </ons-col>
             </ons-row>
 
             <ons-row>
-                <div style="float:left" class="mainStyle">
+                <ons-col width="50%" class="mainStyle">
                     <fontChangeTag>Hide Toxic</fontChangeTag>
-                </div>
-                <div style="float:right; padding-left:60px; padding-top:45px; padding-right:60px; padding-bottom:5px;">
+                </ons-col>
+                <ons-col class="switchPosition">
                     <label class="switch">
                         <input id="HideToxicToggle" type="checkbox" onclick="fn.hideToxic(this)">
                         <span class="slider round"></span>
                     </label>
-                </div>
+                </ons-col>
             </ons-row>
 
             <ons-row>
-                <div style="float:left" class="mainStyle">
+                <ons-row class="mainStyle">
                     <fontChangeTag>Toxic Tolerance</fontChangeTag>
-                </div>
+                </ons-row>
                 <ons-row>
                   <ons-col width="60px" style="text-align: center; line-height: 31px;">
                     <ons-icon icon="fa-thermometer-empty"></ons-icon>
                   </ons-col>
                   <ons-col>
-                    <ons-range id="ToxicToleranceSlider" style="width: 100%;" ></ons-range>
+                    <ons-range id="ToxicToleranceSlider"  style="width: 100%;" ></ons-range>
                   </ons-col>
                   <ons-col width="60px" style="text-align: center; line-height: 31px;">
                     <ons-icon icon="fa-thermometer-full"></ons-icon>
