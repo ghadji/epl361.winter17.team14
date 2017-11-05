@@ -52,10 +52,11 @@ window.fn.hideToxic = function (el) {
 }
 
 /*goes from welcome page to home page*/
-window.fn.goToHome = function () {
-    //var nav = document.getElementById('welcomeScreenNavigator');
+window.fn.goToMainView = function () {
+    //var main_page = document.getElementById('main_page');
     //nav.pushPage('home.html', { animation: 'slide' });
-    window.location = './index.html';
+    //window.location = './index.html';
+    document.querySelector('#myNavigator').pushPage('mainView.html', {data: {title: 'Home'}});
 }
 
 /*enables/disables night mode*/
