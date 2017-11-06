@@ -186,25 +186,3 @@ document.addEventListener('hide', function (event) {
         window.localStorage.setItem('toxicToleranceValue', document.getElementById('ToxicToleranceSlider').value);
 });
 /*EVENT LISTENERS*/
-
-var lastUpdatedDate= null;
-
-function getNewArticles (websiteSources) {
-    if (lastUpdatedDate == null) {
-        lastUpdatedDate= new Date ();
-    }
-
-    // HTTP Request to the BackEnd API
-    // with the lastUpdatedDate and desired websiteSources
-    // as arguments
-    // The response will be a JSON Array of Articles
-
-    // For the demostration:
-    var arrayOfArticles= [];
-    var i;
-    for (i= 0; i< 10; i++) {
-        arrayOfArticles.push(templateArticle);
-    }
-
-    return arrayOfArticles;
-}
