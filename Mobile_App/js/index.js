@@ -75,7 +75,8 @@ function setNightMode() {
             ons.modifier.add(pages[i], 'normal_mode_bg');
         }
     }
-    value ? ons.modifier.add(sidemenuList, 'night_mode_bg') : ons.modifier.remove(sidemenuList, 'night_mode_bg');
+	if (sidemenuList)
+		value ? ons.modifier.add(sidemenuList, 'night_mode_bg') : ons.modifier.remove(sidemenuList, 'night_mode_bg');
     for (var i = 0; i < paragraphs.length; i++) {
         if (value)
             paragraphs[i].classList.add('night_mode_text');
@@ -205,6 +206,7 @@ function getNewArticles (websiteSources) {
     for (i= 0; i< 10; i++) {
         arrayOfArticles.push(templateArticle);
     }
+	lastUpdatedDate= new Date ();
 
     return arrayOfArticles;
 }
