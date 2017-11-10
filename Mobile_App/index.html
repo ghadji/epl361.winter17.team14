@@ -162,7 +162,6 @@
                         <fontChangeTag>Display</fontChangeTag>
                     </div>
                 </ons-toolbar>
-
                 <ons-list>
                     <ons-list-item>
                       <div class="center mainStyle">
@@ -183,30 +182,25 @@
                     <ons-list-item>
                         <div class="center mainStyle">
                           <fontChangeTag>Font Size</fontChangeTag>
-                            <ons-button class="fontSizeButton" tappable onclick="fn.openFontSizeSheet()">
-                                <fontChangeTag>20px</fontChangeTag>
-                            </ons-button>
-                        </div>
+							<ons-button class="fontSizeButton" tappable onclick="fn.showFontSizeOptions()">
+								<fontChangeTag id="fontSizeText"></fontChangeTag>
+							</ons-button>
+						</div>
                     </ons-list-item>
                 </ons-list>
-            </ons-page>
+			</ons-page>
         </template>
 
-        <!--About page-->
-        <template id="about.html">
-            <ons-page>
-                <ons-toolbar>
-                    <div class="left">
-                        <ons-toolbar-button onclick="fn.open()">
-                            <ons-icon icon="md-menu"></ons-icon>
-                        </ons-toolbar-button>
-                    </div>
-                    <div class="center">
-                        <fontChangeTag>About</fontChangeTag>
-                    </div>
-                </ons-toolbar>
-            </ons-page>
-        </template>
+		<!-- Options for font size selection -->
+		<template id="fontSizeOptions.html">
+		  <ons-action-sheet id="sheet" cancelable>
+			<ons-action-sheet-button modifier="fontSize20" onclick="fn.changeFontSize(0);fn.hideFontSizeOptions()">Sample - 20px</ons-action-sheet-button>
+			<ons-action-sheet-button modifier="fontSize22" onclick="fn.changeFontSize(1);fn.hideFontSizeOptions()">Sample - 22px</ons-action-sheet-button>
+			<ons-action-sheet-button modifier="fontSize24" onclick="fn.changeFontSize(2);fn.hideFontSizeOptions()">Sample - 24px</ons-action-sheet-button>
+			<ons-action-sheet-button modifier="fontSize26" onclick="fn.changeFontSize(3);fn.hideFontSizeOptions()">Sample - 26px</ons-action-sheet-button>
+			<ons-action-sheet-button onclick="fn.hideFontSizeOptions()">Cancel</ons-action-sheet-button>
+			</ons-action-sheet>
+		</template>
 
         <!--Filtering Settings page-->
         <template id="filteringSettings.html">
@@ -294,6 +288,23 @@
                 </ons-list>
             </ons-page>
         </template>
+
+		  <!--About page-->
+        <template id="about.html">
+            <ons-page>
+                <ons-toolbar>
+                    <div class="left">
+                        <ons-toolbar-button onclick="fn.open()">
+                            <ons-icon icon="md-menu"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">
+                        <fontChangeTag>About</fontChangeTag>
+                    </div>
+                </ons-toolbar>
+            </ons-page>
+        </template>
+
     </ons-page>
 </template>
 </html>

@@ -75,8 +75,7 @@ function setNightMode() {
         if (value) {
             ons.modifier.remove(pages[i], 'normal_mode_bg');
             ons.modifier.add(pages[i], 'night_mode_bg');
-        }
-        else {
+        } else {
             ons.modifier.remove(pages[i], 'night_mode_bg');
             ons.modifier.add(pages[i], 'normal_mode_bg');
         }
@@ -99,32 +98,6 @@ function setSourcesNightMode() {
     value ? ons.modifier.add(sourcesList, 'night_mode_bg') : ons.modifier.remove(sourcesList, 'night_mode_bg');
 }
 
-window.fn.openFontSizeSheet = function () {
-    ons.openActionSheet({
-        cancelable: true,
-        buttons: [
-          {
-              label: 'Sample - 20px',
-              modifier: 'changeFontSizeDefault'
-          },
-          {
-              label: 'Sample - 22px',
-              modifier: 'changeFontSize22'
-          },
-          {
-              label: 'Sample - 24px',
-              modifier: 'changeFontSize24'
-          },
-          {
-              label: 'Sample - 26px',
-              modifier: 'changeFontSize26'
-          },
-          {
-              label: 'Cancel'
-          }
-        ]
-    }).then(function (index) { window.fn.changeFontSize(index) })
-};
 
 window.fn.changeFontSize = function (index) {
     var el = document.getElementsByTagName("fontChangeTag");
@@ -140,6 +113,7 @@ window.fn.changeFontSize = function (index) {
                 break;
         }
     }
+	if(el = document.getElementById('fontSizeText')) el.innerHTML = (index*2 + 20) + 'px';
     window.localStorage.setItem('fontSizeIndex', index);
 }
 
@@ -152,15 +126,7 @@ window.fn.requestArticle = function (){
 	window.data.articles = getNewArticles();
 }
 
-
 /*EVENT LISTENERS*/
-document.addEventListener('preopen', function (event) {
-    var page = event.target;
-    setNightMode();
-    if (page.matches('#addSources'))
-        setSourcesNightMode();
-});
-
 document.addEventListener('init', function (event) {
     var page = event.target;
     if (page.matches('#displaySettingsPage')) {
@@ -168,6 +134,17 @@ document.addEventListener('init', function (event) {
                             JSON.parse(window.localStorage.getItem('isNightMode'));
         document.getElementById('CacheNewsToggle').checked =
                             JSON.parse(window.localStorage.getItem('isCachingNews'));
+		document.getElementById('fontSizeText').innerHTML = 
+							(JSON.parse(window.localStorage.getItem('fontSizeIndex'))*2 + 20) + 'px';
+		//display/hide font size options action sheet
+		ons.ready(function () {
+			ons.createElement('fontSizeOptions.html', { append: true })
+				.then(function (sheet) {
+					window.fn.showFontSizeOptions = sheet.show.bind(sheet);
+					window.fn.hideFontSizeOptions = sheet.hide.bind(sheet);
+				}
+			);
+		});
     }
     if (page.matches('#sideMenu')) {
         document.getElementById('settingsSubmenu').style.display = 'none';
@@ -198,14 +175,13 @@ document.addEventListener('init', function (event) {
 			  );
 			},
 			countItems: function() {
-			  return window.data.articles.length;
+				return window.data.articles.length;
 			}
 		};
 		articlesList.refresh();
 	}
 	if(page.matches("#articleView")){
 		var page = articlesNavi.topPage;
-		console.log(page.data.Title);
 		document.getElementById('articleTitle').innerHTML = page.data.Title;
 		document.getElementById('articleImg').src = page.data.Img;
 		document.getElementById('articleContent').innerHTML = page.data.Content;
@@ -228,8 +204,7 @@ document.addEventListener('hide', function (event) {
 /*EVENT LISTENERS*/
 
 window.fn.openArticle = function(i){
-	//window.data.articles[i]
-	var options = {
+	var articleOptions = {
 		Title: window.data.articles[i].Title,
 		Img: window.data.articles[i].PictureSrc,
 		Content: window.data.articles[i].Content,
@@ -237,7 +212,7 @@ window.fn.openArticle = function(i){
 		Date: window.data.articles[i].Date,
 		Source: window.data.articles[i].SourceWebsite
 	}
-	articlesNavi.pushPage('articleView.html', { data : options } );
+	articlesNavi.pushPage('articleView.html', { data : articleOptions } );
 }
 
 var lastUpdatedDate= null;

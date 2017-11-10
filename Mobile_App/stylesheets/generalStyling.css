@@ -116,19 +116,19 @@ fontChangeTag{
 	font-size:125%; /*20px*/
 }
 
-.action-sheet-button--changeFontSizeDefault{
+.action-sheet-button--fontSize20{
 	font-size:125%; /*20px*/
 }
 
-.action-sheet-button--changeFontSize22{
+.action-sheet-button--fontSize22{
 	font-size:140%; /*22px*/
 }
 
-.action-sheet-button--changeFontSize24{
+.action-sheet-button--fontSize24{
 	font-size:150%; /*24px*/
 }
 
-.action-sheet-button--changeFontSize26{
+.action-sheet-button--fontSize26{
 	font-size:170%; /*28px*/
 }
 
