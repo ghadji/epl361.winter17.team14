@@ -83,3 +83,8 @@
 	padding-right:10%; 
 	padding-top:10%;
 }
+
+/* three bar toolbar icon*/
+.toolbar-button--material{
+	color: #FFFFFF;
+}

@@ -9,7 +9,6 @@ function init(){
 	window.fn.requestArticle();
 }
 
-
 /*method responsible for opening the sidemenu*/
 window.fn.open = function () {
     var menu = document.getElementById('menu');
@@ -49,7 +48,6 @@ window.fn.cacheNews = function (el) {
 /*toggles markup toxic content setting*/
 window.fn.markupToxic = function (el) {
     var value = el.checked;
-    console.log(value);
     window.localStorage.setItem('isMarkupToxic', value);
 }
 
@@ -132,13 +130,13 @@ window.fn.changeFontSize = function (index) {
     var el = document.getElementsByTagName("fontChangeTag");
     for (var i = 0; i < el.length; i++) {
         switch (index) {
-            case 0: el[i].style.fontSize = '100%';
+            case 0: el[i].style.fontSize = '125%';
                 break;
-            case 1: el[i].style.fontSize = '110%';
+            case 1: el[i].style.fontSize = '137.5%';
                 break;
-            case 2: el[i].style.fontSize = '120%';
+            case 2: el[i].style.fontSize = '150%';
                 break;
-            case 3: el[i].style.fontSize = '130%';
+            case 3: el[i].style.fontSize = '167.5%';
                 break;
         }
     }
@@ -153,6 +151,7 @@ function setFontSize() {
 window.fn.requestArticle = function (){
 	window.data.articles = getNewArticles();
 }
+
 
 /*EVENT LISTENERS*/
 document.addEventListener('preopen', function (event) {
@@ -188,11 +187,14 @@ document.addEventListener('init', function (event) {
 
 		articlesList.delegate = {
 			createItemContent: function(i) {
-			  return ons.createElement('<ons-list-item tappable style="padding-left:0">' + 
+			    return ons.createElement('<ons-list-item tappable style="padding-left:2px" onclick="fn.openArticle('+i+')">' + 
 											'<ons-col width="30%">'+
-											'<img height="70%" width="100%" src="'+ window.data.articles[i].PictureSrc +'"></ons-col>'+
-											'<ons-col>'+ window.data.articles[i].Title + '</br>' + window.data.articles[i].SourceWebsite + ' - ' + window.data.articles[i].Author + '</ons-col>'+ 
-										'</ons-list-item>'
+												'<img height="70%" width="100%" src="'+ window.data.articles[i].PictureSrc +'">'+
+											'</ons-col>'+
+											'<ons-col>'+ 
+												window.data.articles[i].Title + '</br>' + window.data.articles[i].SourceWebsite + ' - ' + window.data.articles[i].Author + 
+											'</ons-col>'+ 
+									     '</ons-list-item>'
 			  );
 			},
 			countItems: function() {
@@ -200,6 +202,13 @@ document.addEventListener('init', function (event) {
 			}
 		};
 		articlesList.refresh();
+	}
+	if(page.matches("#articleView")){
+		var page = articlesNavi.topPage;
+		console.log(page.data.Title);
+		document.getElementById('articleTitle').innerHTML = page.data.Title;
+		document.getElementById('articleImg').src = page.data.Img;
+		document.getElementById('articleContent').innerHTML = page.data.Content;
 	}
     setNightMode();
     setFontSize();
@@ -217,6 +226,19 @@ document.addEventListener('hide', function (event) {
         window.localStorage.setItem('toxicToleranceValue', document.getElementById('ToxicToleranceSlider').value);
 });
 /*EVENT LISTENERS*/
+
+window.fn.openArticle = function(i){
+	//window.data.articles[i]
+	var options = {
+		Title: window.data.articles[i].Title,
+		Img: window.data.articles[i].PictureSrc,
+		Content: window.data.articles[i].Content,
+		Author: window.data.articles[i].Author,
+		Date: window.data.articles[i].Date,
+		Source: window.data.articles[i].SourceWebsite
+	}
+	articlesNavi.pushPage('articleView.html', { data : options } );
+}
 
 var lastUpdatedDate= null;
 
@@ -239,6 +261,10 @@ function getNewArticles (websiteSources) {
 	lastUpdatedDate= new Date ();
 
     return arrayOfArticles;
+}
+
+function getArticle(index){
+	return window.fn.articles[i];
 }
 
 

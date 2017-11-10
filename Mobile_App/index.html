@@ -36,10 +36,10 @@
     </ons-page>
 </template>
 
-<template id="mainView.html">
-    <ons-page id="mainView">
+<template id="mainView.html" >
+    <ons-page id="mainView"  style="background-color:white !important">
         <!--Side Menu splitter-->
-        <ons-splitter>
+        <ons-splitter >
             <ons-splitter-side id="menu" side="left" width="70%" collapse swipeable>
                 <ons-page id="sideMenu">
                     <ons-list id="sidemenuList" style="border-collapse:collapse;">
@@ -81,7 +81,7 @@
 
         <!--News Feed page-->
         <template id="home.html">
-			<ons-navigator animation="slide" var="articles.navi">
+			<ons-navigator id="articlesNavi" animation="slide" var="articlesNavi">
 				<ons-page id="NoSourcePage">
 				   <!-- <ons-toolbar class="toolbarHeader">
 						<div class="left">
@@ -105,7 +105,7 @@
 					</p>
 					<p class="transperentParagraph">
 						There is no source to read from.
-					</p> -->
+					</p>-->
 					<ons-toolbar class="toolbarHeader">
 						<div class="left">
 							<ons-toolbar-button onclick="fn.open()">
@@ -113,7 +113,7 @@
 							</ons-toolbar-button>
 						</div>
 						<div class="center">
-
+							News Feed
 						</div>
 					</ons-toolbar>
 					<ons-list>
@@ -122,24 +122,30 @@
 							</ons-lazy-repeat>
 						</ons-list-item>
 					</ons-list>
-					<div id="articleTitle"></div>
+					<div id="artTitle"></div>
 				</ons-page>
 			</ons-navigator>
         </template>
 
-        <!--Settings page (not currently used)-->
-        <template id="settings.html">
-            <ons-page>
+        <!--Article View-->
+        <template id="articleView.html">
+            <ons-page id="articleView">
                 <ons-toolbar class="toolbarHeader">
                     <div class="left">
-                        <ons-toolbar-button onclick="fn.open()">
-                            <ons-icon icon="md-menu"></ons-icon>
-                        </ons-toolbar-button>
-                    </div>
-                    <div class="center">
-                        <fontChangeTag>Settings</fontChangeTag>
+                        <ons-toolbar-button onclick="articlesNavi.popPage()">
+							<ons-icon icon="md-chevron-left"></ons-icon>
+						</ons-toolbar-button>
                     </div>
                 </ons-toolbar>
+                <div class="center" style="text-align:justify">
+                   <fontChangeTag id="articleTitle" style="font-weight:bold"></fontChangeTag>
+                </div>
+				<div class="center">
+					<img id="articleImg" height="100%" width="100%">
+				</div>
+				<div style="text-align:justify">
+					<fontChangeTag id="articleContent"></fontChangeTag>
+				</div>
             </ons-page>
         </template>
 
@@ -159,23 +165,23 @@
 
                 <ons-list>
                     <ons-list-item>
-                      <div class="center">
+                      <div class="center mainStyle">
                         <fontChangeTag>Night Mode</fontChangeTag>
                       </div>
-                      <div class="right">
+                      <div class="right switchPosition">
                         <ons-switch id="NightModeToggle" onchange="fn.nightMode(this)"></ons-switch>
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                      <div class="center">
+                      <div class="center mainStyle">
                         <fontChangeTag>Cache News</fontChangeTag>
                       </div>
-                      <div class="right">
+                      <div class="right switchPosition">
                         <ons-switch id="CacheNewsToggle" onchange="fn.cacheNews(this)"></ons-switch>
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                        <div class="center">
+                        <div class="center mainStyle">
                           <fontChangeTag>Font Size</fontChangeTag>
                             <ons-button class="fontSizeButton" tappable onclick="fn.openFontSizeSheet()">
                                 <fontChangeTag>20px</fontChangeTag>

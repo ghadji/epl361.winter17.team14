@@ -6,6 +6,7 @@
     position:fixed;
 	width: 100%;
 	height: 100%;
+	font-size:16px;
 }
 
 /*
@@ -43,7 +44,6 @@
  * The style for the menu (letters)
  */
 .menuStyle {
-    font-size: 125%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
 }
@@ -52,7 +52,6 @@
  * The style of the paragraphs/items at the pages (letters and placement)
  */
 .mainStyle {
-    font-size: 125%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
     padding-top: 12%;
@@ -65,7 +64,6 @@
  */
 .detailedList {
     color: #90A4AE;
-    font-size:125%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 8px 0px 8px 60px;
 }
@@ -136,4 +134,22 @@ fontChangeTag{
 
 #welcomeView .page__background {
     background-image: url('../images/WelcomeViewBackground.png');
+}
+
+#menu .page__background{
+	background-color:white;
+}
+
+#displaySettingsPage .page__background{
+	background-color:white;
+}
+
+#filteringSettingsPage .page__background{
+	background-color:white;
+}
+
+
+/*toolbar title color*/
+.toolbar--material__center{
+	color: #FFFFFF;
 }
