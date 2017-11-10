@@ -60,3 +60,26 @@
     padding-left: 11px;
     font-size: 115%;
 }
+
+.eyeRederImage{
+    text-shadow:2px 2px 5px red;
+}
+
+.getStarted{
+    background-color:#455A64;
+    padding: 2% 2% 2% 2%;
+    margin-top:20%;
+    border-radius:10%;
+}
+
+.fontSizeButton{
+    padding:3% 3% 3% 3%;
+    border-radius:10%;
+    border-color:#ccc;
+}
+
+.fontSizeButtonPosition{
+	text-align:right; 
+	padding-right:10%; 
+	padding-top:10%;
+}

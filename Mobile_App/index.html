@@ -23,26 +23,21 @@
 
 <ons-navigator swipeable id="myNavigator" page="welcomeView.html"></ons-navigator>
 
-<template id= 'welcomeView.html'>
+<template id="welcomeView.html">
     <!-- Welcome page-->
     <ons-page id="welcomeView">
-        <ons-toolbar class="toolbarHeader">
-        </ons-toolbar>
 
-        <p class="transperentParagraph" style="font-weight:bold; font-size:30px; margin-top:1%; margin-bottom:2%;">
-            Welcome to eyeReader!
-        </p>
-        <image src="./images/eyeReader_icon.png" style="width:250px; height:250px; margin-left: auto; margin-right: auto; display: block;"></image>
+        <image src="./images/eyeReader_icon.png" class="eyeRederImage"style="width:250px; height:250px; margin-top:40%; margin-bottom:1%; margin-left: auto; margin-right: auto; display: block;"></image>
         <div style="text-align: center">
-            <ons-button onclick="fn.goToMainView()">
-                Let's Start
+            <ons-button class="getStarted" onclick="fn.goToMainView()">
+                Get started
             </ons-button>
         </div>
     </ons-page>
 </template>
 
 <template id="mainView.html">
-    <ons-page id= 'mainView'>
+    <ons-page id="mainView">
         <!--Side Menu splitter-->
         <ons-splitter>
             <ons-splitter-side id="menu" side="left" width="70%" collapse swipeable>
@@ -81,36 +76,55 @@
                     </ons-list>
                 </ons-page>
             </ons-splitter-side>
-            <ons-splitter-content id="content" page="displaySettings.html"></ons-splitter-content>
+            <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
         </ons-splitter>
 
         <!--News Feed page-->
         <template id="home.html">
-            <ons-page id="NoSourcePage">
-                <ons-toolbar class="toolbarHeader">
-                    <div class="left">
-                        <ons-toolbar-button onclick="fn.open()">
-                            <ons-icon icon="md-menu"></ons-icon>
-                        </ons-toolbar-button>
-                    </div>
-                    <div class="center">
+			<ons-navigator animation="slide" var="articles.navi">
+				<ons-page id="NoSourcePage">
+				   <!-- <ons-toolbar class="toolbarHeader">
+						<div class="left">
+							<ons-toolbar-button onclick="fn.open()">
+								<ons-icon icon="md-menu"></ons-icon>
+							</ons-toolbar-button>
+						</div>
+						<div class="center">
+                       
+						</div>
+					</ons-toolbar>
+					<p class="transperentParagraph">
+						<fontChangeTag>Swipe right to add sources.</fontChangeTag>
+					</p>
+					<p class="transperentParagraph">
+						<br />
+						<ons-icon icon="fa-list" class="listIcon"></ons-icon>
+					</p>
+					<p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
+						Oops!
+					</p>
+					<p class="transperentParagraph">
+						There is no source to read from.
+					</p> -->
+					<ons-toolbar class="toolbarHeader">
+						<div class="left">
+							<ons-toolbar-button onclick="fn.open()">
+								<ons-icon icon="md-menu"></ons-icon>
+							</ons-toolbar-button>
+						</div>
+						<div class="center">
 
-                    </div>
-                </ons-toolbar>
-                <p class="transperentParagraph">
-                    <fontChangeTag>Swipe right to add sources.</fontChangeTag>
-                </p>
-                <p class="transperentParagraph">
-                    <br />
-                    <ons-icon icon="fa-list" class="listIcon"></ons-icon>
-                </p>
-                <p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
-                    Oops!
-                </p>
-                <p class="transperentParagraph">
-                    There is no source to read from.
-                </p>
-            </ons-page>
+						</div>
+					</ons-toolbar>
+					<ons-list>
+						<ons-list-item>
+							<ons-lazy-repeat id="articlesListRepeat">
+							</ons-lazy-repeat>
+						</ons-list-item>
+					</ons-list>
+					<div id="articleTitle"></div>
+				</ons-page>
+			</ons-navigator>
         </template>
 
         <!--Settings page (not currently used)-->
@@ -143,41 +157,32 @@
                     </div>
                 </ons-toolbar>
 
-                <ons-row>
-                    <ons-col width="50%" class="mainStyle">
+                <ons-list>
+                    <ons-list-item>
+                      <div class="center">
                         <fontChangeTag>Night Mode</fontChangeTag>
-                    </ons-col>
-                    <ons-col class="switchPosition">
-                        <label class="switch">
-                            <input id="NightModeToggle" type="checkbox" onchange="fn.nightMode(this)">
-                            <span class="slider round"></span>
-                        </label>
-                    </ons-col>
-                </ons-row>
-
-                <ons-row>
-                    <ons-col width="50%" class="mainStyle">
+                      </div>
+                      <div class="right">
+                        <ons-switch id="NightModeToggle" onchange="fn.nightMode(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                      <div class="center">
                         <fontChangeTag>Cache News</fontChangeTag>
-                    </ons-col>
-                    <ons-col class="switchPosition">
-                        <label class="switch">
-                            <input id="CacheNewsToggle" type="checkbox" onchange="fn.cacheNews(this)">
-                            <span class="slider round"></span>
-                        </label>
-                    </ons-col>
-                </ons-row>
-
-                <ons-row>
-                    <ons-col width="50%" class="mainStyle">
-                        <fontChangeTag>Font Size</fontChangeTag>
-                    </ons-col>
-                    <ons-col class="fontSizeButtonPosition">
-                        <ons-button id="fontSizeBtn" tappable onclick="fn.openFontSizeSheet()">
-                            <fontChangeTag>Example</fontChangeTag>
-                        </ons-button>
-                    </ons-col>
-                </ons-row>
-
+                      </div>
+                      <div class="right">
+                        <ons-switch id="CacheNewsToggle" onchange="fn.cacheNews(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <div class="center">
+                          <fontChangeTag>Font Size</fontChangeTag>
+                            <ons-button class="fontSizeButton" tappable onclick="fn.openFontSizeSheet()">
+                                <fontChangeTag>20px</fontChangeTag>
+                            </ons-button>
+                        </div>
+                    </ons-list-item>
+                </ons-list>
             </ons-page>
         </template>
 
@@ -210,46 +215,42 @@
                         <fontChangeTag>Filtering</fontChangeTag>
                     </div>
                 </ons-toolbar>
-                <ons-row>
-                    <ons-col width="50%" class="mainStyle">
+                <ons-list>
+                    <ons-list-item>
+                      <div class="center">
                         <fontChangeTag>Markup Toxic</fontChangeTag>
-                    </ons-col>
-                    <ons-col width="50%" class="switchPosition">
-                        <label class="switch">
-                            <input id="MarkupToxicToggle" type="checkbox" onclick="fn.markupToxic(this)">
-                            <span class="slider round"></span>
-                        </label>
-                    </ons-col>
-                </ons-row>
-
-                <ons-row>
-                    <ons-col width="50%" class="mainStyle">
+                      </div>
+                      <div class="right">
+                        <ons-switch id="MarkupToxicToggle" onchange="fn.markupToxic(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                      <div class="center">
                         <fontChangeTag>Hide Toxic</fontChangeTag>
-                    </ons-col>
-                    <ons-col class="switchPosition">
-                        <label class="switch">
-                            <input id="HideToxicToggle" type="checkbox" onclick="fn.hideToxic(this)">
-                            <span class="slider round"></span>
-                        </label>
-                    </ons-col>
-                </ons-row>
-
-                <ons-row>
-                    <ons-row class="mainStyle">
-                        <fontChangeTag>Toxic Tolerance</fontChangeTag>
-                    </ons-row>
-                    <ons-row>
-                        <ons-col width="60px" style="text-align: center; line-height: 31px;">
+                      </div>
+                      <div class="right">
+                        <ons-switch id="HideToxicToggle" onchange="fn.hideToxic(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <div class="center">
+                          <fontChangeTag>Tolerance level</fontChangeTag>
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <div class="center">
+                          <ons-col width="12%" style="text-align: center; line-height: 31px;">
                             <ons-icon icon="fa-thermometer-empty"></ons-icon>
-                        </ons-col>
-                        <ons-col>
+                          </ons-col>
+                          <ons-col>
                             <ons-range id="ToxicToleranceSlider" style="width: 100%;"></ons-range>
-                        </ons-col>
-                        <ons-col width="60px" style="text-align: center; line-height: 31px;">
+                          </ons-col>
+                          <ons-col width="12%" style="text-align: center; line-height: 31px;">
                             <ons-icon icon="fa-thermometer-full"></ons-icon>
-                        </ons-col>
-                    </ons-row>
-                </ons-row>
+                          </ons-col>
+                        </div>
+                    </ons-list-item>
+                </ons-list>
             </ons-page>
         </template>
 

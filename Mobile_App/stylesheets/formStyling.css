@@ -19,7 +19,7 @@
 .switchPosition{
 	text-align:right; 
 	padding-top:12%;  
-	padding-right:10%;
+	padding-bottom:12%;
 }
 
 /* The slider */
@@ -71,12 +71,3 @@ input:checked + .slider:before {
 
 /*END OF TOGGLE SWITCH CSS*/
 
-.fontSizeButtonPosition{
-	text-align:right; 
-	padding-right:10%; 
-	padding-top:10%;
-}
-
-.button--material{
-	background-color:#455a64;
-}

@@ -3,6 +3,13 @@ ons.platform.select('android');
 /*array that will contain all methods that will be used from HTML side*/
 window.fn = {};
 
+window.data = {};
+
+function init(){
+	window.fn.requestArticle();
+}
+
+
 /*method responsible for opening the sidemenu*/
 window.fn.open = function () {
     var menu = document.getElementById('menu');
@@ -42,6 +49,7 @@ window.fn.cacheNews = function (el) {
 /*toggles markup toxic content setting*/
 window.fn.markupToxic = function (el) {
     var value = el.checked;
+    console.log(value);
     window.localStorage.setItem('isMarkupToxic', value);
 }
 
@@ -98,19 +106,19 @@ window.fn.openFontSizeSheet = function () {
         cancelable: true,
         buttons: [
           {
-              label: 'Default',
+              label: 'Sample - 20px',
               modifier: 'changeFontSizeDefault'
           },
           {
-              label: 'Example - 22px',
+              label: 'Sample - 22px',
               modifier: 'changeFontSize22'
           },
           {
-              label: 'Example - 24px',
+              label: 'Sample - 24px',
               modifier: 'changeFontSize24'
           },
           {
-              label: 'Example - 26px',
+              label: 'Sample - 26px',
               modifier: 'changeFontSize26'
           },
           {
@@ -124,13 +132,13 @@ window.fn.changeFontSize = function (index) {
     var el = document.getElementsByTagName("fontChangeTag");
     for (var i = 0; i < el.length; i++) {
         switch (index) {
-            case 0: el[i].style.fontSize = '20px';
+            case 0: el[i].style.fontSize = '100%';
                 break;
-            case 1: el[i].style.fontSize = '22px';
+            case 1: el[i].style.fontSize = '110%';
                 break;
-            case 2: el[i].style.fontSize = '24px';
+            case 2: el[i].style.fontSize = '120%';
                 break;
-            case 3: el[i].style.fontSize = '26px';
+            case 3: el[i].style.fontSize = '130%';
                 break;
         }
     }
@@ -140,6 +148,10 @@ window.fn.changeFontSize = function (index) {
 function setFontSize() {
     var value = JSON.parse(window.localStorage.getItem('fontSizeIndex'));
     window.fn.changeFontSize(value);
+}
+
+window.fn.requestArticle = function (){
+	window.data.articles = getNewArticles();
 }
 
 /*EVENT LISTENERS*/
@@ -171,6 +183,24 @@ document.addEventListener('init', function (event) {
     }
     if (page.matches('#addSources'))
         setSourcesNightMode();
+	if (page.matches('#NoSourcePage')){
+		var articlesList = document.getElementById('articlesListRepeat');
+
+		articlesList.delegate = {
+			createItemContent: function(i) {
+			  return ons.createElement('<ons-list-item tappable style="padding-left:0">' + 
+											'<ons-col width="30%">'+
+											'<img height="70%" width="100%" src="'+ window.data.articles[i].PictureSrc +'"></ons-col>'+
+											'<ons-col>'+ window.data.articles[i].Title + '</br>' + window.data.articles[i].SourceWebsite + ' - ' + window.data.articles[i].Author + '</ons-col>'+ 
+										'</ons-list-item>'
+			  );
+			},
+			countItems: function() {
+			  return window.data.articles.length;
+			}
+		};
+		articlesList.refresh();
+	}
     setNightMode();
     setFontSize();
 });
@@ -210,3 +240,6 @@ function getNewArticles (websiteSources) {
 
     return arrayOfArticles;
 }
+
+
+init();
