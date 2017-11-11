@@ -6,17 +6,49 @@
     position:fixed;
 	width: 100%;
 	height: 100%;
-	font-size:16px;
+	font-size:20px;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /*
  *The style for all the bolds
  */
 .boldStyle {
+    font-family: Verdana, Geneva, sans-serif;
     color: #90A4AE;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
-    font-size: 125%;
+    font-size: 100%;
+}
+
+.articleStyle{
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.articleSourceStyle{
+    font-family: Verdana, Geneva, sans-serif;
+    font-size:80%;
+    float:left;
+    color:#90A4AE;
+    padding-left:2%;
+    padding-right:2%;
+}
+
+.articleDateStyle{
+    color:#90A4AE;
+    font-size:80%;
+    padding-right:2%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.articleTitleStyle{
+    color:black;
+    padding-top:5%;
+    padding-right:4%;
+    padding-left:2%;
+    font-weight:bold;
+    font-size:100%;
+    font-size:100%;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /*
@@ -24,9 +56,9 @@
  */
 .toolbarHeader {
     background-color: #455A64;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 125%;
+    font-size: 100%;
     color: white;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /*
@@ -37,35 +69,42 @@
     padding-top: 2%;
     color: #90A4AE;
     font-size: 115%;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /*
  * The style for the menu (letters)
  */
 .menuStyle {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 /*
  * The style of the paragraphs/items at the pages (letters and placement)
  */
 .mainStyle {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
-    padding-top: 12%;
-	padding-left:10%;
+    padding-top:8%;  
+    padding-bottom: 8%;
+    padding-left: 10%;
+    font-family: Verdana, Geneva, sans-serif;
 }
-
+	
+.switchPosition{
+    text-align:right;
+    padding-top: 8%;  
+    padding-bottom:8%;
+    padding-right: 10%;
+}
 
 /*
  * The list inside the menu and the settings
  */
 .detailedList {
     color: #90A4AE;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 8px 0px 8px 60px;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 
@@ -78,12 +117,13 @@
 }
 
 .page--normal_mode_bg__background{
+    background-color:white;
 	transition: background-color 0.5s ease;
 }
 
 
 /*
- * Chanes the color of the sidemenu list
+ * Changes the color of the sidemenu list
  */
 .list--night_mode_bg{
 	background-color:#2e2e2e;
@@ -91,6 +131,7 @@
 }
 
 .list--normal_mode_bg{
+    background-color:white;
 	transition: background-color 0.5s ease;
 }
 
@@ -113,23 +154,23 @@
 }
 
 fontChangeTag{
-	font-size:125%; /*20px*/
+	font-size:100%; /*20px*/
 }
 
 .action-sheet-button--fontSize20{
-	font-size:125%; /*20px*/
+	font-size:100%; /*20px*/
 }
 
 .action-sheet-button--fontSize22{
-	font-size:140%; /*22px*/
+	font-size:110%; /*22px*/
 }
 
 .action-sheet-button--fontSize24{
-	font-size:150%; /*24px*/
+	font-size:120%; /*24px*/
 }
 
 .action-sheet-button--fontSize26{
-	font-size:170%; /*28px*/
+	font-size:130%; /*26px*/
 }
 
 #welcomeView .page__background {
@@ -152,4 +193,12 @@ fontChangeTag{
 /*toolbar title color*/
 .toolbar--material__center{
 	color: #FFFFFF;
+}
+
+.articleContentStyle {
+    font-family: Verdana, Geneva, sans-serif;
+    padding-left:2%; 
+    padding-right:2%;
+    color: black;
+    padding-bottom:5%;
 }

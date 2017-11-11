@@ -103,13 +103,13 @@ window.fn.changeFontSize = function (index) {
     var el = document.getElementsByTagName("fontChangeTag");
     for (var i = 0; i < el.length; i++) {
         switch (index) {
-            case 0: el[i].style.fontSize = '125%';
+            case 0: el[i].style.fontSize = '100%';
                 break;
-            case 1: el[i].style.fontSize = '137.5%';
+            case 1: el[i].style.fontSize = '110%';
                 break;
-            case 2: el[i].style.fontSize = '150%';
+            case 2: el[i].style.fontSize = '120%';
                 break;
-            case 3: el[i].style.fontSize = '167.5%';
+            case 3: el[i].style.fontSize = '130%';
                 break;
         }
     }
@@ -164,12 +164,17 @@ document.addEventListener('init', function (event) {
 
 		articlesList.delegate = {
 			createItemContent: function(i) {
-			    return ons.createElement('<ons-list-item tappable style="padding-left:2px" onclick="fn.openArticle('+i+')">' + 
+			    return ons.createElement('<ons-list-item tappable style="padding-left:1%; padding-right:1%;" onclick="fn.openArticle('+i+')">' + 
 											'<ons-col width="30%">'+
 												'<img height="70%" width="100%" src="'+ window.data.articles[i].PictureSrc +'">'+
 											'</ons-col>'+
-											'<ons-col>'+ 
-												window.data.articles[i].Title + '</br>' + window.data.articles[i].SourceWebsite + ' - ' + window.data.articles[i].Author + 
+                                            '<ons-col>'+
+                                                '<div class="articleStyle" style="padding-left:5%;">' + 
+                                                   '<fontChangeTag>' + window.data.articles[i].Title +'</fontChangeTag>' + 
+                                                '</div>' +
+                                                '<div style="color:#90A4AE; padding-left:5%; font-size:80%" >' +
+                                                    window.data.articles[i].SourceWebsite + 
+                                                '</div>'+
 											'</ons-col>'+ 
 									     '</ons-list-item>'
 			  );
@@ -184,7 +189,9 @@ document.addEventListener('init', function (event) {
 		var page = articlesNavi.topPage;
 		document.getElementById('articleTitle').innerHTML = page.data.Title;
 		document.getElementById('articleImg').src = page.data.Img;
-		document.getElementById('articleContent').innerHTML = page.data.Content;
+        document.getElementById('articleContent').innerHTML = page.data.Content;
+        document.getElementById('articleSource').innerHTML = page.data.Source;
+        document.getElementById('articleDate').innerHTML = page.data.Date;
 	}
     setNightMode();
     setFontSize();
@@ -208,7 +215,6 @@ window.fn.openArticle = function(i){
 		Title: window.data.articles[i].Title,
 		Img: window.data.articles[i].PictureSrc,
 		Content: window.data.articles[i].Content,
-		Author: window.data.articles[i].Author,
 		Date: window.data.articles[i].Date,
 		Source: window.data.articles[i].SourceWebsite
 	}

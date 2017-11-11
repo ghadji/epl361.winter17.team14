@@ -11,7 +11,6 @@
     <link rel="stylesheet" href='.\external_libs\css\material-design-iconic-font\css\material-design-iconic-font.min.css'>
     <link rel="stylesheet" href="./stylesheets/generalStyling.css" type="text/css" />
     <link rel="stylesheet" href="./stylesheets/iconStyling.css" type="text/css" />
-    <link rel="stylesheet" href="./stylesheets/formStyling.css" type="text/css" />
 
     <script src='.\external_libs\js\onsenui.js'></script>
     <script src=".\templateArticles\templateArticle.js" type="text/javascript"></script>
@@ -27,7 +26,7 @@
     <!-- Welcome page-->
     <ons-page id="welcomeView">
 
-        <image src="./images/eyeReader_icon.png" class="eyeRederImage"style="width:250px; height:250px; margin-top:40%; margin-bottom:1%; margin-left: auto; margin-right: auto; display: block;"></image>
+        <image src="./images/eyeReader_icon.png" class="eyeRedearImage"style="width:250px; height:250px; margin-top:40%; margin-bottom:1%; margin-left: auto; margin-right: auto; display: block;"></image>
         <div style="text-align: center">
             <ons-button class="getStarted" onclick="fn.goToMainView()">
                 Get started
@@ -38,6 +37,7 @@
 
 <template id="mainView.html" >
     <ons-page id="mainView"  style="background-color:white !important">
+
         <!--Side Menu splitter-->
         <ons-splitter >
             <ons-splitter-side id="menu" side="left" width="70%" collapse swipeable>
@@ -83,21 +83,20 @@
         <template id="home.html">
 			<ons-navigator id="articlesNavi" animation="slide" var="articlesNavi">
 				<ons-page id="NoSourcePage">
-				   <!-- <ons-toolbar class="toolbarHeader">
+                    <!--
+				   <ons-toolbar class="toolbarHeader">
 						<div class="left">
 							<ons-toolbar-button onclick="fn.open()">
 								<ons-icon icon="md-menu"></ons-icon>
 							</ons-toolbar-button>
 						</div>
 						<div class="center">
-                       
 						</div>
 					</ons-toolbar>
 					<p class="transperentParagraph">
 						<fontChangeTag>Swipe right to add sources.</fontChangeTag>
 					</p>
 					<p class="transperentParagraph">
-						<br />
 						<ons-icon icon="fa-list" class="listIcon"></ons-icon>
 					</p>
 					<p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
@@ -105,7 +104,8 @@
 					</p>
 					<p class="transperentParagraph">
 						There is no source to read from.
-					</p>-->
+                    </p>
+                -->
 					<ons-toolbar class="toolbarHeader">
 						<div class="left">
 							<ons-toolbar-button onclick="fn.open()">
@@ -113,7 +113,7 @@
 							</ons-toolbar-button>
 						</div>
 						<div class="center">
-							News Feed
+							<fontChangeTag>News Feed</fontChangeTag>
 						</div>
 					</ons-toolbar>
 					<ons-list>
@@ -122,7 +122,8 @@
 							</ons-lazy-repeat>
 						</ons-list-item>
 					</ons-list>
-					<div id="artTitle"></div>
+                    <div id="artTitle"></div>
+                
 				</ons-page>
 			</ons-navigator>
         </template>
@@ -137,13 +138,22 @@
 						</ons-toolbar-button>
                     </div>
                 </ons-toolbar>
-                <div class="center" style="text-align:justify">
-                   <fontChangeTag id="articleTitle" style="font-weight:bold"></fontChangeTag>
+                <div class="center articleTitleStyle">
+                   <fontChangeTag id="articleTitle"></fontChangeTag>
                 </div>
-				<div class="center">
+                <div class="articleSourceStyle">
+                    <fontChangeTag id="articleSource"></fontChangeTag>
+                    <fontChangeTag>|</fontChangeTag>
+                </div>
+                <div class="articleDateStyle">
+                    <fontChangeTag id="articleDate"></fontChangeTag>
+                </div>
+                <br/>
+				<div class="center" style="padding:2%;">
 					<img id="articleImg" height="100%" width="100%">
-				</div>
-				<div style="text-align:justify">
+                </div>
+                <br/>
+				<div class="articleContentStyle">
 					<fontChangeTag id="articleContent"></fontChangeTag>
 				</div>
             </ons-page>
@@ -182,10 +192,12 @@
                     <ons-list-item>
                         <div class="center mainStyle">
                           <fontChangeTag>Font Size</fontChangeTag>
+                        </div>
+                        <div class="right">
 							<ons-button class="fontSizeButton" tappable onclick="fn.showFontSizeOptions()">
 								<fontChangeTag id="fontSizeText"></fontChangeTag>
-							</ons-button>
-						</div>
+                            </ons-button>
+                        </div>
                     </ons-list-item>
                 </ons-list>
 			</ons-page>
@@ -217,35 +229,35 @@
                 </ons-toolbar>
                 <ons-list>
                     <ons-list-item>
-                      <div class="center">
+                      <div class="center mainStyle">
                         <fontChangeTag>Markup Toxic</fontChangeTag>
                       </div>
-                      <div class="right">
+                      <div class="right switchPosition">
                         <ons-switch id="MarkupToxicToggle" onchange="fn.markupToxic(this)"></ons-switch>
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                      <div class="center">
+                      <div class="center mainStyle">
                         <fontChangeTag>Hide Toxic</fontChangeTag>
                       </div>
-                      <div class="right">
+                      <div class="right switchPosition">
                         <ons-switch id="HideToxicToggle" onchange="fn.hideToxic(this)"></ons-switch>
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                        <div class="center">
+                        <div class="center mainStyle">
                           <fontChangeTag>Tolerance level</fontChangeTag>
                         </div>
                     </ons-list-item>
                     <ons-list-item>
                         <div class="center">
-                          <ons-col width="12%" style="text-align: center; line-height: 31px;">
+                          <ons-col width="12%" style="text-align: center;">
                             <ons-icon icon="fa-thermometer-empty"></ons-icon>
                           </ons-col>
                           <ons-col>
                             <ons-range id="ToxicToleranceSlider" style="width: 100%;"></ons-range>
                           </ons-col>
-                          <ons-col width="12%" style="text-align: center; line-height: 31px;">
+                          <ons-col width="12%" style="text-align: center;">
                             <ons-icon icon="fa-thermometer-full"></ons-icon>
                           </ons-col>
                         </div>
@@ -268,12 +280,12 @@
                     </div>
                 </ons-toolbar>
 
-                <ons-list id="sourcesList">
+                <ons-list style="padding-top:2%; padding-bottom:2%;" id="sourcesList">
                     <ons-list-item tappable>
                         <label class="left">
                         <ons-checkbox input-id="source1"></ons-checkbox>
                     </label>
-                        <label for="source1" class="center">
+                        <label for="source1" class="center menuStyle">
                         <fontChangeTag>www.sigmalive.com</fontChangeTag>
                     </label>
                     </ons-list-item>
@@ -281,7 +293,7 @@
                         <label class="left">
                         <ons-checkbox input-id="source2"></ons-checkbox>
                     </label>
-                        <label for="source2" class="center">
+                        <label for="source2" class="center menuStyle">
                         <fontChangeTag>www.ant1iwo.com</fontChangeTag>
                     </label>
                     </ons-list-item>
