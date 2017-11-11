@@ -1,0 +1,98 @@
+﻿
+/*
+ * Main page icon (when there is no source)
+ */
+.listIcon {
+    font-size: 500%;
+    text-align: center;
+    margin-top: 25%;
+    margin-bottom: 2%;
+    color: #90A4AE;
+}
+
+/*
+ * Side menu News Feed icon
+ */
+.menuNewsFeed {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 115%;
+}
+
+/*
+ * Side menu Settings icon
+ */
+.menuSettings {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 115%;
+}
+
+/*
+ * The icon inside the menu to add a source
+ */
+.menuAddSource {
+    background-color: #90A4AE;
+    color: white;
+    margin-right: 3%;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 11px;
+    padding-left: 11px;
+    font-size: 115%;
+}
+
+/*
+ * Logo image on welcome screen
+ */
+.eyeReaderImage{
+    text-shadow:2px 2px 5px red;
+}
+
+/*
+ * Welcome page button
+ */
+.getStarted{
+    background-color:#455A64;
+    padding: 2% 2% 2% 2%;
+    margin-top:20%;
+    border-radius:10%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+/*
+ * Display settings page font change button
+ */
+.fontSizeButton{
+    color:white;
+    border-radius:10%;
+    border-color: black;
+    background-color:#455A64;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+/*
+ * Three bar icon for opening the menu
+ */
+.toolbar-button--material{
+    color: #FFFFFF;
+}
