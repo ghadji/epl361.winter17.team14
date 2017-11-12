@@ -82,7 +82,7 @@
 /*
  * Display settings page font change button
  */
-.fontSizeButton{
+.custom_button{
     color:white;
     border-radius:10%;
     border-color: black;

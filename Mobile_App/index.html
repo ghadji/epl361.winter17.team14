@@ -17,6 +17,8 @@
     <script src='.\external_libs\js\onsenui.js'></script>
     <script src=".\templateArticles\templateArticle.js" type="text/javascript"></script>
     <script src="./js/index.js" type="text/javascript"></script>
+    <script src="./js/event_listeners.js" type="text/javascript"></script>
+    <script src="./js/night_mode_handler.js" type="text/javascript"></script>
 
     <title>eyeReader</title>
 
@@ -29,12 +31,39 @@
     <ons-page id="welcomeView">
         <image src="./images/eyeReader_icon.png" class="eyeRedearImage"style="width:250px; height:250px; margin-top:40%; margin-bottom:1%; margin-left: auto; margin-right: auto; display: block;"></image>
         <div style="text-align: center">
-            <ons-button class="getStarted" onclick="fn.goToMainView()">
+            <ons-button class="getStarted" onclick="fn.showModal()">
                 Get started
             </ons-button>
         </div>
     </ons-page>
 </template>
+
+<ons-modal direction="up" animation="fade">
+    <div style="text-align: center; margin-top: 30px;">
+        <p>
+            <ons-input style="color:white" id="username" modifier="underbar" placeholder="Username" float></ons-input>
+        </p>
+        <p>
+            <ons-input style="color:white" id="password" modifier="underbar" type="password" placeholder="Password" float></ons-input>
+        </p>
+        <p>
+            <label class="left">
+                <ons-checkbox input-id="rememberme"></ons-checkbox>
+              </label>
+              <label style="font-size:16px" for="rememberme" class="center">
+                Remember me
+              </label>
+        </p>
+        <p>
+            <ons-button class="custom_button" onclick="fn.login()">Sign in</ons-button>
+            OR
+            <ons-button class="custom_button" onclick="fn.register()">Register</ons-button>
+        </p>
+        <p>
+            <ons-button style="color:white; text-decoration:underline" onclick="fn.hideModal()" modifier="quiet">Cancel</ons-button>
+        </p>
+    </div>
+</ons-modal>
 
 <template id="mainView.html" >
     <ons-page id="mainView"  style="background-color:white !important">
@@ -191,7 +220,7 @@
                           <fontChangeTag>Font Size</fontChangeTag>
                         </div>
                         <div class="right">
-							<ons-button class="fontSizeButton" tappable onclick="fn.showFontSizeOptions()">
+							<ons-button class="custom_button" tappable onclick="fn.showFontSizeOptions()">
 								<fontChangeTag id="fontSizeText"></fontChangeTag>
                             </ons-button>
                         </div>

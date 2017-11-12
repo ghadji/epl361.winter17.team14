@@ -72,3 +72,11 @@
   background-color: #455A64;
   border: none;
 }
+
+ons-input .text-input {
+    color:white;
+}
+
+.text-input--material__label--active{
+	color:#90A4AE;
+}
