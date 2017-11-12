@@ -9,6 +9,11 @@ function init(){
 	window.fn.requestArticle();
 }
 
+window.fn.openLogin = function () {
+    var login = document.getElementById('login');
+    login.classList.toggle('test');
+}
+
 /*method responsible for opening the sidemenu*/
 window.fn.open = function () {
     var menu = document.getElementById('menu');
@@ -23,18 +28,9 @@ window.fn.load = function (page) {
         .then(menu.close.bind(menu));
 };
 
-/*method responsible for toggling the settings dropdown menu in the sidemenu*/
-window.fn.toggleSettings = function () {
-    var submenu = document.getElementById('settingsSubmenu');
-    if (submenu.style.display == 'none')
-        submenu.style.display = 'block';
-    else
-        submenu.style.display = 'none';
-}
-
 /*method responsible for toggling the night mode modifier on and off the elements*/
 window.fn.nightMode = function (el) {
-    var value = el.checked;
+    var value = el.checked; document.documentElement.classList.add('night');
     window.localStorage.setItem('isNightMode', value);
     setNightMode();
 };
@@ -67,29 +63,73 @@ window.fn.goToMainView = function () {
 
 /*enables/disables night mode*/
 function setNightMode() {
-    var value = JSON.parse(window.localStorage.getItem('isNightMode'));
+    var isNightMode = JSON.parse(window.localStorage.getItem('isNightMode'));
     var pages = document.getElementsByTagName('ons-page');
+    var lists = document.getElementsByTagName('ons-list');
     var sidemenuList = document.getElementById('sidemenuList');
-    var paragraphs = document.getElementsByTagName('TextTag');
-    for (var i = 0; i < pages.length; i++) {
-        if (value) {
-            ons.modifier.remove(pages[i], 'normal_mode_bg');
-            ons.modifier.add(pages[i], 'night_mode_bg');
-        } else {
-            ons.modifier.remove(pages[i], 'night_mode_bg');
-            ons.modifier.add(pages[i], 'normal_mode_bg');
-        }
+	var thermometerIcons = document.getElementsByTagName('ons-icon');
+	var fontChangeTag = document.getElementsByTagName('fontChangeTag');
+	var range = document.getElementById('ToxicToleranceSlider');
+	var markupToxicDiv = document.getElementById('markupToxicDiv');
+	var hideToxicDiv = document.getElementById('hideToxicDiv');
+
+	if (markupToxicDiv)
+		if (isNightMode)
+			markupToxicDiv.classList.replace('mainStyle_normal_mode', 'mainStyle_night_mode');
+		else
+			markupToxicDiv.classList.replace('mainStyle_night_mode', 'mainStyle_normal_mode');
+			
+	if (hideToxicDiv)
+		if (isNightMode)
+			hideToxicDiv.classList.replace('mainStyle_normal_mode', 'mainStyle_night_mode');
+		else
+			hideToxicDiv.classList.replace('mainStyle_night_mode', 'mainStyle_normal_mode');
+
+	if (thermometerIcons){
+		for (var i=0; i<thermometerIcons.length; i++){
+			if (isNightMode && thermometerIcons[i].id == 'thermometerIcon'){
+				thermometerIcons[i].style.color = 'white';
+			}else if (!isNightMode && thermometerIcons[i].id == 'thermometerIcon'){
+				thermometerIcons[i].style.color = 'black';
+			}
+		}
+	}
+
+	if (fontChangeTag){
+		for (var i=0; i< fontChangeTag.length; i++){
+			if (isNightMode && (fontChangeTag[i].id !='noChangeColor' && fontChangeTag[i].id !='articleSource' && fontChangeTag[i].id !='articleDate' && fontChangeTag[i].id != 'fontSizeText')){
+				fontChangeTag[i].style.color = 'white';
+			}else if (!isNightMode && (fontChangeTag[i].id != 'noChangeColor' && fontChangeTag[i].id !='articleSource' && fontChangeTag[i].id !='articleDate' && fontChangeTag[i].id != 'fontSizeText') ){
+				fontChangeTag[i].style.color = 'black';
+			}else{
+				continue;
+			}
+		}
+	}
+	if (pages){
+		for (var i = 0; i < pages.length; i++) {
+			if (isNightMode) {
+				ons.modifier.add(pages[i], 'night_mode_bg');
+				ons.modifier.remove(pages[i], 'normal_mode_bg');
+			} else {
+				ons.modifier.add(pages[i], 'normal_mode_bg');
+				ons.modifier.remove(pages[i], 'night_mode_bg');
+			}
+		}
     }
-	if (sidemenuList)
-		value ? ons.modifier.add(sidemenuList, 'night_mode_bg') : ons.modifier.remove(sidemenuList, 'night_mode_bg');
-    for (var i = 0; i < paragraphs.length; i++) {
-        if (value)
-            paragraphs[i].classList.add('night_mode_text');
-            //ons.modifier.add(paragraphs[i], 'night_mode_text');
-        else
-            paragraphs[i].classList.remove('night_mode_text');
-        //ons.modifier.remove(paragraphs[i], 'night_mode_text');
-    }
+	if (lists){
+		for (var i = 0; i < lists.length; i++) {
+			if (isNightMode) {
+				ons.modifier.add(lists[i], 'night_mode_bg');
+				ons.modifier.remove(lists[i], 'normal_mode_bg');
+			} else {
+				ons.modifier.add(lists[i], 'normal_mode_bg');
+				ons.modifier.remove(lists[i], 'night_mode_bg');
+			}
+		}
+	}
+    if (sidemenuList)
+        isNightMode ? ons.modifier.add(sidemenuList, 'night_mode_bg') : ons.modifier.remove(sidemenuList, 'night_mode_bg');
 };
 
 function setSourcesNightMode() {
@@ -97,7 +137,6 @@ function setSourcesNightMode() {
     var sourcesList = document.getElementById('sourcesList');
     value ? ons.modifier.add(sourcesList, 'night_mode_bg') : ons.modifier.remove(sourcesList, 'night_mode_bg');
 }
-
 
 window.fn.changeFontSize = function (index) {
     var el = document.getElementsByTagName("fontChangeTag");
@@ -123,19 +162,38 @@ function setFontSize() {
 }
 
 window.fn.requestArticle = function (){
-	window.data.articles = getNewArticles();
+	window.data.articles = getNewArticles();;
 }
 
 /*EVENT LISTENERS*/
 document.addEventListener('init', function (event) {
     var page = event.target;
-    if (page.matches('#displaySettingsPage')) {
+
+	if (page.matches('#SourcesPage')){
+		if ((!window.data.articles) || (window.data.articles && window.data.articles.length == 0)){
+			window.fn.load('NoSourcesPage.html');
+		}
+	}
+	
+	if (page.matches('#NoSourcesPage')){
+		if (window.data.articles && window.data.articles.length > 0){
+			window.fn.load('SourcesPage.html');
+		}
+	}
+
+    if (page.matches('#settings')) {
         document.getElementById('NightModeToggle').checked =
                             JSON.parse(window.localStorage.getItem('isNightMode'));
         document.getElementById('CacheNewsToggle').checked =
                             JSON.parse(window.localStorage.getItem('isCachingNews'));
 		document.getElementById('fontSizeText').innerHTML = 
 							(JSON.parse(window.localStorage.getItem('fontSizeIndex'))*2 + 20) + 'px';
+        document.getElementById('MarkupToxicToggle').checked =
+                            JSON.parse(window.localStorage.getItem('isMarkupToxic'));
+        document.getElementById('HideToxicToggle').checked =
+                            JSON.parse(window.localStorage.getItem('isHideToxic'));
+        document.getElementById('ToxicToleranceSlider').value =
+                            JSON.parse(window.localStorage.getItem('toxicToleranceValue'));
 		//display/hide font size options action sheet
 		ons.ready(function () {
 			ons.createElement('fontSizeOptions.html', { append: true })
@@ -144,22 +202,38 @@ document.addEventListener('init', function (event) {
 					window.fn.hideFontSizeOptions = sheet.hide.bind(sheet);
 				}
 			);
+
+			var pullHook = document.getElementById('pull-hook');
+
+			if (pullHook){
+				pullHook.addEventListener('changestate', function(event) {
+					var message = '';
+
+					switch (event.state) {
+					  case 'initial':
+						message = 'Pull to refresh';
+						break;
+					  case 'preaction':
+						message = 'Release';
+						break;
+					  case 'action':
+						message = 'Loading...';
+						break;
+					}
+
+					pullHook.innerHTML = message;
+				});
+
+				pullHook.onAction = function(done) {
+					window.data.articles = getNewArticles();
+				};
+			}
 		});
-    }
-    if (page.matches('#sideMenu')) {
-        document.getElementById('settingsSubmenu').style.display = 'none';
-    }
-    if (page.matches('#filteringSettingsPage')) {
-        document.getElementById('MarkupToxicToggle').checked =
-                            JSON.parse(window.localStorage.getItem('isMarkupToxic'));
-        document.getElementById('HideToxicToggle').checked =
-                            JSON.parse(window.localStorage.getItem('isHideToxic'));
-        document.getElementById('ToxicToleranceSlider').value =
-                            JSON.parse(window.localStorage.getItem('toxicToleranceValue'));
+        
     }
     if (page.matches('#addSources'))
         setSourcesNightMode();
-	if (page.matches('#NoSourcePage')){
+	if (page.matches('#SourcesPage') && window.data.articles && window.data.articles.length > 0){
 		var articlesList = document.getElementById('articlesListRepeat');
 
 		articlesList.delegate = {
@@ -193,20 +267,31 @@ document.addEventListener('init', function (event) {
         document.getElementById('articleSource').innerHTML = page.data.Source;
         document.getElementById('articleDate').innerHTML = page.data.Date;
 	}
-    setNightMode();
-    setFontSize();
-});
-
-document.addEventListener('postclose', function (event) {
-    var page = event.target;
-    if (page.matches('#menu'))
-        document.getElementById('settingsSubmenu').style.display = 'none';
+	if (!page.matches('#welcomeView')) {
+        setNightMode();
+        setFontSize();
+	}
 });
 
 document.addEventListener('hide', function (event) {
     var page = event.target;
-    if (page.matches('#filteringSettingsPage'))
+    if (page.matches('#settings'))
         window.localStorage.setItem('toxicToleranceValue', document.getElementById('ToxicToleranceSlider').value);
+});
+
+document.addEventListener('change', function (event){
+	var page = event.target;
+    var markup = document.getElementById('MarkupToxicToggle');
+    var hide = document.getElementById('HideToxicToggle');
+	if (markup && hide)
+		if (markup.checked)
+			hide.disabled = true;
+		else if (hide.checked)
+			markup.disabled = true;
+		else if (!markup.checked && hide.disabled)
+			hide.disabled = false;
+		else if (!hide.checked && markup.disabled)
+			markup.disabled = false;
 });
 /*EVENT LISTENERS*/
 

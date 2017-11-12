@@ -27,7 +27,6 @@
 <template id="welcomeView.html">
     <!-- Welcome page-->
     <ons-page id="welcomeView">
-
         <image src="./images/eyeReader_icon.png" class="eyeRedearImage"style="width:250px; height:250px; margin-top:40%; margin-bottom:1%; margin-left: auto; margin-right: auto; display: block;"></image>
         <div style="text-align: center">
             <ons-button class="getStarted" onclick="fn.goToMainView()">
@@ -47,68 +46,60 @@
                     <ons-list id="sidemenuList" style="border-collapse:collapse;">
                         <ons-list-item class="boldStyle">
 							<image src="./images/eyeReader_icon.png" style="width:30%; height:100%"></image>
-                            <!--<ons-icon icon="fa-circle" size="200%" style="margin:5%"></ons-icon>-->
-                            <fontChangeTag>eyeReader</fontChangeTag>
+                            eyeReader
                         </ons-list-item>
 
-                        <ons-list-item onclick="fn.load('home.html')" class="menuStyle" tappable>
+                        <ons-list-item onclick="fn.load('SourcesPage.html')" class="menuStyle" tappable>
                             <ons-icon icon="fa-feed" class="menuNewsFeed"></ons-icon>
                             <fontChangeTag>News feed</fontChangeTag>
                         </ons-list-item>
 
 
-                        <ons-list-item onclick="fn.toggleSettings()" class="menuStyle" tappable>
+                        <ons-list-item onclick="fn.load('settings.html')" class="menuStyle" tappable>
                             <ons-icon icon="fa-cog" class="menuSettings"></ons-icon>
                             <fontChangeTag>Settings</fontChangeTag>
                         </ons-list-item>
-
-                        <ons-row id="settingsSubmenu">
-                            <div onclick="fn.load('displaySettings.html')" class="detailedList" tappable>
-                                <fontChangeTag>Display</fontChangeTag>
-                            </div>
-                            <div onclick="fn.load('filteringSettings.html')" class="detailedList" tappable>
-                                <fontChangeTag>Filtering</fontChangeTag>
-                            </div>
-                        </ons-row>
 
                         <ons-list-item onclick="fn.load('addSources.html')" class="menuStyle" tappable>
                             <ons-icon icon="fa-plus" class="menuAddSource"></ons-icon>
                             <fontChangeTag>Add Sources</fontChangeTag>
                         </ons-list-item>
-
                     </ons-list>
                 </ons-page>
             </ons-splitter-side>
-            <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+            <ons-splitter-content id="content" page="NoSourcesPage.html"></ons-splitter-content>
         </ons-splitter>
 
+		<template id="NoSourcesPage.html">
+			<ons-page id="NoSourcesPage">
+				<ons-toolbar class="toolbarHeader">
+					<div class="left">
+						<ons-toolbar-button onclick="fn.open()">
+							<ons-icon icon="md-menu"></ons-icon>
+						</ons-toolbar-button>
+					</div>
+					<div class="center">
+					</div>
+				</ons-toolbar>
+				<p class="transperentParagraph">
+					<fontChangeTag>Swipe right to add sources.</fontChangeTag>
+				</p>
+				<p class="transperentParagraph">
+					<ons-icon icon="fa-list" class="listIcon"></ons-icon>
+				</p>
+				<p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
+					Oops!
+				</p>
+				<p class="transperentParagraph">
+					There is no source to read from.
+                   </p>
+			</ons-page>
+		</template>
+
         <!--News Feed page-->
-        <template id="home.html">
+        <template id="SourcesPage.html">
 			<ons-navigator id="articlesNavi" animation="slide" var="articlesNavi">
-				<ons-page id="NoSourcePage">
-                    <!--
-				   <ons-toolbar class="toolbarHeader">
-						<div class="left">
-							<ons-toolbar-button onclick="fn.open()">
-								<ons-icon icon="md-menu"></ons-icon>
-							</ons-toolbar-button>
-						</div>
-						<div class="center">
-						</div>
-					</ons-toolbar>
-					<p class="transperentParagraph">
-						<fontChangeTag>Swipe right to add sources.</fontChangeTag>
-					</p>
-					<p class="transperentParagraph">
-						<ons-icon icon="fa-list" class="listIcon"></ons-icon>
-					</p>
-					<p class="transperentParagraph" style="font-weight:bold; font-size:450%; margin-top:1%; margin-bottom:2%;">
-						Oops!
-					</p>
-					<p class="transperentParagraph">
-						There is no source to read from.
-                    </p>
-                -->
+				<ons-page id="SourcesPage">
 					<ons-toolbar class="toolbarHeader">
 						<div class="left">
 							<ons-toolbar-button onclick="fn.open()">
@@ -116,9 +107,12 @@
 							</ons-toolbar-button>
 						</div>
 						<div class="center">
-							<fontChangeTag>News Feed</fontChangeTag>
+							<fontChangeTag id="noChangeColor">News Feed</fontChangeTag>
 						</div>
 					</ons-toolbar>
+					<ons-pull-hook id="pull-hook">
+						Pull to refresh
+					</ons-pull-hook>
 					<ons-list>
 						<ons-list-item>
 							<ons-lazy-repeat id="articlesListRepeat">
@@ -126,7 +120,6 @@
 						</ons-list-item>
 					</ons-list>
                     <div id="artTitle"></div>
-                
 				</ons-page>
 			</ons-navigator>
         </template>
@@ -146,7 +139,7 @@
                 </div>
                 <div class="articleSourceStyle">
                     <fontChangeTag id="articleSource"></fontChangeTag>
-                    <fontChangeTag>|</fontChangeTag>
+                    <fontChangeTag id="noChangeColor">|</fontChangeTag>
                 </div>
                 <div class="articleDateStyle">
                     <fontChangeTag id="articleDate"></fontChangeTag>
@@ -162,9 +155,9 @@
             </ons-page>
         </template>
 
-        <!--Display Settings page-->
-        <template id="displaySettings.html" onload="fn.setCurrentData()">
-            <ons-page id="displaySettingsPage">
+        <!--Settings page-->
+        <template id="settings.html" onload="fn.setCurrentData()">
+            <ons-page id="settings">
                 <ons-toolbar class="toolbarHeader">
                     <div class="left">
                         <ons-toolbar-button onclick="fn.open()">
@@ -172,12 +165,13 @@
                         </ons-toolbar-button>
                     </div>
                     <div class="center">
-                        <fontChangeTag>Display</fontChangeTag>
+                        <fontChangeTag id="noChangeColor">Settings</fontChangeTag>
                     </div>
                 </ons-toolbar>
                 <ons-list>
+					<ons-list-item class="boldStyle">Display</ons-list-item>
                     <ons-list-item>
-                      <div class="center mainStyle">
+                      <div class="center mainStyle_normal_mode">
                         <fontChangeTag>Night Mode</fontChangeTag>
                       </div>
                       <div class="right switchPosition">
@@ -185,7 +179,7 @@
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                      <div class="center mainStyle">
+                      <div class="center mainStyle_normal_mode">
                         <fontChangeTag>Cache News</fontChangeTag>
                       </div>
                       <div class="right switchPosition">
@@ -193,13 +187,50 @@
                       </div>
                     </ons-list-item>
                     <ons-list-item>
-                        <div class="center mainStyle">
+                        <div class="center mainStyle_normal_mode">
                           <fontChangeTag>Font Size</fontChangeTag>
                         </div>
                         <div class="right">
 							<ons-button class="fontSizeButton" tappable onclick="fn.showFontSizeOptions()">
 								<fontChangeTag id="fontSizeText"></fontChangeTag>
                             </ons-button>
+                        </div>
+                    </ons-list-item>
+					<ons-list-item class="boldStyle">Filtering</ons-list-item>
+                    <ons-list-item>
+                      <div id="markupToxicDiv" class="center mainStyle_normal_mode">
+                        <fontChangeTag>Markup Toxic</fontChangeTag>
+						<small style="font-size:14px">Enable to highlight sentences containing toxic content</small>
+                      </div>
+                      <div class="right switchPosition">
+                        <ons-switch id="MarkupToxicToggle" onchange="fn.markupToxic(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                      <div id="hideToxicDiv" class="center mainStyle_normal_mode">
+                        <fontChangeTag>Hide Toxic</fontChangeTag>
+						<small style="font-size:14px">Enable to hide sentences containing toxic content</small>
+                      </div>
+                      <div class="right switchPosition">
+                        <ons-switch id="HideToxicToggle" onchange="fn.hideToxic(this)"></ons-switch>
+                      </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <div class="center mainStyle_normal_mode">
+                          <fontChangeTag>Tolerance level</fontChangeTag>
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item>
+                        <div class="center">
+                          <ons-col width="12%" style="text-align: center;">
+                            <ons-icon id="thermometerIcon" icon="fa-thermometer-empty"></ons-icon>
+                          </ons-col>
+                          <ons-col>
+                            <ons-range id="ToxicToleranceSlider" style="width: 100%;"></ons-range>
+                          </ons-col>
+                          <ons-col width="12%" style="text-align: center;">
+                            <ons-icon id="thermometerIcon" icon="fa-thermometer-full"></ons-icon>
+                          </ons-col>
                         </div>
                     </ons-list-item>
                 </ons-list>
@@ -213,62 +244,10 @@
 			<ons-action-sheet-button modifier="fontSize22" onclick="fn.changeFontSize(1);fn.hideFontSizeOptions()">Sample - 22px</ons-action-sheet-button>
 			<ons-action-sheet-button modifier="fontSize24" onclick="fn.changeFontSize(2);fn.hideFontSizeOptions()">Sample - 24px</ons-action-sheet-button>
 			<ons-action-sheet-button modifier="fontSize26" onclick="fn.changeFontSize(3);fn.hideFontSizeOptions()">Sample - 26px</ons-action-sheet-button>
-			<ons-action-sheet-button onclick="fn.hideFontSizeOptions()">Cancel</ons-action-sheet-button>
 			</ons-action-sheet>
 		</template>
 
-        <!--Filtering Settings page-->
-        <template id="filteringSettings.html">
-            <ons-page id="filteringSettingsPage">
-                <ons-toolbar class="toolbarHeader">
-                    <div class="left">
-                        <ons-toolbar-button onclick="fn.open()">
-                            <ons-icon icon="md-menu"></ons-icon>
-                        </ons-toolbar-button>
-                    </div>
-                    <div class="center">
-                        <fontChangeTag>Filtering</fontChangeTag>
-                    </div>
-                </ons-toolbar>
-                <ons-list>
-                    <ons-list-item>
-                      <div class="center mainStyle">
-                        <fontChangeTag>Markup Toxic</fontChangeTag>
-                      </div>
-                      <div class="right switchPosition">
-                        <ons-switch id="MarkupToxicToggle" onchange="fn.markupToxic(this)"></ons-switch>
-                      </div>
-                    </ons-list-item>
-                    <ons-list-item>
-                      <div class="center mainStyle">
-                        <fontChangeTag>Hide Toxic</fontChangeTag>
-                      </div>
-                      <div class="right switchPosition">
-                        <ons-switch id="HideToxicToggle" onchange="fn.hideToxic(this)"></ons-switch>
-                      </div>
-                    </ons-list-item>
-                    <ons-list-item>
-                        <div class="center mainStyle">
-                          <fontChangeTag>Tolerance level</fontChangeTag>
-                        </div>
-                    </ons-list-item>
-                    <ons-list-item>
-                        <div class="center">
-                          <ons-col width="12%" style="text-align: center;">
-                            <ons-icon icon="fa-thermometer-empty"></ons-icon>
-                          </ons-col>
-                          <ons-col>
-                            <ons-range id="ToxicToleranceSlider" style="width: 100%;"></ons-range>
-                          </ons-col>
-                          <ons-col width="12%" style="text-align: center;">
-                            <ons-icon icon="fa-thermometer-full"></ons-icon>
-                          </ons-col>
-                        </div>
-                    </ons-list-item>
-                </ons-list>
-            </ons-page>
-        </template>
-
+       
         <!--Add Sources page-->
         <template id="addSources.html">
             <ons-page id="addSources">
@@ -279,26 +258,26 @@
                         </ons-toolbar-button>
                     </div>
                     <div class="center">
-                        <fontChangeTag>Settings</fontChangeTag>
+                        <fontChangeTag id="noChangeColor">Sources</fontChangeTag>
                     </div>
                 </ons-toolbar>
 
                 <ons-list style="padding-top:2%; padding-bottom:2%;" id="sourcesList">
                     <ons-list-item tappable>
-                        <label class="left">
-                        <ons-checkbox input-id="source1"></ons-checkbox>
-                    </label>
+                        <label class="right">
+                            <ons-checkbox input-id="source1"></ons-checkbox>
+                        </label>
                         <label for="source1" class="center menuStyle">
-                        <fontChangeTag>www.sigmalive.com</fontChangeTag>
-                    </label>
+                            <fontChangeTag>www.sigmalive.com</fontChangeTag>
+                        </label>
                     </ons-list-item>
                     <ons-list-item tappable>
-                        <label class="left">
-                        <ons-checkbox input-id="source2"></ons-checkbox>
-                    </label>
+                        <label class="right">
+                            <ons-checkbox input-id="source2"></ons-checkbox>
+                        </label>
                         <label for="source2" class="center menuStyle">
-                        <fontChangeTag>www.ant1iwo.com</fontChangeTag>
-                    </label>
+                            <fontChangeTag>www.ant1iwo.com</fontChangeTag>
+                        </label>
                     </ons-list-item>
                 </ons-list>
             </ons-page>
@@ -314,7 +293,7 @@
                         </ons-toolbar-button>
                     </div>
                     <div class="center">
-                        <fontChangeTag>About</fontChangeTag>
+                        <fontChangeTag id="noChangeColor">About</fontChangeTag>
                     </div>
                 </ons-toolbar>
             </ons-page>

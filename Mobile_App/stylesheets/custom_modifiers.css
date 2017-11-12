@@ -19,30 +19,8 @@
  * Welcome page background color modifier
  */
 #welcomeView .page__background {
-    background-image: url('../images/test_img1_blur.png');
+    background-image: url('../images/WelcomeView.jpg');
 }
-
-/*
- * Menu background color modifier
- */
-#menu .page__background{
-	background-color:white;
-}
-
-/*
- * Display settings background color modifier
- */
-#displaySettingsPage .page__background{
-	background-color:white;
-}
-
-/*
- * Filtering settings background color modifier
- */
-#filteringSettingsPage .page__background{
-	background-color:white;
-}
-
 /*
  * Toolbar color modifier
  */
@@ -81,11 +59,6 @@
     background-color:white;
 	transition: background-color 0.5s ease;
 }
-
-
-/*.p--night_mode_text__color{
-	color : white;
-}*/
 
 /*
  * Slider color modifier

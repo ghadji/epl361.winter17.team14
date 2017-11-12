@@ -8,6 +8,11 @@
 	height: 100%;
 	font-size:20px;
     font-family: Verdana, Geneva, sans-serif;
+	background-color:white;
+}
+
+.night-mode body {
+    background: #272727;
 }
 
 /*
@@ -52,8 +57,16 @@
 /*
  * The style of the paragraphs/items at the pages (letters and placement)
  */
-.mainStyle {
+.mainStyle_normal_mode {
     color: black;
+    padding-top:8%;  
+    padding-bottom: 8%;
+    padding-left: 10%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.mainStyle_night_mode {
+    color: white;
     padding-top:8%;  
     padding-bottom: 8%;
     padding-left: 10%;
