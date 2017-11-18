@@ -58,3 +58,75 @@ templateArticle.SourceWebsite= 'www.techblog.gr';
 templateArticle.Category= 'Technology';
 
 templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= '';
+templateArticle.Title= '';
+templateArticle.PictureSrc= './templateArticles/';
+templateArticle.Content= '';
+templateArticle.Author= 'Λορένα Σιούτη';
+templateArticle.Date= '';
+templateArticle.SourceWebsite= 'www.techblog.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= 'https://techblog.gr/gadgets/apple-is-the-top-wearable-manufacturer-4928/';
+templateArticle.Title= 'Apple: Ξανά ο κορυφαίος πωλητής wearables παγκοσμίως';
+templateArticle.PictureSrc= './templateArticles/apple-watch-series-3-1.jpg';
+templateArticle.Content= 'Η Apple αδιαμφισβήτητα είναι ένας εκ των κορυφαίων κατασκευαστών παγκοσμίως. Τα προϊόντα της γίνονται ανάρπαστα και το ίδιο φαίνεται πως ισχύει με την οικογένεια της από wearables, τις σειρές Apple Watch. Από τα μέσα του 2015 όπου και διατέθηκαν για πρώτα φορά τα smartwatches της Apple, ο Αμερικανός κολοσσός έχει καταφέρει να σκαρφαλώσει στην κορυφή της σχετικής λίστας με τους κατασκευαστές που κατέχουν τις περισσότερες πωλήσεις wearables. Σύμφωνα με νέα έρευνα της εταιρείας Canalys, το τρίτο τρίμηνο της χρονιάς απεστάλησαν 17.3 εκατομμύρια έξυπνα βραχιόλια / ρολόγια και ο πρώτος πωλητής ήταν το Cupertino. Φαίνεται πως η νέα σειρά Apple Watch Series 3 έπεισε αρκετούς χιλιάδες καταναλωτές ώστε να δώσουν στην Apple την πρωτιά (που είχε χάσει τους προηγούμενους μήνες) και συνολικά το 23% των 17.3 εκατομμυρίων, δηλαδή περίπου τέσσερα εκατομμύρια αποστολές Apple Watches, με τις 800 χιλιάδες εξ’ αυτών να είναι cellular Series 3 μοντέλα. Ακριβώς πίσω από τους Αμερικάνους βρίσκεται η Xiaomi με 3.6 εκατομμύρια wearables (21%). Ακολουθούν οι Fitbit με 20%, Huawei με 6% και τέλος η Samsung με 5%. Το υπόλοιπο 25% είναι προϊόντα άλλων κατασκευαστών οι οποίοι δεν έχουν ισχυρό ποσοστό μόνοι τους. Αξίζει να σημειωθεί πως η διαφορά τιμής των wearables της Xiaomi με τα αντίστοιχα της Apple (ο πρώτος και δεύτερος της λίστας) είναι χαοτική. Αρκεί να λάβει κανείς υπόψιν του πως σε γνωστή αλυσίδα καταστημάτων της Ελλάδας, το Xiaomi Mi Band 2 (η καλύτερη πρόταση της εταιρείας) κοστίζει 40 ευρώ, ενώ το Apple Watch Series 3 χωρίς cellular modem για συνδεσιμότητα με πάροχο τηλεφωνίας ξεκινάει από 400 ευρώ. Παρά την τεράστια απόκλιση όμως η Apple έρχεται πρώτη παγκοσμίως. Η αλήθεια είναι πως η cellular έκδοση των Series 3 έξυπνων ρολογιών μπορεί να αποβεί εξαιρετικά χρήσιμη. Αυτός πιθανόν να είναι και ο λόγος που η Apple ανέκτησε τα ηνία της κορυφής το τρίτο εξάμηνο της χρονιάς. Μένουν άλλοι τρεις μήνες για να πέσει η αυλαία του 2017. Ίσως η κατάσταση διαφοροποιηθεί. Ίσως πάλι, με τα Series 3 να βρίσκονται σε πλήρη διαθεσιμότητα κοντά στην περίοδο των Χριστουγέννων, η Apple να αυξήσει ακόμα περισσότερο την ψαλίδα από τους ανταγωνιστές';
+templateArticle.Author= 'Λορένα Σιούτη';
+templateArticle.Date= '15/11/2017';
+templateArticle.SourceWebsite= 'www.techblog.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= 'https://techblog.gr/software/firefox-quantum-faster-version-available-3732/';
+templateArticle.Title= 'Firefox Quantum: Διαθέσιμη η ταχύτερη έκδοση μέχρι σήμερα';
+templateArticle.PictureSrc= './templateArticles/firefox-quantum-01.jpg';
+templateArticle.Content= 'Η Mozilla εργαζόταν εδώ και καιρό για την δημιουργία της νέας έκδοσης Firefox Quantum, η οποία βγήκε από την φάση beta και είναι πλέον διαθέσιμη. Σύμφωνα με την Mozilla, ο νέος Firefox είναι δυο φορές πιο γρήγορος απ ότι πριν από 6 μήνες. Η σημαντική αύξηση στην ταχύτητα επιτυγχάνεται χάρη στην χρήση νέου browsing engine, επίσης έχει multi-process αρχιτεκτονική που επιτρέπει την χρήση περίπου 30% λιγότερης μνήμης RAM από τον Chrome της Google. Επιπλέον, το Tab switching είναι ταχύτερο από ποτέ. Εκτός από την βελτίωση στην ταχύτητα, ο Firefox Quantum έχει και νέο deisgn. O browser σου επιτρέπει να κάνεις ένα screenshot και να το μοιραστείς, χωρίς να απαιτείται η χρήση third party app ή add-on. Το Pocket service είναι ενσωματωμένο στην toolbar, για να αποθηκεύσεις ότι θέλεις για αργότερα. Στη βιβλιοθήκη του νέου browser θα βρεις το περιεχόμενο που θέλεις όπως Pocket saves, bookmarks, browsing history, screenshots και downloads – τα οποία είναι πλέον προσβάσιμα από ένα σημείο. Φυσικά, ο Firefox συνεχίζει να υποστηρίζει extensions και themes. Η toolbar είναι παραμετροποιήσιμη μέσω drag and drop. Όπως και προηγουμένως, μπορείς να συγχρονίσεις passwords, bookmarks και άλλα data μεταξύ διάφορων συσκευών. Το Send Tabs feature σου επιτρέπει να μοιράζεσαι άμεσα ανοιχτά tabs μεταξύ του υπολογιστή, του κινητού και του tablet σου. Ο Firefox Quantum είναι διαθέσιμος για download για τον υπολογιστή η την iOS/Android συσκευή.';
+templateArticle.Author= 'Λορένα Σιούτη';
+templateArticle.Date= '15/11/2017';
+templateArticle.SourceWebsite= 'www.techblog.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= 'http://www.techgear.gr/tesla-roadster-announced-129235/';
+templateArticle.Title= 'Tesla Roadster: Το νέο ηλεκτρικό supercar πιάνει 0-100km σε μόλις 1.9sec!';
+templateArticle.PictureSrc= './templateArticles/Roadster_Targa_Open-1.jpg';
+templateArticle.Content= 'Η έκπληξη που υποσχέθηκε ο Elon Musk στην παρουσίαση του Tesla Semi ήταν εντυπωσιακή. Το δεύτερης γενιάς Tesla Roadster, ένα πανέμορφο και πλήρως ηλεκτρικό convertible που θα κυκλοφορήσει το 2020. Από το βασικό του μοντέλο, το νέο Tesla Roadster θα προσφέρει στον οδηγό απίστευτες δυνατότητες, όπως ταχύτητα 0-100 μέσα σε μόλις 1.9sec και αυτονομία 1000km με μία φόρτιση (μπαταρία 200kWh). Διαθέτει δύο ηλεκτρικούς κινητήρες και αποδίδει ροπή 10.000 Nm, αριθμός που κανένα βενζινοκίνητο supercar δεν μπορεί να φτάσει σήμερα. Επιπλέον, έχει χώρο για τέσσερα άτομα (λίγο στριμωχτά στο πίσω κάθισμα βέβαια) και ανοιγόμενη οροφή. Η τιμή του θα ξεκινά από τα $200.000 με $50.000 προκαταβολή ή $250.000 για τους πρώτους 1000. Μένει να δούμε αν η Tesla θα καταφέρει να ικανοποιήσει τη ζήτηση με δεδομένο ότι ταυτόχρονα θα κατασκευάζει το Tesla Model 3, το Tesla Semi και το Tesla Roadster.';
+templateArticle.Author= 'Chris Elpidis';
+templateArticle.Date= '17/11/2017';
+templateArticle.SourceWebsite= 'www.techgear.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= 'http://www.techgear.gr/vimeo-hdr-and-8k-videos-support-129170/';
+templateArticle.Title= 'Vimeo: Η υπηρεσία υποστηρίζει πλέον HDR και 8K videos';
+templateArticle.PictureSrc= './templateArticles/vimeo_hdr_8k.jpg';
+templateArticle.Content= 'Νέα αναβάθμιση για την υπηρεσία Vimeo, η οποία ανακοίνωσε πριν από λίγο ότι πλεόν υποστηρίζει HDR videos και αναλύσεις έως 8K. Προφανώς για 8K δεν γίνεται λόγος αυτή την περίοδο, αλλά τα HDR videos είναι αρκετά διαδεδομένα και μπορείς να τα παρακολουθήσεις αν έχεις συσκευή που υποστηρίζει το HEVC codec μέσω HDR10 (π.χ. Apple TV 4K, iPhone X, iPad Pro). Εξάλλου, η υπηρεσία υπόσχεται ότι σύντομα θα υποστηρίζει HDR και για περισσότερα video formats (π.χ. VP9 και AV1) και φυσικά θα είναι εφικτό το download σε όποια videos επιτρέπουν οι δημιουργοί. Σαν καθημερινοί χρήστες μην περιμένετε ότι θα δείτε κάποια δραματική αλλαγή, αλλά όσοι ασχολείστε με την δημιουργία video είναι σίγουρα ευχάριστο ότι μπορείτε να ανεβάζετε τα έργα σας σε τόσο υψηλή ανάλυση.';
+templateArticle.Author= 'Scorpion';
+templateArticle.Date= '16/11/2017';
+templateArticle.SourceWebsite= 'www.techgear.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
+
+templateArticle= {};
+templateArticle.URL= 'http://www.techgear.gr/google-maps-redesign-129152/';
+templateArticle.Title= 'Google Maps: Ανανέωση της εμφάνισης για ευκολότερη πλοήγηση';
+templateArticle.PictureSrc= './templateArticles/google_maps_redesign.jpg';
+templateArticle.Content= 'Η Google ανανεώνει την εμφάνισης της υπηρεσίας Google Maps με νέα εικονίδια, νέα χρώματα και περισσότερες πληροφορίες που θα μπορούν να βοηθήσουν τους χρήστες στην οργάνωση και στην πορεία του ταξιδιού τους με μεγαλύτερη ευκολία. \n\n“Καταρχήν, αναβαθμίσαμε τις λειτουργίες πλοήγησης, τις πληροφορίες για τα μέσα μαζικής μεταφοράς, την κυκλοφορία και την αναζήτηση για να τονίζουμε περισσότερο αυτά που ενδιαφέρουν τον χρήστη (π.χ. βενζινάδικα, σταθμούς τραίνων κλπ.). Επίσης, αναβαθμίσαμε τα χρώματα τις υπηρεσίας και προσθέσαμε νέα εικονίδια για να αναγνωρίζετε εύκολα και γρήγορα τα καφέ, εστιατόρια, ξενοδοχεία, μουσεία, εκκλησίες κλπ. με ξεχωριστό χρωματισμό για κάθε κατηγορία” \n\n Να σημειωθεί ότι οι αλλαγές θα εμφανιστούν σταδιακά σε όλους σε κάθε έκδοση της υπηρεσίας Google Maps (mobile, desktop), αλλά και στα Google Assistant, Google Earth, Google Search και Android Auto.';
+templateArticle.Author= 'Alexis';
+templateArticle.Date= '16/11/2017';
+templateArticle.SourceWebsite= 'www.techgear.gr';
+templateArticle.Category= 'Technology';
+
+templateArticles.push(templateArticle);
