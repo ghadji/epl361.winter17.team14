@@ -142,7 +142,7 @@ function getNewArticles (websiteSources) {
     var arrayOfArticles= [];
     var i;
     for (i= 0; i< 10; i++) {
-        arrayOfArticles.push(templateArticles[i%templateArticles.length]);
+        arrayOfArticles.push(templateArticle);
     }
 	lastUpdatedDate= new Date ();
 
