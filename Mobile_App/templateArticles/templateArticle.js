@@ -1,4 +1,5 @@
 var templateArticles= [];
+
 templateArticle= {};
 templateArticle.URL= 'https://techblog.gr/b2b/apple-record-quarter-profits-2722/';
 templateArticle.Title= 'H Apple σπάει ρεκόρ κερδών για το τέταρτο οικονομικό τρίμηνο';
@@ -54,18 +55,6 @@ templateArticle.PictureSrc= './templateArticles/supercomputers.jpg';
 templateArticle.Content= 'Η Κίνα είναι αυτή που έχει πλέον τους περισσότερους υπερυπολογιστές από κάθε άλλη χώρα στον πλανήτη. Οι Κινέζοι παίρνουν την πρωτιά από τις ΗΠΑ στην λίστα με τους 500 ισχυρότερους supercomputers στον κόσμο. Πριν από ένα εξάμηνο, οι ΗΠΑ ήταν στην πρώτη θέση με 169 supercomputers, ενώ η Κίνα είχε 10 λιγότερους (159). Ωστόσο, μέσα σε πολύ μικρό χρονικό διάστημα οι Κινέζοι κατάφεραν να φτάσουν στους 202 και οι ΗΠΑ έπεσαν στους 144. Μετά τις ΗΠΑ και την Κίνα, οι οποίες προηγούνται αρκετά, τρίτη είναι η Ιαπωνία με 35 υπερυπολογιστές, ακολουθεί η Γερμανία με 20, η Γαλλία με 18 στην 5η θέση και η Βρετανία με 15. Για πρώτη φορά και οι δέκα ισχυρότεροι υπερυπολογιστές έχουν ο καθένας ισχύ άνω των 10 petaflops. Στην κορυφή βρίσκεται ο κινεζικός Sunway TaihuLight με επεξεργαστική ισχύ 93 petaflops/sec (χίλια τρισεκατομμύρια υπολογισμοί ανά δευτερόλεπτο). Δεύτερος είναι ο κινεζικός Tianhe-2 (33,9 petaflop/sec),στην τρίτη θέση είναι ο ελβετικός Piz Daint (19,6 petaflop/sec, ο πιο ισχυρός ευρωπαϊκός υπερυπολογιστής), ο ιαπωνικός Gyoukou (19,1 petaflop/sec) και ο αμερικανικός Titan (17,6 petaflop/sec) κλείνουν την πεντάδα. Τα supercomputers είναι τεράστια μηχανήματα που καταλαμβάνουν ολόκληρα δωμάτια και μπορούν να επεξεργαστούν τεράστιο όγκο δεδομένων που δεν μπορεί να συγκριθεί με τους υπολογιστές που έχουμε στην καθημερινότητά μας. Χρησιμοποιούνται για την δημιουργία χαρτών του σύμπαντος, την μελέτη των κλιματικών αλλαγών, προσομοίωση πυρηνικών και άλλων όπλων, έρευνες για πετρέλαιο, ανάλυση DNA κλπ. H συνολική ισχύς των 500 ισχυρότερων συστημάτων αγγίζει τα 845 petaflops έναντι 749 petaflops πριν έξι μήνες και 672 petaflops το 2016. Από αυτή τη συνολική ισχύ, το 35,4% ανήκει στην Κίνα και το 29,6% στις ΗΠΑ. To όριο για να συμπεριληφθεί ένας υπερυπολογιστής στο Top 500, έχει αυξηθεί στα 548 teraflops από 432 teraflops τον Ιούνιο. Στον συμπληρωματικό κατάλογο Top Green 500 με τους πιο «πράσινους» και λιγότερο ενεργοβόρους υπερυπολογιστές προηγούνται τρεις από την Ιαπωνία.';
 templateArticle.Author= 'Λορένα Σιούτη';
 templateArticle.Date= '16/11/2017';
-templateArticle.SourceWebsite= 'www.techblog.gr';
-templateArticle.Category= 'Technology';
-
-templateArticles.push(templateArticle);
-
-templateArticle= {};
-templateArticle.URL= '';
-templateArticle.Title= '';
-templateArticle.PictureSrc= './templateArticles/';
-templateArticle.Content= '';
-templateArticle.Author= 'Λορένα Σιούτη';
-templateArticle.Date= '';
 templateArticle.SourceWebsite= 'www.techblog.gr';
 templateArticle.Category= 'Technology';
 
