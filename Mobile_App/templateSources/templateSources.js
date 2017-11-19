@@ -27,3 +27,24 @@ templateArticle.Title= 'GSM-Arena';
 templateArticle.Category= 'Technology';
 
 templateSources.push(templateSource);
+
+templateSource= {};
+templateArticle.URL= 'http://www.bbc.com/';
+templateArticle.Title= 'BBC';
+templateArticle.Category= 'News';
+
+templateSources.push(templateSource);
+
+templateSource= {};
+templateArticle.URL= 'http://www.ant1iwo.com/';
+templateArticle.Title= 'Ant1iwo';
+templateArticle.Category= 'News';
+
+templateSources.push(templateSource);
+
+templateSource= {};
+templateArticle.URL= 'http://www.sigmalive.com/';
+templateArticle.Title= 'Sigmalive';
+templateArticle.Category= 'News';
+
+templateSources.push(templateSource);
