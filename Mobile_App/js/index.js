@@ -128,6 +128,7 @@ window.fn.openArticle = function(i){
 
 var lastUpdatedDate= null;
 
+var countRetrievedArticles= 0;
 function getNewArticles (websiteSources) {
     if (lastUpdatedDate == null) {
         lastUpdatedDate= new Date ();
@@ -141,9 +142,10 @@ function getNewArticles (websiteSources) {
     // For the demostration:
     var arrayOfArticles= [];
     var i;
-    for (i= 0; i< 10; i++) {
+    for (i= countRetrievedArticles; i< (countRetrievedArticles+10); i++) {
         arrayOfArticles.push(templateArticles[i%templateArticles.length]);
     }
+    countRetrievedArticles= countRetrievedArticles + 10;
 	lastUpdatedDate= new Date ();
 
     return arrayOfArticles;
