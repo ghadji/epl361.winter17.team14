@@ -1,50 +1,50 @@
 var templateSources= [];
 
 templateSource= {};
-templateArticle.URL= 'https://techblog.gr/';
-templateArticle.Title= 'Techblog.gr';
-templateArticle.Category= 'Technology';
+templateSource.URL= 'www.techblog.gr';
+templateSource.Title= 'Techblog.gr';
+templateSource.Category= 'Technology';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'https://www.techgear.gr/';
-templateArticle.Title= 'Techgear.gr';
-templateArticle.Category= 'Technology';
+templateSource.URL= 'www.techgear.gr';
+templateSource.Title= 'Techgear.gr';
+templateSource.Category= 'Technology';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'https://www.engadget.com/';
-templateArticle.Title= 'Engadget';
-templateArticle.Category= 'Technology';
+templateSource.URL= 'www.engadget.com';
+templateSource.Title= 'Engadget';
+templateSource.Category= 'Technology';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'https://www.gsmarena.com/';
-templateArticle.Title= 'GSM-Arena';
-templateArticle.Category= 'Technology';
+templateSource.URL= 'www.gsmarena.com';
+templateSource.Title= 'GSM-Arena';
+templateSource.Category= 'Technology';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'http://www.bbc.com/';
-templateArticle.Title= 'BBC';
-templateArticle.Category= 'News';
+templateSource.URL= 'www.bbc.com';
+templateSource.Title= 'BBC';
+templateSource.Category= 'News';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'http://www.ant1iwo.com/';
-templateArticle.Title= 'Ant1iwo';
-templateArticle.Category= 'News';
+templateSource.URL= 'www.ant1iwo.com';
+templateSource.Title= 'Ant1iwo';
+templateSource.Category= 'News';
 
 templateSources.push(templateSource);
 
 templateSource= {};
-templateArticle.URL= 'http://www.sigmalive.com/';
-templateArticle.Title= 'Sigmalive';
-templateArticle.Category= 'News';
+templateSource.URL= 'www.sigmalive.com';
+templateSource.Title= 'Sigmalive';
+templateSource.Category= 'News';
 
 templateSources.push(templateSource);

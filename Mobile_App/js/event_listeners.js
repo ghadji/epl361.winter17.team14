@@ -1,15 +1,16 @@
 document.addEventListener('init', function (event) {
 	var page = event.target;
+	getWhatArticlesToShow();
 
-	if (page.matches('#SourcesPage')){
-		if ((!window.data.articles) || (window.data.articles && window.data.articles.length == 0)){
-			window.fn.load('NoSourcesPage.html');
+	if (page.matches('#ArticlesPage')){
+		if ((!window.data.articlesToShow) || (window.data.articlesToShow && window.data.articlesToShow.length == 0)){
+			window.fn.load('NoArticlesPage.html');
 		}
 	}
 	
-	if (page.matches('#NoSourcesPage')){
-		if (window.data.articles && window.data.articles.length > 0){
-			window.fn.load('SourcesPage.html');
+	if (page.matches('#NoArticlesPage')){
+		if (window.data.articlesToShow && window.data.articlesToShow.length > 0){
+			window.fn.load('ArticlesPage.html');
 		}
 	}
 
@@ -64,33 +65,65 @@ document.addEventListener('init', function (event) {
 		});
         
     }
-    if (page.matches('#addSources'))
-        setSourcesNightMode();
-	if (page.matches('#SourcesPage') && window.data.articles && window.data.articles.length > 0){
-		var articlesList = document.getElementById('articlesListRepeat');
+	if (page.matches('#ArticlesPage') && window.data.articlesToShow && window.data.articlesToShow.length > 0){
 
-		articlesList.delegate = {
-			createItemContent: function(i) {
-			    return ons.createElement('<ons-list-item tappable style="padding-left:1%; padding-right:1%;" onclick="fn.openArticle('+i+')">' + 
-											'<ons-col width="30%">'+
-												'<img height="70%" width="100%" src="'+ window.data.articles[i].PictureSrc +'">'+
-											'</ons-col>'+
-                                            '<ons-col>'+
-                                                '<div class="articleStyle" style="padding-left:5%;">' + 
-                                                   '<fontChangeTag>' + window.data.articles[i].Title +'</fontChangeTag>' + 
-                                                '</div>' +
-                                                '<div style="color:#90A4AE; padding-left:5%; font-size:80%" >' +
-                                                    window.data.articles[i].SourceWebsite + 
-                                                '</div>'+
-											'</ons-col>'+ 
-									     '</ons-list-item>'
-			  );
-			},
-			countItems: function() {
-				return window.data.articles.length;
+		getWhatArticlesToShow();
+		
+		if (window.data.articlesToShow.length > 0){
+			var articlesList = document.getElementById('articlesListRepeat');
+
+
+			articlesList.delegate = {
+				createItemContent: function(i) {
+					return ons.createElement('<ons-list-item tappable style="padding-left:1%; padding-right:1%;" onclick="fn.openArticle('+i+')">' + 
+												'<ons-col width="30%">'+
+													'<img height="70%" width="100%" src="'+ window.data.articlesToShow[i].PictureSrc +'">'+
+												'</ons-col>'+
+												'<ons-col>'+
+													'<div class="articleStyle" style="padding-left:5%;">' + 
+													'<fontChangeTag>' + window.data.articlesToShow[i].Title +'</fontChangeTag>' + 
+													'</div>' +
+													'<div style="color:#90A4AE; padding-left:5%; font-size:80%" >' +
+													window.data.articlesToShow[i].SourceWebsite + 
+													'</div>'+
+												'</ons-col>'+ 
+											'</ons-list-item>'
+				);
+				},
+				countItems: function() {
+					return window.data.articlesToShow.length;
+				}
+			};
+			articlesList.refresh();
+		}
+	}
+	if(page.matches("#addSources")){
+		setSourcesNightMode();
+		var checkedSources = JSON.parse(localStorage.getItem('checkedSources'));
+		var sourcesList = document.getElementById('sourcesListRepeat');
+		
+				sourcesList.delegate = {
+					createItemContent: function(i) {
+						return ons.createElement('<ons-list-item tappable style="padding-left:1%; padding-right:1%;">' + 
+													'<label class="right">' +
+														'<ons-checkbox id="source'+ i +'" input-id="'+window.data.sources[i].URL+'"></ons-checkbox>' +
+													'</label>' + 
+													'<label for="'+window.data.sources[i].URL+'" class="center menuStyle">' +
+														'<fontChangeTag>'+ window.data.sources[i].Category + ' - ' + window.data.sources[i].Title +'</fontChangeTag>' +
+													'</label>' +
+												 '</ons-list-item>'
+					  );
+					},
+					countItems: function() {
+						return window.data.sources.length;
+					}
+				};
+		sourcesList.refresh();
+		//displays checkmark in checked sources
+		if (checkedSources)
+			for (var i =0; i<window.data.sources.length; i++){
+				document.getElementById('source' + i).checked = checkedSources[i];
 			}
-		};
-		articlesList.refresh();
 	}
 	if(page.matches("#articleView")){
 		var page = articlesNavi.topPage;
@@ -110,8 +143,13 @@ document.addEventListener('hide', function (event) {
     var page = event.target;
     if (page.matches('#settings'))
 		window.localStorage.setItem('toxicToleranceValue', document.getElementById('ToxicToleranceSlider').value);
-		
-		
+	if (page.matches('#addSources')){
+		var checkedSources = [];
+		for (var i =0; i<window.data.sources.length; i++){
+			checkedSources.push(document.getElementById('source' + i).checked);
+		}
+		localStorage.setItem("checkedSources", JSON.stringify(checkedSources));
+	}	
 });
 
 document.addEventListener('change', function (event){

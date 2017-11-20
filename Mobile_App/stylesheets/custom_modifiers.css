@@ -48,7 +48,7 @@
  * Night mode modifier for LISTS
  */
 .list--night_mode_bg{
-	background-color:#2e2e2e;
+	background:#2e2e2e;
 	transition: background-color 0.5s ease;
 }
 
@@ -56,7 +56,7 @@
  * Normal mode modifier for LISTS
  */
 .list--normal_mode_bg{
-    background-color:white;
+    background:white;
 	transition: background-color 0.5s ease;
 }
 

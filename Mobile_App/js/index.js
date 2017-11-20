@@ -6,7 +6,8 @@ window.fn = {};
 window.data = {};
 
 function init(){
-	window.fn.requestArticle();
+    window.fn.requestArticle();
+    window.fn.getSources();
 };
 
 window.fn.login = function(){
@@ -112,7 +113,11 @@ function setFontSize() {
 }
 
 window.fn.requestArticle = function (){
-	window.data.articles = getNewArticles();;
+	window.data.articles = getNewArticles();
+}
+
+window.fn.getSources = function(){
+    window.data.sources = getSources();
 }
 
 window.fn.openArticle = function(i){
@@ -126,7 +131,36 @@ window.fn.openArticle = function(i){
 	articlesNavi.pushPage('articleView.html', { data : articleOptions } );
 }
 
+function getWhatArticlesToShow(){
+    //finds index of selected sources in sources list
+    var checkedSources = JSON.parse(localStorage.getItem('checkedSources'));
+    var sourcesIndexes = [];
+    for (var j =0; j < checkedSources.length; j++){
+        if (checkedSources[j]){
+            sourcesIndexes.push(j);
+        }
+    }
+    //finds which articles to show according to selected sources
+    window.data.articlesToShow = [];
+    for (var i=0; i< window.data.articles.length; i++){
+        for (var j=0; j<sourcesIndexes.length; j++){
+            if (window.data.articles[i].SourceWebsite == window.data.sources[sourcesIndexes[j]].URL){
+                window.data.articlesToShow.push(window.data.articles[i]);
+            }
+        }
+    }
+}
+
 var lastUpdatedDate= null;
+
+function getSources(){
+    var arrayOfSources = [];
+    var i;
+    for (i= 0; i<templateSources.length; i++) {
+        arrayOfSources.push(templateSources[i]);
+    }
+    return arrayOfSources;
+}
 
 var countRetrievedArticles= 0;
 function getNewArticles (websiteSources) {
@@ -140,7 +174,7 @@ function getNewArticles (websiteSources) {
     // The response will be a JSON Array of Articles
 
     // For the demostration:
-    var arrayOfArticles= [];
+    var arrayOfArticles = [];
     var i;
     for (i= countRetrievedArticles; i< (countRetrievedArticles+10); i++) {
         arrayOfArticles.push(templateArticles[i%templateArticles.length]);
