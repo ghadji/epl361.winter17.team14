@@ -81,7 +81,10 @@ window.fn.open = function() {
 window.fn.load = function(page) {
     var content = document.getElementById("content");
     var menu = document.getElementById("menu");
-    content.load(page).then(menu.close.bind(menu));
+    if (!(page == "NoArticlesPage.html"))
+        content.load(page).then(menu.close.bind(menu));
+    else
+        content.load(page);
 };
 
 /* toggles cache news setting*/

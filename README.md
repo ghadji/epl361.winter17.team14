@@ -3,7 +3,7 @@ Development of a News Reader cross platform mobile App, enhanced with hate\toxic
 
 How to Get Started
 -------------------
-TBD
+The main design pattern of this project is Client-Server model. The client will be the mobile App we develop, which will communicate with the Backend server of our system to retrieve articles. The Backend server will be used as a crawler to collect the articles which will be sent to the users of our mobile App.
 
 Contributors
 ------------
