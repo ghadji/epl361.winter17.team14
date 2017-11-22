@@ -37,7 +37,7 @@ window.fn.register = function() {
     var password = document.getElementById("password").value;
     var found = false;
     var accountArr = JSON.parse(window.localStorage.getItem("account_array"))
-    console.log(accountArr);
+    //console.log(accountArr);
     if (!username && !password) {
         ons.notification.alert("Invalid username or password. Please try again.");
     }
