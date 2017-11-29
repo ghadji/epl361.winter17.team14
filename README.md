@@ -1,9 +1,16 @@
 # epl361.winter17.team14
 Development of a News Reader cross platform mobile App, enhanced with hate\toxic filters.
 
-How to Get Started
+Synopsis
 -------------------
 The main design pattern of this project is Client-Server model. The client will be the mobile App we develop, which will communicate with the Backend server of our system to retrieve articles. The Backend server will be used as a crawler to collect the articles which will be sent to the users of our mobile App.
+
+How to Get Started
+-------------------
+In order to deploy the project on a live system, you will have to install the Mobile App on a smartphone (Android or iOS) and deploy the backend on Node.js environment.
+(At this point of the development, the Mobile App uses a local database for its' articles and doesn't use the backend server, which is not developed yet.)
+
+For detailed instructions on how to build the Mobile App, follow the instructions in [Readme.md of the Mobile_App direcory](Mobile_App/README.md)
 
 Contributors
 ------------
