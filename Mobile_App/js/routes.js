@@ -9,43 +9,43 @@ angular.module('app.routes', [])
   $stateProvider
     
 
-      .state('menu.home', {
-    url: '/page1',
+      .state('eyeReader.newsFeed', {
+    url: '/newsfeed',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl'
+        templateUrl: 'templates/newsFeed.html',
+        controller: 'newsFeedCtrl'
       }
     }
   })
 
-  .state('menu.cart', {
-    url: '/page2',
+  .state('eyeReader.settings', {
+    url: '/settings',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/cart.html',
-        controller: 'cartCtrl'
+        templateUrl: 'templates/settings.html',
+        controller: 'settingsCtrl'
       }
     }
   })
 
-  .state('menu.cloud', {
-    url: '/page3',
+  .state('eyeReader.addSources', {
+    url: '/addsources',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/cloud.html',
-        controller: 'cloudCtrl'
+        templateUrl: 'templates/addSources.html',
+        controller: 'addSourcesCtrl'
       }
     }
   })
 
-  .state('menu', {
-    url: '/side-menu21',
-    templateUrl: 'templates/menu.html',
-    controller: 'menuCtrl'
+  .state('eyeReader', {
+    url: '/side-menu',
+    templateUrl: 'templates/eyeReader.html',
+    controller: 'eyeReaderCtrl'
   })
 
-$urlRouterProvider.otherwise('/side-menu21/page1')
+$urlRouterProvider.otherwise('/side-menu/newsfeed')
 
 
 });
