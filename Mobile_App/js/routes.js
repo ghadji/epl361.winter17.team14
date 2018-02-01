@@ -45,7 +45,69 @@ angular.module('app.routes', [])
     controller: 'eyeReaderCtrl'
   })
 
-$urlRouterProvider.otherwise('/side-menu/newsfeed')
+  .state('eyeReader.profile', {
+    url: '/Profile',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/profile.html',
+        controller: 'profileCtrl'
+      }
+    }
+  })
+
+  .state('eyeReader.editProfile', {
+    url: '/EditProfile',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/editProfile.html',
+        controller: 'editProfileCtrl'
+      }
+    }
+  })
+
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'signupCtrl'
+  })
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
+  .state('eyeReader.article', {
+    url: '/article',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/article.html',
+        controller: 'articleCtrl'
+      }
+    }
+  })
+
+  .state('eyeReader.savedArticles', {
+    url: '/savedArticles',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/savedArticles.html',
+        controller: 'savedArticlesCtrl'
+      }
+    }
+  })
+
+  .state('eyeReader.statistics', {
+    url: '/Statistics',
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/statistics.html',
+        controller: 'statisticsCtrl'
+      }
+    }
+  })
+
+$urlRouterProvider.otherwise('/login')
 
 
 });
