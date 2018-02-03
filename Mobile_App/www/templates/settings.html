@@ -1,20 +1,35 @@
 <ion-view title="Settings" id="page2">
-  <ion-content padding="true" class="has-header">
-    <h3 id="settings-heading1" style="color:#90A4AE;">Display</h3>
-    <ion-list id="settings-list2">
-      <ion-toggle toggle-class="toggle-light" id="settings-toggle1" name="Night Mode Toggle">Night Mode</ion-toggle>
-      <ion-toggle toggle-class="toggle-light" id="settings-toggle2" name="Cashe News Toggle">Cache News</ion-toggle>
-      <ion-item class="range range-positive" id="settings-range3">Font Size
-        <input type="range" value="16" min="14" max="24" step="2" name="Font Size Range">
-      </ion-item>
-    </ion-list>
-    <h3 id="settings-heading2" style="color:#90A4AE;">Filtering</h3>
-    <form id="settings-form1" class="list">
-      <ion-toggle toggle-class="toggle-light" id="settings-toggle3" name="Markup Toxic Toggle">Markup Toxic</ion-toggle>
-      <ion-toggle toggle-class="toggle-light" id="settings-toggle4" name="Hide Toxic Toggle">Hide Toxic</ion-toggle>
-      <ion-item class="range range-light" id="settings-range2">Tolerance Level
-        <input type="range" value="50" min="0" max="100" step="1" name="Tolerance Level Range">
-      </ion-item>
-    </form>
-  </ion-content>
+    <ion-content padding="true" class="has-header">
+        <h3 id="settings-heading1" class="boldLetters">Display</h3>
+        <ion-list id=" settings-list2">
+            <ion-toggle toggle-class="toggle-light">
+                <span class="normalBlackLetters">Night Mode</span>
+            </ion-toggle>
+            <ion-toggle toggle-class=" toggle-light" id="settings-toggle1" name="Night Mode Toggle">
+                <span class="normalBlackLetters">Night Mode</span>
+            </ion-toggle>
+            <ion-toggle toggle-class="toggle-light" id="settings-toggle2" name="Cashe News Toggle">
+                <span class="normalBlackLetters">Cache News</span>
+            </ion-toggle>
+            <ion-item class="range" id="settings-range3">
+                <span class="normalBlackLetters">Font Size</span>
+                <input type="range" value="16" min="14" max="24" step="2" name="Font Size Range">
+            </ion-item>
+        </ion-list>
+        <h3 id="settings-heading2" class="boldLetters">Filtering</h3>
+        <ion-list id="settings-list2">
+            <form id="settings-form1" class="list">
+                <ion-toggle toggle-class="toggle-light" id="settings-toggle3" name="Markup Toxic Toggle">
+                    <span>Markup Toxic</span>
+                </ion-toggle>
+                <ion-toggle toggle-class="toggle-light" id="settings-toggle4" name="Hide Toxic Toggle">
+                    <span>Hide Toxic</span>
+                </ion-toggle>
+                <ion-item class="range range-light" id="settings-range2">
+                    <span>Tolerance Level</span>
+                    <input type="range" value="50" min="0" max="100" step="1" name="Tolerance Level Range">
+                </ion-item>
+            </form>
+        </ion-list>
+    </ion-content>
 </ion-view>
