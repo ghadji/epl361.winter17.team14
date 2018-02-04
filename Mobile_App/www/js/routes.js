@@ -2,112 +2,122 @@ angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-    
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
 
-      .state('eyeReader.newsFeed', {
-    url: '/newsfeed',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/newsFeed.html',
-        controller: 'newsFeedCtrl'
-      }
-    }
-  })
+        .state("eyeReader.newsFeed", {
 
-  .state('eyeReader.settings', {
-    url: '/settings',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/settings.html',
-        controller: 'settingsCtrl'
-      }
-    }
-  })
+        url: "/newsfeed",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/newsFeed.html",
+                controller: "newsFeedCtrl"
+            }
+        }
+    })
 
-  .state('eyeReader.addSources', {
-    url: '/addsources',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/addSources.html',
-        controller: 'addSourcesCtrl'
-      }
-    }
-  })
+    .state("eyeReader.settings", {
 
-  .state('eyeReader', {
-    url: '/side-menu',
-    templateUrl: 'templates/eyeReader.html',
-    controller: 'eyeReaderCtrl'
-  })
+        url: "/settings",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/settings.html",
+                controller: "settingsCtrl"
+            }
+        }
+    })
 
-  .state('eyeReader.profile', {
-    url: '/Profile',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/profile.html',
-        controller: 'profileCtrl'
-      }
-    }
-  })
+    .state("eyeReader.addSources", {
 
-  .state('eyeReader.editProfile', {
-    url: '/EditProfile',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/editProfile.html',
-        controller: 'editProfileCtrl'
-      }
-    }
-  })
+        url: "/addsources",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/addSources.html",
+                controller: "addSourcesCtrl"
+            }
+        }
+    })
 
-  .state('signup', {
-    url: '/signup',
-    templateUrl: 'templates/signup.html',
-    controller: 'signupCtrl'
-  })
+    .state("eyeReader", {
 
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
-  })
+        url: "/side-menu",
+        templateUrl: "templates/eyeReader.html",
+        controller: "eyeReaderCtrl"
+    })
 
-  .state('eyeReader.article', {
-    url: '/article',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/article.html',
-        controller: 'articleCtrl'
-      }
-    }
-  })
+    .state("eyeReader.profile", {
 
-  .state('eyeReader.savedArticles', {
-    url: '/savedArticles',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/savedArticles.html',
-        controller: 'savedArticlesCtrl'
-      }
-    }
-  })
+        url: "/Profile",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/profile.html",
+                controller: "profileCtrl"
+            }
+        }
+    })
 
-  .state('eyeReader.statistics', {
-    url: '/Statistics',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/statistics.html',
-        controller: 'statisticsCtrl'
-      }
-    }
-  })
+    .state("eyeReader.editProfile", {
 
-$urlRouterProvider.otherwise('/login')
+        url: "/EditProfile",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/editProfile.html",
+                controller: "editProfileCtrl"
+            }
+        }
+    })
+
+    .state("signup", {
+
+        url: "/signup",
+        templateUrl: "templates/signup.html",
+        controller: "signupCtrl"
+    })
+
+    .state("login", {
+
+        url: "/login",
+        templateUrl: "templates/login.html",
+        controller: "loginCtrl"
+    })
+
+    .state("eyeReader.article", {
+
+        url: "/article",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/article.html",
+                controller: "articleCtrl"
+            }
+        }
+    })
+
+    .state("eyeReader.savedArticles", {
+
+        url: "/savedArticles",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/savedArticles.html",
+                controller: "savedArticlesCtrl"
+            }
+        }
+    })
+
+    .state("eyeReader.statistics", {
+
+        url: "/Statistics",
+        views: {
+            "side-menu21": {
+                templateUrl: "templates/statistics.html",
+                controller: "statisticsCtrl"
+            }
+        }
+    });
+
+    $urlRouterProvider.otherwise('/login')
 
 
 });

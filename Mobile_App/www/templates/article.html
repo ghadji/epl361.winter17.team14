@@ -1,37 +1,37 @@
 <ion-view title="Article" id="page9">
-  <ion-content padding="true" class="has-header">
-    <h2 id="article-heading4" style="color:#000000;">This is a Title</h2>
-    <div id="article-markdown3" class="show-list-numbers-and-dots">
-      <p style="color:#000000;font-size:12px;">Writer | dd.MM.yyyy</p>
-    </div>
-    <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-      <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-    </div>
-    <div id="article-markdown2" class="show-list-numbers-and-dots">
-      <p style="color:#000000;">This is the article's content. Old unsatiable our now but considered travelling impression. In excuse hardly summer in basket misery. By rent an part need. At wrong of of water those linen. Needed oppose seemed how all. Very mrs shed shew gave you.
-        Oh shutters do removing reserved wandered an. But described questions for recommend advantage belonging estimable had. Pianoforte reasonable as so am inhabiting. Chatty design remark and his abroad figure but its. </p>
+    <ion-content padding="true" class="has-header" ng-controller="articleCtrl" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
+        <h2 id="article-heading4" style="color:#000000;">This is a Title</h2>
+        <div id="article-markdown3" class="show-list-numbers-and-dots">
+            <p style="color:#000000;font-size:12px;">Writer | dd.MM.yyyy</p>
+        </div>
+        <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        </div>
+        <div id="article-markdown2" class="show-list-numbers-and-dots">
+            <p style="color:#000000;">This is the article's content. Old unsatiable our now but considered travelling impression. In excuse hardly summer in basket misery. By rent an part need. At wrong of of water those linen. Needed oppose seemed how all. Very mrs shed shew
+                gave you. Oh shutters do removing reserved wandered an. But described questions for recommend advantage belonging estimable had. Pianoforte reasonable as so am inhabiting. Chatty design remark and his abroad figure but its. </p>
 
-      <p style="color:#000000;">Demesne far hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet ﻿no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions. Whatever boy her exertion his extended. Ecstatic followed
-        handsome drawings entirely mrs one yet outweigh. Of acceptance insipidity remarkably is invitation. </p>
-    </div>
-    <div class="spacer" style="width: 300px; height: 31px;"></div>
-    <ion-list id="article-list15">
-      <label class="item item-input" id="article-input14">
+            <p style="color:#000000;">Demesne far hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet ﻿no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions. Whatever boy her exertion his extended. Ecstatic
+                followed handsome drawings entirely mrs one yet outweigh. Of acceptance insipidity remarkably is invitation. </p>
+        </div>
+        <div class="spacer" style="width: 300px; height: 31px;"></div>
+        <ion-list id="article-list15">
+            <label class="item item-input" id="article-input14">
         <input type="text" placeholder="Add a public comment..">
       </label>
-      <ion-item class="item-avatar" id="article-list-item28">
-        <h2>Name 1</h2>
-        <p>Comment 1</p>
-      </ion-item>
-      <ion-item class="item-avatar" id="article-list-item29">
-        <h2>Name 2</h2>
-        <p>Comment 2</p>
-      </ion-item>
-      <ion-item class="item-avatar" id="article-list-item30">
-        <h2>Name 3</h2>
-        <p>Comment 3</p>
-      </ion-item>
-    </ion-list>
-    <div class="spacer" style="width: 300px; height: 40px;"></div>
-  </ion-content>
+            <ion-item class="item-avatar" id="article-list-item28">
+                <h2>Name 1</h2>
+                <p>Comment 1</p>
+            </ion-item>
+            <ion-item class="item-avatar" id="article-list-item29">
+                <h2>Name 2</h2>
+                <p>Comment 2</p>
+            </ion-item>
+            <ion-item class="item-avatar" id="article-list-item30">
+                <h2>Name 3</h2>
+                <p>Comment 3</p>
+            </ion-item>
+        </ion-list>
+        <div class="spacer" style="width: 300px; height: 40px;"></div>
+    </ion-content>
 </ion-view>

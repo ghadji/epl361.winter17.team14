@@ -27,3 +27,11 @@
     font-size: 17px !important;
     color: #90A4AE !important;
 }
+
+.nightmodeBackground {
+    background-color: rgb(68, 68, 68);
+}
+
+.lightmodeBackground {
+    background-color: white;
+}

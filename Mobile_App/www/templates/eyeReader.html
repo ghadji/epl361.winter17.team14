@@ -8,11 +8,11 @@
         </ion-nav-bar>
         <ion-nav-view name="side-menu21"></ion-nav-view>
     </ion-side-menu-content>
-    <ion-side-menu side="left" id="side-menu21">
+    <ion-side-menu ng-controller="eyeReaderCtrl" side="left" id="side-menu21">
         <ion-header-bar class="bar-stable">
             <div class="title">eyeReader</div>
         </ion-header-bar>
-        <ion-content padding="false" class="side-menu-left has-header">
+        <ion-content padding="false" class="side-menu-left has-header" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
             <ion-list id="eyeReader-list3">
                 <ion-item class="item-avatar" id="eyeReader-list-item10" ui-sref="eyeReader.profile()" menu-close="">
                     <h2>Name Surname</h2>

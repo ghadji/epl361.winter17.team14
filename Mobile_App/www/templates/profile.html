@@ -1,5 +1,5 @@
 <ion-view title="Profile" id="page5">
-    <ion-content padding="true" class="has-header">
+    <ion-content padding="true" class="has-header" ng-controller="profileCtrl" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
         <h4 id="profile-heading3" class="boldLetters" style="text-align:center;">Name Surname</h4>
         <a ui-sref="eyeReader.editProfile()" id="profile-button1" style="font-weight:300;font-size:18px;border-radius:-1px -1px -1px -1px; color: #90A4AE;" class="button button-light button-small button-block">
             <span class="sideLetters">Edit Profile</span>

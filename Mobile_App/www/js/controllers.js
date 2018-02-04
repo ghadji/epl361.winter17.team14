@@ -1,90 +1,170 @@
-angular.module('app.controllers', [])
-  
-.controller('newsFeedCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+angular
+    .module("app.controllers", [])
 
+.controller("newsFeedCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
-}])
-   
-.controller('settingsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller("settingsCtrl", [
+    "$scope",
+    "$stateParams",
+    "$ionicPopup",
+    "$rootScope",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, $ionicPopup, $rootScope, sharedProps) {
+        $scope.setNightmode = function() {
+            $rootScope.$broadcast("nightmodeChange", $scope.isNightmode);
+            sharedProps.addData("isNightmode", $scope.isNightmode);
+        };
 
+        $scope.showDisplayInformation = function() {
+            var promptPopup = $ionicPopup.alert({
+                title: "Display Information",
+                template: "Here the display information will be presented"
+            });
+        };
 
-}])
-   
-.controller('addSourcesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+        $scope.showFilteringInformation = function() {
+            var promptPopup = $ionicPopup.alert({
+                title: "Filtering Information",
+                template: "Here the filtering information will be presented"
+            });
+        };
+    }
+])
 
+.controller("addSourcesCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
-}])
-   
-.controller('eyeReaderCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller("eyeReaderCtrl", [
+    "$scope",
+    "$stateParams",
+    "$rootScope",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, $rootScope, sharedProps) {
+        $rootScope.$on("nightmodeChange", function(event, args) {
+            console.log(args);
+            $scope.isNightmode = args;
+        });
+    }
+])
 
+.controller("profileCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
-}])
-   
-.controller('profileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller("editProfileCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
+.controller("signupCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {}
+])
 
-}])
-   
-.controller('editProfileCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller("loginCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {}
+])
 
+.controller("articleCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
-}])
-   
-.controller('signupCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller("savedArticlesCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+])
 
-
-}])
-   
-.controller('loginCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('articleCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('savedArticlesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
-   
-.controller('statisticsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-
-
-}])
- 
+.controller("statisticsCtrl", [
+    "$scope",
+    "$stateParams",
+    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    // You can include any angular dependencies as parameters for this function
+    // TIP: Access Route Parameters for your page via $stateParams.parameterName
+    function($scope, $stateParams, sharedProps) {
+        $scope.$on("$ionicView.beforeEnter", function() {
+            if (sharedProps.getData("isNightmode") != undefined) {
+                $scope.isNightmode = sharedProps.getData("isNightmode").value;
+            }
+        });
+    }
+]);

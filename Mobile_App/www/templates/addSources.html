@@ -1,11 +1,11 @@
 <ion-view title="Add Sources" id="page3">
-    <ion-content padding="true" class="has-header">
-        <form id="addSources-form2" class="list">
-            <ion-checkbox id="addSources-checkbox3" name="sigmaTV">
-                <span class="normalBlackLetters"> sigmaTV</span>
+    <ion-content padding="true" class="has-header" ng-controller="addSourcesCtrl" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
+        <form id="addSources-form2 " class="list ">
+            <ion-checkbox id="addSources-checkbox3 " name="sigmaTV ">
+                <span class="normalBlackLetters "> sigmaTV</span>
             </ion-checkbox>
-            <ion-checkbox id="addSources-checkbox4" name="ANT1">
-                <span class="normalBlackLetters"> ANT1</span>
+            <ion-checkbox id="addSources-checkbox4 " name="ANT1 ">
+                <span class="normalBlackLetters "> ANT1</span>
             </ion-checkbox>
         </form>
     </ion-content>
