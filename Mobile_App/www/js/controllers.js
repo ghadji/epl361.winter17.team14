@@ -30,17 +30,29 @@ angular
             sharedProps.addData("isNightmode", $scope.isNightmode);
         };
 
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? 'nightmodeBackground' : 'lightmodeBackground';
+        }
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? 'nightmodeFontColor' : 'normalBlackLetters';
+        }
+
         $scope.showDisplayInformation = function() {
-            var promptPopup = $ionicPopup.alert({
+            var promptAlert = $ionicPopup.alert({
                 title: "Display Information",
-                template: "Here the display information will be presented"
+                template: "<b>Night Mode:</b> Enables night mode for easier reading in low lighting environment.</br>" +
+                    "<b>Cache News:</b> Enables caching of 10 latest retrieved articles for offline reading.</br>" +
+                    "<b>Font Size:</b> Sets the font size [Range available 14px-24px]."
             });
         };
 
         $scope.showFilteringInformation = function() {
-            var promptPopup = $ionicPopup.alert({
+            var promptAlert = $ionicPopup.alert({
                 title: "Filtering Information",
-                template: "Here the filtering information will be presented"
+                template: "<b>Markup Toxic:</b> Highlights toxic language.</br>" +
+                    "<b>Hide Toxic:</b> Removes toxic language from view.</br>" +
+                    "<b>Tolerance:</b> Sets your prefered tolerance level against toxic language. The higher the bar the less tolerant you are."
             });
         };
     }
@@ -58,6 +70,14 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -73,6 +93,14 @@ angular
             console.log(args);
             $scope.isNightmode = args;
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -88,6 +116,14 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -103,6 +139,14 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -136,6 +180,14 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -151,6 +203,14 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ])
 
@@ -166,5 +226,13 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontColorClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
     }
 ]);

@@ -5,6 +5,10 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
+.sidemenuHeader {
+    background-color: #455A64;
+}
+
 .boldLetters {
     color: #90A4AE;
     font-weight: bold;
@@ -32,6 +36,20 @@
     background-color: rgb(68, 68, 68);
 }
 
+.nightmodeFontColor {
+    color: white;
+    font-size: 20px;
+}
+
 .lightmodeBackground {
     background-color: white;
+}
+
+
+/*
+* Popup class
+*/
+
+.popup-container .popup {
+    width: 90%;
 }

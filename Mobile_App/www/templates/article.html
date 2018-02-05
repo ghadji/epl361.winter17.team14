@@ -1,5 +1,5 @@
-<ion-view title="Article" id="page9">
-    <ion-content padding="true" class="has-header" ng-controller="articleCtrl" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
+<ion-view hide-back-button="false" title="Article" id="page9">
+    <ion-content padding="true" class="has-header" ng-controller="articleCtrl" ng-class="getBackgroundClass()">
         <h2 id="article-heading4" style="color:#000000;">This is a Title</h2>
         <div id="article-markdown3" class="show-list-numbers-and-dots">
             <p style="color:#000000;font-size:12px;">Writer | dd.MM.yyyy</p>
@@ -19,15 +19,15 @@
             <label class="item item-input" id="article-input14">
         <input type="text" placeholder="Add a public comment..">
       </label>
-            <ion-item class="item-avatar" id="article-list-item28">
+            <ion-item ng-class="getBackgroundClass()" class="item-avatar" id="article-list-item28">
                 <h2>Name 1</h2>
                 <p>Comment 1</p>
             </ion-item>
-            <ion-item class="item-avatar" id="article-list-item29">
+            <ion-item ng-class="getBackgroundClass()" class="item-avatar" id="article-list-item29">
                 <h2>Name 2</h2>
                 <p>Comment 2</p>
             </ion-item>
-            <ion-item class="item-avatar" id="article-list-item30">
+            <ion-item ng-class="getBackgroundClass()" class="item-avatar" id="article-list-item30">
                 <h2>Name 3</h2>
                 <p>Comment 3</p>
             </ion-item>
