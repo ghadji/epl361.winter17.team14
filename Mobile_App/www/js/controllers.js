@@ -13,6 +13,18 @@ angular
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.getBackgroundClass = function() {
+            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+        };
+
+        $scope.getFontClass = function() {
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
+
+        $scope.getNightmodeHeaderClass = function() {
+            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+        };
     }
 ])
 
@@ -34,7 +46,7 @@ angular
             return $scope.isNightmode ? 'nightmodeBackground' : 'lightmodeBackground';
         }
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? 'nightmodeFontColor' : 'normalBlackLetters';
         }
 
@@ -75,7 +87,7 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
     }
@@ -90,16 +102,23 @@ angular
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function($scope, $stateParams, $rootScope, sharedProps) {
         $rootScope.$on("nightmodeChange", function(event, args) {
-            console.log(args);
             $scope.isNightmode = args;
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ? "nightmodeBackground" : "normalBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
+
+        $scope.getSidemenuIconClass = function() {
+            return $scope.isNightmode ? "nightmodeSidemenuIcon" : "normalSidemenuIcon";
+        }
+
+        $scope.getNightmodeHeaderClass = function() {
+            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
         };
     }
 ])
@@ -121,7 +140,7 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
     }
@@ -144,7 +163,7 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
     }
@@ -185,8 +204,12 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
+
+        $scope.getNightmodeHeaderClass = function() {
+            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
         };
     }
 ])
@@ -208,8 +231,12 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
+
+        $scope.getNightmodeHeaderClass = function() {
+            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
         };
     }
 ])
@@ -231,8 +258,12 @@ angular
             return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
         };
 
-        $scope.getFontColorClass = function() {
+        $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
+
+        $scope.getNightmodeHeaderClass = function() {
+            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
         };
     }
 ]);

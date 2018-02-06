@@ -1,10 +1,10 @@
 <ion-view title="News Feed" id="page1">
-    <ion-content padding="true" class="has-header" ng-controller="newsFeedCtrl" ng-class="{nightmodeBackground: isNightmode, lightmodeBackground: !isNightmode}">
+    <ion-content padding="true" class="has-header" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
         <ion-list id="newsFeed-list9">
             <label class="item item-input" id="newsFeed-search1" name="searchArticles">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="search" placeholder="Search articles">
-      </label>
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search articles">
+            </label>
             <ion-item class="item-thumbnail-left item-icon-right" id="newsFeed-list-item15" ui-sref="eyeReader.article()">
                 <h2>This is a test title</h2>
                 <p>This is a test description for the title</p>

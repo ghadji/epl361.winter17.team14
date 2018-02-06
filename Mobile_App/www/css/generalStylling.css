@@ -41,8 +41,24 @@
     font-size: 20px;
 }
 
-.lightmodeBackground {
+.normalBackground {
     background-color: white;
+}
+
+.normalSidemenuIcon {
+    color: #444;
+}
+
+.nightmodeSidemenuIcon {
+    color: white;
+}
+
+.nightmodeHeaderClass {
+    color: white !important;
+}
+
+.normalHeaderClass {
+    color: black !important;
 }
 
 
