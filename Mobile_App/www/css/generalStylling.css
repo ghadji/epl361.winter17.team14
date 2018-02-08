@@ -1,8 +1,11 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
 .header {
     background-color: #455A64;
     color: white;
     font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .sidemenuHeader {
@@ -11,39 +14,58 @@
 
 .boldLetters {
     color: #90A4AE;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
-    font-size: 24px;
+    font-weight: bold!important;
+    font-size: 24px!important;
 }
 
 .normalBlackLetters {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
     font-size: 20px !important;
 }
 
 .placeholderLetters {
-    font-size: 17px !important;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    font-size: 16px !important;
+    color: #90a4ae!important;
 }
 
 .sideLetters {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
-    font-size: 17px !important;
+    font-size: 14px !important;
     color: #90A4AE !important;
 }
 
-.nightmodeBackground {
-    background-color: rgb(68, 68, 68);
-}
+
+/*
+* Nightmode / Normalmode
+*/
 
 .nightmodeFontColor {
     color: white;
-    font-size: 20px;
+    font-size: 20px !important;
+}
+
+
+/*background for all the pages except settings*/
+
+.nightmodeBackground {
+    background-color: rgb(68, 68, 68)!important;
 }
 
 .normalBackground {
-    background-color: white;
+    background-color: white!important;
 }
+
+
+/*settings page where the nightmode transition is happening*/
+
+.nightmodeBackgroundMain {
+    background-color: rgb(68, 68, 68)!important;
+}
+
+.normalBackgroundMain {
+    background-color: white!important;
+}
+
+
+/*sidemenu icons color*/
 
 .normalSidemenuIcon {
     color: #444;
@@ -62,10 +84,37 @@
 }
 
 
+/*list background color*/
+
+.nightmodeBackground .item .item-content,
+.nightmodeBackground .item-select select,
+{
+    background-color: #444;
+}
+
+.normalBackground .item .item-content .item-input {
+    background-color: white;
+}
+
+
+/*CSS for Mainition animation from nightmode to normalmode and back*/
+
+.normalBackgroundMain-add,
+.normalBackgroundMain-remove,
+.nightmodeBackgroundMain-add,
+.nightmodeBackgroundMain-remove {
+    transition: background-color 150ms linear;
+}
+
+
 /*
 * Popup class
 */
 
 .popup-container .popup {
     width: 90%;
+}
+
+.favouriteButton {
+    color: #42CB24;
 }

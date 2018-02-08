@@ -1,26 +1,26 @@
 <ion-view title="Profile" id="page5">
-    <ion-content padding="true" class="has-header" ng-controller="profileCtrl" ng-class="getBackgroundClass()">
+    <ion-content padding="false" class="has-header" ng-controller="profileCtrl" ng-class="getBackgroundClass()">
         <h4 id="profile-heading3" class="boldLetters" style="text-align:center;">Name Surname</h4>
-        <a ui-sref="eyeReader.editProfile()" id="profile-button1" style="font-weight:300;font-size:18px;border-radius:-1px -1px -1px -1px; color: #90A4AE;" class="button button-light button-small button-block">
+        <button ui-sref="eyeReader.editProfile()" id="profile-button1" class="button button-clear button-small button-block" ng-class="getBackgroundClass()">
             <span class="sideLetters">Edit Profile</span>
-        </a>
-        <ion-list id="profile-list8">
-            <ion-item class="item-icon-left" id="profile-list-item14">
+        </button>
+        <ul class="list">
+            <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-contact"></i>
-                <span class="normalBlackLetters">Username</span>
-            </ion-item>
-            <ion-item class="item-icon-left" id="profile-list-item11">
+                <span ng-class="getFontClass()" class="normalBlackLetters">Username</span>
+            </li>
+            <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-person"></i>
-                <span class="normalBlackLetters">Female</span>
-            </ion-item>
-            <ion-item class="item-icon-left" id="profile-list-item12">
+                <span ng-class="getFontClass()" class="normalBlackLetters">Female</span>
+            </li>
+            <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-bar"></i>
-                <span class="normalBlackLetters">January, 24 1997</span>
-            </ion-item>
-            <ion-item class="item-icon-left" id="profile-list-item13">
+                <span ng-class="getFontClass()" class="normalBlackLetters">January, 24 1997</span>
+            </li>
+            <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-mail"></i>
-                <span class="normalBlackLetters">userName@gmail.com</span>
-            </ion-item>
-        </ion-list>
+                <span ng-class="getFontClass()" class="normalBlackLetters">userName@gmail.com</span>
+            </li>
+        </ul>
     </ion-content>
 </ion-view>
