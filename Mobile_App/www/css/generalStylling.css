@@ -58,21 +58,12 @@
 
 .nightmodeBackgroundMain {
     background-color: rgb(68, 68, 68)!important;
-<<<<<<< HEAD
 }
 
 .normalBackgroundMain {
     background-color: white!important;
 }
 
-=======
-}
-
-.normalBackgroundMain {
-    background-color: white!important;
-}
-
->>>>>>> 3dfd96633494d83cc2fd50f772db96646c29dbeb
 
 /*sidemenu icons color*/
 
@@ -126,7 +117,6 @@
 
 .favouriteButton {
     color: #42CB24;
-<<<<<<< HEAD
 }
 
 .generalPadding{
@@ -146,6 +136,4 @@
 .checkbox input:checked+.checkbox-icon:before {
     background: #455A64;
     border-color: #455A64;
-=======
->>>>>>> 3dfd96633494d83cc2fd50f772db96646c29dbeb
 }

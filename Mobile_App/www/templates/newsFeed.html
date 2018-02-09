@@ -5,11 +5,7 @@
             <input type="search" class="placeholderLetters" placeholder="Search articles" ng-model-options="{debounce: 350}">
         </label>
     </ion-header-bar>
-<<<<<<< HEAD
     <ion-content padding="false" class="has-header generalPadding" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
-=======
-    <ion-content padding="false" class="has-header" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
->>>>>>> 3dfd96633494d83cc2fd50f772db96646c29dbeb
         <ion-refresher on-refresh="doRefresh()"></ion-refresher>
         <ion-list id="newsFeed-list9">
             <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
@@ -17,19 +13,11 @@
                 <h2 ng-class="getFontClass()">This is a test title</h2>
                 <p class="sideLetters">This is a test description for the title</p>
                 <i class="icon ion-ios-arrow-right icon-accessory"></i>
-<<<<<<< HEAD
-                <ion-option-button class="button-energized">
+                <ion-option-button class="button-energized" ng-click="showReportOptions()">
                     <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
                 </ion-option-button>
                 <ion-option-button class="button-assertive">
                     <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
-=======
-                <ion-option-button class="button-assertive">
-                    <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
-                </ion-option-button>
-                <ion-option-button class="button-energized">
-                    <ion-icon name="report" class="icon ion-trash-a"></ion-icon>
->>>>>>> 3dfd96633494d83cc2fd50f772db96646c29dbeb
                 </ion-option-button>
                 <ion-option-button class="button-balanced">
                     <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>

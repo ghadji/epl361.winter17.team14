@@ -1,21 +1,30 @@
 angular
-    .module("app.controllers", [])
+    .module("app.controllers", ["ngCordova"])
 
 .controller("newsFeedCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps", "$ionicPopup", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps) {
+    function($scope, $stateParams, sharedProps, $ionicPopup) {
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
 
+        $scope.showReportOptions = function() {
+            var promptAlert = $ionicPopup.alert({
+                title: "Report",
+                template: ""
+            });
+        };
+
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -23,7 +32,9 @@ angular
         };
 
         $scope.getNightmodeHeaderClass = function() {
-            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+            return $scope.isNightmode ?
+                "nightmodeHeaderClass" :
+                "normalHeaderClass";
         };
     }
 ])
@@ -43,12 +54,14 @@ angular
         };
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackgroundMain" : "normalBackgroundMain";
-        }
+            return $scope.isNightmode ?
+                "nightmodeBackgroundMain" :
+                "normalBackgroundMain";
+        };
 
         $scope.getFontClass = function() {
-            return $scope.isNightmode ? 'nightmodeFontColor' : 'normalBlackLetters';
-        }
+            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+        };
 
         $scope.showDisplayInformation = function() {
             var promptAlert = $ionicPopup.alert({
@@ -84,7 +97,9 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -114,11 +129,15 @@ angular
         };
 
         $scope.getSidemenuIconClass = function() {
-            return $scope.isNightmode ? "nightmodeSidemenuIcon" : "normalSidemenuIcon";
-        }
+            return $scope.isNightmode ?
+                "nightmodeSidemenuIcon" :
+                "normalSidemenuIcon";
+        };
 
         $scope.getNightmodeHeaderClass = function() {
-            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+            return $scope.isNightmode ?
+                "nightmodeHeaderClass" :
+                "normalHeaderClass";
         };
     }
 ])
@@ -160,7 +179,9 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -172,19 +193,70 @@ angular
 .controller("signupCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps",
+    "UserService",
+    "$window",
+    "$state", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps) {}
+    function($scope, $stateParams, sharedProps, UserService, $window, $state) {
+        $scope.register = function() {
+            $window.localStorage.clear();
+            $scope.info.dataLoading = true;
+            UserService.Create($scope.info.user).then(function(response) {
+                if (response.success) {
+                    console.log("signup successfull");
+                    $state.go("login");
+                } else {
+                    console.log("signup unsuccessfull");
+                    $scope.info.dataLoading = false;
+                }
+                console.log($window.localStorage.users);
+            });
+        };
+    }
 ])
 
 .controller("loginCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps",
+    "$location",
+    "AuthenticationService",
+    "$state",
+    "$window", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps) {}
+    function(
+        $scope,
+        $stateParams,
+        sharedProps,
+        $location,
+        AuthenticationService,
+        $state,
+        $window
+    ) {
+        $scope.login = function() {
+            $scope.dataLoading = true;
+            AuthenticationService.Login(
+                $scope.login.username,
+                $scope.login.password,
+                function(response) {
+                    if (response.success) {
+                        AuthenticationService.SetCredentials(
+                            $scope.login.username,
+                            $scope.login.password
+                        );
+                        $state.go("eyeReader.newsFeed");
+                        console.log("login successfull");
+                    } else {
+                        $scope.dataLoading = false;
+                        console.log("failed to login");
+                    }
+                }
+            );
+        };
+    }
 ])
 
 .controller("articleCtrl", [
@@ -201,7 +273,9 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -209,7 +283,9 @@ angular
         };
 
         $scope.getNightmodeHeaderClass = function() {
-            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+            return $scope.isNightmode ?
+                "nightmodeHeaderClass" :
+                "normalHeaderClass";
         };
     }
 ])
@@ -228,7 +304,9 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -236,7 +314,9 @@ angular
         };
 
         $scope.getNightmodeHeaderClass = function() {
-            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+            return $scope.isNightmode ?
+                "nightmodeHeaderClass" :
+                "normalHeaderClass";
         };
     }
 ])
@@ -255,7 +335,9 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ?
+                "nightmodeBackground" :
+                "lightmodeBackground";
         };
 
         $scope.getFontClass = function() {
@@ -263,7 +345,9 @@ angular
         };
 
         $scope.getNightmodeHeaderClass = function() {
-            return $scope.isNightmode ? "nightmodeHeaderClass" : "normalHeaderClass";
+            return $scope.isNightmode ?
+                "nightmodeHeaderClass" :
+                "normalHeaderClass";
         };
     }
 ]);
