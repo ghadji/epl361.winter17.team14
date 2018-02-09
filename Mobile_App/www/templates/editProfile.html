@@ -1,36 +1,37 @@
 <ion-view title="Edit Profile" id="page6">
-    <ion-content padding="true" class="has-header" ng-controller="editProfileCtrl" ng-class="getBackgroundClass()">
-        <form id="editProfile-form4" class="list">
-            <label class="item item-input" id="editProfile-input3">
-        <span class="normalBlackLetters input-label">Name</span>
-        <input class="placeholderLetters" type="text" placeholder="Name">
-      </label>
-            <label class="item item-input" id="editProfile-input5">
-        <span class="normalBlackLetters input-label">Username</span>
-        <input class="placeholderLetters" type="text" placeholder="Username">
-      </label>
-            <label class="item item-input" id="editProfile-input7">
-        <span class="normalBlackLetters input-label">Email</span>
-        <input class="placeholderLetters" type="text" placeholder="userEmail@gmail.com">
-      </label>
-            <label class="item item-select" id="editProfile-select1">
-        <span class="normalBlackLetters input-label">Sex</span>
-        <select>
-          <option>
-            <span class="normalBlackLetters">Female</span>
-          </option>
-          <option>
-            <span class="normalBlackLetters">Male</span>
-          </option>
-          <option>
-            <span class="normalBlackLetters">Other</span>
-          </option>
-        </select>
-      </label>
-            <label class="item item-input" id="editProfile-input6">
-        <span class="normalBlackLetters input-label">Birthday</span>
-        <input class="placeholderLetters" type="text" placeholder="24 January 1997">
-      </label>
-        </form>
+    <ion-content padding="false" class="has-header" ng-controller="editProfileCtrl" ng-class="getBackgroundClass()">
+        <div class="list">
+            <label class="item item-input" ng-class="getBackgroundClass()">
+              <span ng-class="getFontClass()" class="input-label">Name</span>
+              <input class="placeholderLetters" type="text" placeholder="Name">
+            </label>
+            <label class="item item-input" ng-class="getBackgroundClass()">
+              <span ng-class="getFontClass()" class="input-label">Username</span>
+              <input class="placeholderLetters" type="text" placeholder="Username">
+            </label>
+            <label class="item item-input" ng-class="getBackgroundClass()">
+              <span ng-class="getFontClass()" class="input-label">Email</span>
+              <input class="placeholderLetters" type="text" placeholder="userEmail@gmail.com">
+            </label>
+            <label class="item item-input item-select" ng-class="getBackgroundClass()">
+              <span ng-class="getFontClass()" class="input-label">Sex</span>
+              <select class="placeholderLetters">
+                <option>
+                  <span class="placeholderLetters">Female</span>
+                </option>
+                <option>
+                  <span class="placeholderLetters">Male</span>
+                </option>
+                <option>
+                  <span class="placeholderLetters">Other</span>
+                </option>
+              </select>
+            </label>
+            <label class="item item-input" ng-class="getBackgroundClass()">
+              <span ng-class="getFontClass()" class="input-label">Birthday</span>
+              <input class="placeholderLetters" type="date">
+            </label>
+        </div>
+        <button class="button button-outline button-block button-stable">Save Changes</button>
     </ion-content>
 </ion-view>

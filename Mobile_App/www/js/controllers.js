@@ -43,7 +43,7 @@ angular
         };
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? 'nightmodeBackground' : 'lightmodeBackground';
+            return $scope.isNightmode ? "nightmodeBackgroundMain" : "normalBackgroundMain";
         }
 
         $scope.getFontClass = function() {
@@ -137,7 +137,7 @@ angular
         });
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ? "nightmodeBackground" : "lightmodeBackground";
+            return $scope.isNightmode ? "nightmodeBackground" : "normalBackground";
         };
 
         $scope.getFontClass = function() {

@@ -1,17 +1,27 @@
 <ion-view title="News Feed" id="page1">
-    <ion-content padding="true" class="has-header" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
+    <ion-header-bar ng-class="getBackgroundClass()" class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper" id="newsFeed-search1" name="searchArticles">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" class="placeholderLetters" placeholder="Search articles" ng-model-options="{debounce: 350}">
+        </label>
+    </ion-header-bar>
+    <ion-content padding="false" class="has-header generalPadding" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
+        <ion-refresher on-refresh="doRefresh()"></ion-refresher>
         <ion-list id="newsFeed-list9">
-            <label class="item item-input" id="newsFeed-search1" name="searchArticles">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="Search articles">
-            </label>
-            <ion-item class="item-thumbnail-left item-icon-right" id="newsFeed-list-item15" ui-sref="eyeReader.article()">
-                <h2>This is a test title</h2>
-                <p>This is a test description for the title</p>
+            <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
+                <img alt="img">
+                <h2 ng-class="getFontClass()">This is a test title</h2>
+                <p class="sideLetters">This is a test description for the title</p>
                 <i class="icon ion-ios-arrow-right icon-accessory"></i>
-                <ion-option-button class="button-assertive">Report</ion-option-button>
-                <ion-option-button class="button-energized">Remove</ion-option-button>
-                <ion-option-button class="button-balanced">Favorite</ion-option-button>
+                <ion-option-button class="button-energized">
+                    <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
+                </ion-option-button>
+                <ion-option-button class="button-assertive">
+                    <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
+                </ion-option-button>
+                <ion-option-button class="button-balanced">
+                    <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>
+                </ion-option-button>
             </ion-item>
         </ion-list>
     </ion-content>
