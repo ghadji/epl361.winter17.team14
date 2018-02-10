@@ -48,19 +48,49 @@ angular
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function($scope, $stateParams, $ionicPopup, $rootScope, sharedProps) {
+
+        $scope.data = {};
+
+        $scope.$on("$ionicView.beforeEnter", function() {
+            console.log("entering...");
+            $scope.data.cachenewsEnabled = sharedProps.getData("cachenewsEnabled").value;
+            $scope.data.fontsize = sharedProps.getData("fontsize").value;
+            $scope.data.markupEnabled = sharedProps.getData("markupEnabled").value;
+            $scope.data.hideEnabled = sharedProps.getData("hideEnabled").value;
+            $scope.data.tolerance = sharedProps.getData("tolerance").value;
+
+            console.log($scope.data.tolerance + " " + $scope.data.fontsize);
+
+        });
+
+        $scope.$on("$ionicView.beforeLeave", function() {
+            console.log("trying to leave....");
+            sharedProps.addData("cachenewsEnabled", $scope.data.cachenewsEnabled);
+            sharedProps.addData("fontsize", $scope.data.fontsize);
+            sharedProps.addData("markupEnabled", $scope.data.markupEnabled);
+            sharedProps.addData("hideEnabled", $scope.data.hideEnabled);
+            sharedProps.addData("tolerance", $scope.data.tolerance);
+
+        })
+
+        $scope.setFontsize = function() {
+            //$rootScope.$broadcast("fontsizeChange", $scope.data.fontsize);
+
+        }
+
         $scope.setNightmode = function() {
-            $rootScope.$broadcast("nightmodeChange", $scope.isNightmode);
-            sharedProps.addData("isNightmode", $scope.isNightmode);
+            $rootScope.$broadcast("nightmodeChange", $scope.data.isNightmode);
+            sharedProps.addData("isNightmode", $scope.data.isNightmode);
         };
 
         $scope.getBackgroundClass = function() {
-            return $scope.isNightmode ?
+            return $scope.data.isNightmode ?
                 "nightmodeBackgroundMain" :
                 "normalBackgroundMain";
         };
 
         $scope.getFontClass = function() {
-            return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
+            return $scope.data.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
 
         $scope.showDisplayInformation = function() {
@@ -200,8 +230,8 @@ angular
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function($scope, $stateParams, sharedProps, UserService, $window, $state) {
+        $window.localStorage.clear();
         $scope.register = function() {
-            $window.localStorage.clear();
             $scope.info.dataLoading = true;
             UserService.Create($scope.info.user).then(function(response) {
                 if (response.success) {
@@ -236,6 +266,15 @@ angular
         $state,
         $window
     ) {
+        function createUserSettings() {
+            sharedProps.addData("isNightmode", false);
+            sharedProps.addData("cachenewsEnabled", false);
+            sharedProps.addData("fontsize", 16);
+            sharedProps.addData("markupEnabled", false);
+            sharedProps.addData("hideEnabled", false);
+            sharedProps.addData("tolerance", 50);
+        }
+
         $scope.login = function() {
             $scope.dataLoading = true;
             AuthenticationService.Login(
@@ -247,6 +286,7 @@ angular
                             $scope.login.username,
                             $scope.login.password
                         );
+                        createUserSettings();
                         $state.go("eyeReader.newsFeed");
                         console.log("login successfull");
                     } else {

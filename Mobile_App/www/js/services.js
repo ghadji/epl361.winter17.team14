@@ -27,10 +27,15 @@ angular
             });
             return data;
         };
+        var dataLength = function() {
+            var length = context.length;
+            return length;
+        }
 
         return {
             addData: addData,
-            getData: getData
+            getData: getData,
+            dataLength: dataLength
         };
     }
 ])
@@ -92,7 +97,7 @@ angular
                         deferred.resolve({ success: true });
                     }
                 });
-        }, 1000);
+        }, 0);
 
         return deferred.promise;
     }

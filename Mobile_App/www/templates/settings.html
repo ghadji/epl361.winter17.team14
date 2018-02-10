@@ -5,53 +5,70 @@
         </h3>
         <ul class="list">
             <li name="Night Mode Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
-                <span ng-class="getFontClass()">Night Mode</span>
+                <span ng-class="getFontClass()">Night Mode<br>
+                    <sub>{{data.isNightmode == undefiend || data.isNightmode == false ? 'off' : 'on'}}</sub>
+                </span>
                 <label class="toggle toggle-light">
-                    <input type="checkbox" ng-model="isNightmode" ng-change="setNightmode()">
+                    <input type="checkbox" ng-model="data.isNightmode" ng-change="setNightmode()">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
             <li name="Cashe News Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
-                <span ng-class="getFontClass()">Cache News</span>
+                <span ng-class="getFontClass()">Cache News<br>
+                    <sub>Saves temporarily the 10 first articles</sub>
+                </span>
                 <label class="toggle toggle-light">
-                    <input type="checkbox">
+                    <input ng-model="data.cachenewsEnabled" type="checkbox">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
-            <li ng-class="getBackgroundClass()" class="item range">
-                <span ng-class="getFontClass()">Font Size</span>
-                <input type="range" name="Font Size Range" min="14" max="24" step="2" value="16">
+            <li ng-class="getBackgroundClass()" style="padding-top:16px" class="item range">
+                <span ng-class="getFontClass()">Font Size<br>
+                    <sub>{{data.fontsize}}px</sub>
+                </span>
+            </li>
+            <li ng-class="getBackgroundClass()" style="border-top:0px;padding-bottom:16px" class="item range">
+                <input ng-model="data.fontsize" ng-change="fontsizeChange()" type="range" name="Font Size Range" min="14" max="24" step="2">
             </li>
         </ul>
         <h3 id="settings-heading2" class="boldLetters">Filtering
             <button style="display:inline-block" class="button button-outline button-stable button-small icon ion-help" ng-click="showFilteringInformation()"></button>
         </h3>
         <ul class="list">
-            <li name="Markup Toxic Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
-                <span ng-class="getFontClass()">Markup Toxic</span>
+            <li name=" Markup Toxic Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
+                <span ng-class="getFontClass()">Markup Toxic<br>
+                    <sub>Highlights toxic content</sub>
+                </span>
                 <label class="toggle toggle-light">
-                    <input ng-model="markupEnabled" ng-disabled="hideEnabled" type="checkbox">
+                    <input ng-model="data.markupEnabled" ng-disabled="data.hideEnabled" type="checkbox">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
             <li name="Hide Toxic Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
-                <span ng-class="getFontClass()">Hide Toxic</span>
+                <span ng-class="getFontClass()">Hide Toxic<br>
+                    <sub>Hides toxic content</sub>
+                </span>
                 <label class="toggle toggle-light">
-                    <input ng-disabled="markupEnabled" ng-model="hideEnabled" type="checkbox">
+                    <input ng-disabled="data.markupEnabled" ng-model="data.hideEnabled" type="checkbox">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
-            <li ng-class="getBackgroundClass()" class="item range">
-                <span ng-class="getFontClass()">Tolerance</span>
-                <input type="range" value="50" min="0" max="100" step="1" name="Tolerance Level Range">
+            <li ng-class="getBackgroundClass()" style="padding-top:16px" class="item range">
+                <span ng-class="getFontClass()">Tolerance<br>
+                        <sub>The higher the tolerance the more tolerant you are against toxic content</sub><br>
+                        <sub>{{data.tolerance}}%</sub>
+                    </span>
+            </li>
+            <li ng-class="getBackgroundClass()" style="border-top:0px;padding-bottom:16px" class="item range">
+                <input ng-model="data.tolerance" type="range" min="0" max="100" step="1" name="Tolerance Level Range">
             </li>
         </ul>
     </ion-content>

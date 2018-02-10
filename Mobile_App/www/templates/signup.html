@@ -29,6 +29,7 @@
                         <span ng-show="signupform.pword.$dirty && signupform.pword.$error.required" style="color:darkred; font-size:10px">Password is required</span>
                     </div>
                 </label>
+                <ion-checkbox ng-model="info.user.isJournalist"><span>Are you a journalist?</span></ion-checkbox>
             </ion-list>
             <button ng-disabled="signupform.$invalid" id="signup-button2" class="button button-stable button-block" ng-click="register()">Sign up</button>
         </form>
