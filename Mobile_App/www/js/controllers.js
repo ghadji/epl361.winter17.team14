@@ -44,24 +44,20 @@ angular
     "$stateParams",
     "$ionicPopup",
     "$rootScope",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps", 
+    "$interval",
+    "$timeout",// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, $ionicPopup, $rootScope, sharedProps) {
+    function($scope, $stateParams, $ionicPopup, $rootScope, sharedProps, $interval,$timeout) {
 
-        $scope.data = {};
-
-        $scope.$on("$ionicView.beforeEnter", function() {
-            console.log("entering...");
-            $scope.data.cachenewsEnabled = sharedProps.getData("cachenewsEnabled").value;
-            $scope.data.fontsize = sharedProps.getData("fontsize").value;
-            $scope.data.markupEnabled = sharedProps.getData("markupEnabled").value;
-            $scope.data.hideEnabled = sharedProps.getData("hideEnabled").value;
-            $scope.data.tolerance = sharedProps.getData("tolerance").value;
-
-            console.log($scope.data.tolerance + " " + $scope.data.fontsize);
-
-        });
+        $scope.data = {
+            cachenewsEnabled : sharedProps.getData("cachenewsEnabled") == undefined ? false : sharedProps.getData("cachenewsEnabled").value,
+            fontsize : sharedProps.getData("fontsize")  == undefined ? 16 : sharedProps.getData("fontsize").value,
+            markupEnabled : sharedProps.getData("markupEnabled")  == undefined ? false : sharedProps.getData("markupEnabled").value,
+            hideEnabled : sharedProps.getData("hideEnabled")  == undefined ? false : sharedProps.getData("hideEnabled").valu,
+            tolerance : sharedProps.getData("tolerance")  == undefined ? 50 : sharedProps.getData("tolerance").value
+        };
 
         $scope.$on("$ionicView.beforeLeave", function() {
             console.log("trying to leave....");
@@ -70,13 +66,7 @@ angular
             sharedProps.addData("markupEnabled", $scope.data.markupEnabled);
             sharedProps.addData("hideEnabled", $scope.data.hideEnabled);
             sharedProps.addData("tolerance", $scope.data.tolerance);
-
-        })
-
-        $scope.setFontsize = function() {
-            //$rootScope.$broadcast("fontsizeChange", $scope.data.fontsize);
-
-        }
+        });
 
         $scope.setNightmode = function() {
             $rootScope.$broadcast("nightmodeChange", $scope.data.isNightmode);
@@ -93,23 +83,17 @@ angular
             return $scope.data.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
 
-        $scope.showDisplayInformation = function() {
-            var promptAlert = $ionicPopup.alert({
-                title: "Display Information",
-                template: "<b>Night Mode:</b> Enables night mode for easier reading in low lighting environment.</br>" +
-                    "<b>Cache News:</b> Enables caching of 10 latest retrieved articles for offline reading.</br>" +
-                    "<b>Font Size:</b> Sets the font size [Range available 14px-24px]."
-            });
-        };
-
-        $scope.showFilteringInformation = function() {
-            var promptAlert = $ionicPopup.alert({
-                title: "Filtering Information",
-                template: "<b>Markup Toxic:</b> Highlights toxic language.</br>" +
-                    "<b>Hide Toxic:</b> Removes toxic language from view.</br>" +
-                    "<b>Tolerance:</b> Sets your prefered tolerance level against toxic language. The higher the bar the less tolerant you are."
-            });
-        };
+        $scope.$watch("data.fontsize", function() {
+            console.log($scope.data.fontsize);
+            switch($scope.data.fontsize){
+                case 14: $scope.textsize = 120;
+                case 16: $scope.textsize = 140;
+                case 18: $scope.textsize = 150;
+                case 20: $scope.textsize = 160;
+                case 22: $scope.textsize = 180;
+                case 24: $scope.textsize = 200;
+            }
+        });
     }
 ])
 
