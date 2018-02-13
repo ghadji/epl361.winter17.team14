@@ -4,10 +4,15 @@ angular
 .controller("newsFeedCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", "$ionicPopup", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps", "$ionicPopup", "$ionicActionSheet", "$timeout", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps, $ionicPopup) {
+    function($scope, $stateParams, sharedProps, $ionicPopup, $ionicActionSheet, $timeout) {
+        $scope.sources = {
+            total : 2,
+            sites : []
+        }
+
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
@@ -36,6 +41,24 @@ angular
                 "nightmodeHeaderClass" :
                 "normalHeaderClass";
         };
+
+        $scope.favoriteArticle = function(){
+            showSuccessToast();
+        }
+
+        function showSuccessToast(){
+            // $ionicLoading.show({ template: 'Item Added!', noBackdrop: true, duration: 2000 });
+            var hideSheet = $ionicActionSheet.show({
+                titleText: 'Article added to favorites'
+              });
+              $timeout(function() {
+                hideSheet();
+              }, 1000);
+        }
+
+        function showFailureToast(){
+
+        }
     }
 ])
 
@@ -100,10 +123,10 @@ angular
 .controller("addSourcesCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps", '$ionicLoading', '$ionicActionSheet', '$timeout',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps) {
+    function($scope, $stateParams, sharedProps, $ionicLoading, $ionicActionSheet, $timeout) {
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
@@ -119,6 +142,24 @@ angular
         $scope.getFontClass = function() {
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
+
+        $scope.selectSource = function(){
+            showSuccessToast();
+        }
+
+        function showSuccessToast(){
+            // $ionicLoading.show({ template: 'Item Added!', noBackdrop: true, duration: 2000 });
+            var hideSheet = $ionicActionSheet.show({
+                titleText: 'Source selected'
+              });
+              $timeout(function() {
+                hideSheet();
+              }, 1000);
+        }
+
+        function showFailureToast(){
+
+        }
     }
 ])
 

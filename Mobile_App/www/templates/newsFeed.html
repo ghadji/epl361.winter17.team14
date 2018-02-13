@@ -7,22 +7,29 @@
     </ion-header-bar>
     <ion-content padding="false" class="has-header generalPadding" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
         <ion-refresher on-refresh="doRefresh()"></ion-refresher>
-        <ion-list id="newsFeed-list9">
-            <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
-                <img alt="img">
-                <h2 ng-class="getFontClass()">This is a test title</h2>
-                <p class="sideLetters">This is a test description for the title</p>
-                <i class="icon ion-ios-arrow-right icon-accessory"></i>
-                <ion-option-button class="button-energized" ng-click="showReportOptions()">
-                    <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
-                </ion-option-button>
-                <ion-option-button class="button-assertive">
-                    <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
-                </ion-option-button>
-                <ion-option-button class="button-balanced">
-                    <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
+        <div ng-if="sources.total > 0">
+            <ion-list id="newsFeed-list9">
+                <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
+                    <img alt="img">
+                    <h2 ng-class="getFontClass()">This is a test title</h2>
+                    <p class="sideLetters">This is a test description for the title</p>
+                    <i class="icon ion-ios-arrow-right icon-accessory"></i>
+                    <ion-option-button class="button-energized" ng-click="showReportOptions()">
+                        <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
+                    </ion-option-button>
+                    <ion-option-button class="button-assertive">
+                        <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
+                    </ion-option-button>
+                    <ion-option-button class="button-balanced" ng-click="favoriteArticle()">
+                        <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>
+                    </ion-option-button>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div ng-if="sources.total == 0">
+            <ion-list id="newsFeed-list9">
+                NO SOURCE SELECTED
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>
