@@ -45,7 +45,7 @@
 
 /*background for all the pages except settings*/
 
-.nightmodeBackground {
+.nightmodeBackground{
     background-color: rgb(68, 68, 68)!important;
 }
 
@@ -87,9 +87,9 @@
 /*list background color*/
 
 .nightmodeBackground .item .item-content,
-.nightmodeBackground .item-select select,
+.nightmodeBackground .item-select select
 {
-    background-color: #444;
+    background-color: rgb(68, 68, 68)!important;
 }
 
 .normalBackground .item .item-content .item-input {

@@ -10,14 +10,14 @@ angular.module('app.routes', [])
 
         .state("eyeReader.newsFeed", {
 
-        url: "/newsfeed",
-        views: {
-            "side-menu21": {
-                templateUrl: "templates/newsFeed.html",
-                controller: "newsFeedCtrl"
+            url: "/newsfeed",
+            views: {
+                "side-menu21": {
+                    templateUrl: "templates/newsFeed.html",
+                    controller: "newsFeedCtrl"
+                }
             }
-        }
-    })
+        })
 
     .state("eyeReader.settings", {
 
@@ -115,7 +115,14 @@ angular.module('app.routes', [])
                 controller: "statisticsCtrl"
             }
         }
-    });
+    })
+
+     .state("reportArticleTemplate", {
+
+         url: "/reportTemplate",
+         templateUrl: "templates/reportTemplate.html",
+         controller: "reportArticleCtrl"
+     });
 
     $urlRouterProvider.otherwise('/login')
 

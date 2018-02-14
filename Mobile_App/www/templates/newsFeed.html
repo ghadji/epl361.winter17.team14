@@ -2,17 +2,17 @@
     <ion-header-bar ng-class="getBackgroundClass()" class="bar bar-subheader item-input-inset">
         <label class="item-input-wrapper" id="newsFeed-search1" name="searchArticles">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="search" class="placeholderLetters" placeholder="Search articles" ng-model-options="{debounce: 350}">
+            <input type="search" class="placeholderLetters" placeholder="Search articles" ng-model="userSearch">
         </label>
     </ion-header-bar>
     <ion-content padding="false" class="has-header generalPadding" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
         <ion-refresher on-refresh="doRefresh()"></ion-refresher>
         <div ng-if="sources.total > 0">
-            <ion-list id="newsFeed-list9">
+            <ion-list id="newsFeed-list9" ng-repeat="article in articles | filter:userSearch">
                 <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
-                    <img alt="img">
-                    <h2 ng-class="getFontClass()">This is a test title</h2>
-                    <p class="sideLetters">This is a test description for the title</p>
+                    <img alt="img" src="{{article.PictureSrc}}">
+                    <h2 ng-class="getFontClass()">{{article.Title}}</h2>
+                    <p class="sideLetters">{{article.Content}}</p>
                     <i class="icon ion-ios-arrow-right icon-accessory"></i>
                     <ion-option-button class="button-energized" ng-click="showReportOptions()">
                         <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>

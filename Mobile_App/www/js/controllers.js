@@ -1,17 +1,22 @@
-angular
+ angular
     .module("app.controllers", ["ngCordova"])
 
 .controller("newsFeedCtrl", [
     "$scope",
+    "$http",
     "$stateParams",
     "sharedProps", "$ionicPopup", "$ionicActionSheet", "$timeout", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps, $ionicPopup, $ionicActionSheet, $timeout) {
-        $scope.sources = {
-            total : 2,
-            sites : []
+    function($scope, $http, $stateParams, sharedProps, $ionicPopup, $ionicActionSheet, $timeout) {
+        $scope.sources={
+            total : 2
         }
+
+        $http.get('./test_data/articles/templateArticle.js')
+            .then(function (res) {
+                $scope.articles = res.data;
+            });
 
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
@@ -20,10 +25,24 @@ angular
         });
 
         $scope.showReportOptions = function() {
-            var promptAlert = $ionicPopup.alert({
+            var promptAlert = $ionicPopup.show({
                 title: "Report",
-                template: ""
-            });
+                templateUrl: "templates/reportTemplate.html"
+            ,buttons: [
+                {
+                    text: 'Cancel',
+                    type: 'button-light',
+                    onTap: function(e) {
+                        //e.preventDefault();
+                    }
+                },
+                {
+                    text: 'Confirm',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                    }
+                }
+            ]});
         };
 
         $scope.getBackgroundClass = function() {
@@ -122,16 +141,28 @@ angular
 
 .controller("addSourcesCtrl", [
     "$scope",
+    "$http",
     "$stateParams",
     "sharedProps", '$ionicLoading', '$ionicActionSheet', '$timeout',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps, $ionicLoading, $ionicActionSheet, $timeout) {
+    function($scope, $http, $stateParams, sharedProps, $ionicLoading, $ionicActionSheet, $timeout) {
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
         });
+
+        $scope.sources = {
+            total: 0,
+            sites: []
+        }
+
+        $http.get('./test_data/sources.js')
+            .then(function (res) {
+                $scope.sources.sites = res.data;
+                $scope.sources.total = $scope.sources.sites.length;
+            });
 
         $scope.getBackgroundClass = function() {
             return $scope.isNightmode ?
@@ -143,23 +174,32 @@ angular
             return $scope.isNightmode ? "nightmodeFontColor" : "normalBlackLetters";
         };
 
-        $scope.selectSource = function(){
-            showSuccessToast();
-        }
+        $scope.selectSource = function (sourceTitle) {
+            showSuccessToast(sourceTitle);
+        };
 
-        function showSuccessToast(){
+        $scope.deselectSource = function (sourceTitle) {
+
+        };
+
+        function showSuccessToast(sourceTitle) {
             // $ionicLoading.show({ template: 'Item Added!', noBackdrop: true, duration: 2000 });
             var hideSheet = $ionicActionSheet.show({
-                titleText: 'Source selected'
-              });
-              $timeout(function() {
+                titleText: sourceTitle + ' selected'
+            });
+            $timeout(function () {
                 hideSheet();
-              }, 1000);
-        }
+            }, 500);
+        };
 
-        function showFailureToast(){
-
-        }
+        function showFailureToast(sourceTitle) {
+            var hideSheet = $ionicActionSheet.show({
+                titleText: 'Failed to select ' + sourceTitle
+            });
+            $timeout(function () {
+                hideSheet();
+            }, 500);
+        };
     }
 ])
 
@@ -415,4 +455,25 @@ angular
                 "normalHeaderClass";
         };
     }
-]);
+])
+
+ .controller("reportArticleCtrl", [
+     "$scope",
+     "$stateParams",
+     "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+     // You can include any angular dependencies as parameters for this function
+     // TIP: Access Route Parameters for your page via $stateParams.parameterName
+     function($scope, $stateParams, sharedProps) {
+         $scope.$on("$ionicView.beforeEnter", function() {
+             if (sharedProps.getData("isNightmode") != undefined) {
+                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
+             }
+         });
+
+         $scope.getBackgroundClass = function() {
+             return $scope.isNightmode ?
+                 "nightmodeBackground" :
+                 "lightmodeBackground";
+         };
+     }
+ ]);

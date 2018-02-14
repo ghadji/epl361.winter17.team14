@@ -1,9 +1,9 @@
 <ion-view title="Add Sources" id="page3">
     <ion-content padding="false" class="has-header generalPadding" ng-controller="addSourcesCtrl" ng-class="getBackgroundClass()">
-        <ul class="list">
-            <ion-checkbox ng-class="getBackgroundClass()" id="addSources-checkbox3" ng-click="selectSource()">
-                <span ng-class="getFontClass()" class="normalBlackLetters">sigmaTV</span>
+        <div ng-repeat="source in sources.sites">
+            <ion-checkbox ng-class="getBackgroundClass()" id="addSources-checkbox3" ng-click="selectSource(source.Title)">
+                <span ng-class="getFontClass()" class="normalBlackLetters">{{source.Title}}</span>
             </ion-checkbox>
-        </ul>
+        </div>
     </ion-content>
 </ion-view>
