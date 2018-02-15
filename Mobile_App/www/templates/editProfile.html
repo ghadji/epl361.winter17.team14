@@ -2,36 +2,22 @@
     <ion-content padding="false" class="has-header" ng-controller="editProfileCtrl" ng-class="getBackgroundClass()">
         <div class="list">
             <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Name</span>
-              <input class="placeholderLetters" type="text" placeholder="Name">
-            </label>
-            <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Username</span>
+              <span ng-class="getFontClass()" class="input-label">{{user.username}}</span>
               <input class="placeholderLetters" type="text" placeholder="Username">
             </label>
             <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Email</span>
+              <span ng-class="getFontClass()" class="input-label">{{user.email}}</span>
               <input class="placeholderLetters" type="text" placeholder="userEmail@gmail.com">
             </label>
             <label class="item item-input item-select" ng-class="getBackgroundClass()">
               <span ng-class="getFontClass()" class="input-label">Sex</span>
-              <select class="placeholderLetters">
-                <option>
-                  <span class="placeholderLetters">Female</span>
-                </option>
-                <option>
-                  <span class="placeholderLetters">Male</span>
-                </option>
-                <option>
-                  <span class="placeholderLetters">Other</span>
-                </option>
-              </select>
+              <select class="placeholderLetters" data-ng-model="selectedSex" data-ng-options="sexOptions"></select>
             </label>
             <label class="item item-input" ng-class="getBackgroundClass()">
               <span ng-class="getFontClass()" class="input-label">Birthday</span>
               <input class="placeholderLetters" type="date">
             </label>
         </div>
-        <button ui-sref="eyeReader.editProfile()"  class="button button-outline button-block button-stable" >Save Changes</button>
+        <button ui-sref="eyeReader.editProfile()" class="button button-stable button-block">Save Changes</button>
     </ion-content>
 </ion-view>

@@ -1,22 +1,22 @@
 <ion-view hide-back-button="true" title="Login" id="page8">
     <ion-content padding="true" class="has-header" ng-controller="loginCtrl">
         <form id="loginform" class="list">
-            <ion-list id="login-list11">
-                <label class="item item-input" id="login-input12" name="loginEmail">
-                    <span class="input-label">Email</span>
-                    <div>
-                        <input type="text" name="username" ng-model="login.username" placeholder="username" required>
+            <ul class="list">
+                <li class="item item-icon-left" style="border-top:none">
+                    <i style="color: #90A4AE;" class="icon ion-android-contact"></i>
+                    <div style="width:100%">
+                        <input type="text" name="uname" placeholder="username" ng-model="login.username" ng-minlength="3" required>
                         <span ng-show="loginform.username.$dirty && signupform.username.$error.required" style="color:darkred; font-size:10px">Username is required</span>
                     </div>
-                </label>
-                <label class="item item-input" id="login-input13" name="loginPassword">
-                    <span class="input-label">Password</span>
-                    <div>
-                        <input type="password" placeholder="password" name="password" ng-model="login.password" required>
+                </li>
+                <li class="item item-icon-left">
+                    <i style="color: #90A4AE;" class="icon ion-key"></i>
+                    <div style="width:100%">
+                        <input type="password" name="pword" placeholder="password" ng-model="login.password" required>
                         <span ng-show="loginform.password.$dirty && signupform.password.$error.required" style="color:darkred; font-size:10px">Password is required</span>
                     </div>
-                </label>
-            </ion-list>
+                </li>
+            </ul>
             <div class="spacer" style="height: 40px;"></div>
             <button ng-disabled="signupform.$invalid" class="button button-stable button-block" ng-click="login()">Log in</button>
             <a ui-sref="signup()" id="login-button4" class="button button-positive button-block button-clear">Or create an account</a>
