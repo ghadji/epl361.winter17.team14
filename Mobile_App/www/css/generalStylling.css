@@ -45,7 +45,7 @@
 
 /*background for all the pages except settings*/
 
-.nightmodeBackground {
+.nightmodeBackground{
     background-color: rgb(68, 68, 68)!important;
 }
 
@@ -87,16 +87,13 @@
 /*list background color*/
 
 .nightmodeBackground .item .item-content,
-.nightmodeBackground .item-select select {
+.nightmodeBackground .item-select select
+{
     background-color: rgb(68, 68, 68)!important;
 }
 
 .normalBackground .item .item-content .item-input {
     background-color: white;
-}
-
-.nightmodeBackground .toggle input:checked+.track {
-    background-color: rgb(68, 68, 68);
 }
 
 
@@ -108,7 +105,6 @@
 .nightmodeBackgroundMain-remove {
     transition: background-color 150ms linear;
 }
-
 
 /*
 * Popup class
@@ -122,17 +118,17 @@
     color: #42CB24;
 }
 
-.generalPadding {
-    padding: 3% 3% 3% 3%!important;
+.generalPadding{
+	padding: 3% 3% 3% 3%!important;
 }
 
-.sideMenuPadding {
-    padding: 0% 3% 0% 3%!important;
+.sideMenuPadding{
+	padding: 0% 3% 0% 3%!important;
 }
 
 .item {
-    border-left: 0px;
-    border-right: 0px;
+	border-left:0px;
+	border-right:0px;
 }
 
 .checkbox input:checked:before,

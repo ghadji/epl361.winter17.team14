@@ -172,7 +172,6 @@ angular
                         } else {
                             response = { success: false, message: 'Username or password is incorrect' };
                         }
-                        $rootScope.activeUser = user;
                         callback(response);
                     });
             }, 0);
