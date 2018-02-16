@@ -8,8 +8,8 @@
     <ion-content padding="false" class="has-header generalPadding" ng-controller="newsFeedCtrl" ng-class="getBackgroundClass()">
         <ion-refresher on-refresh="doRefresh()"></ion-refresher>
         <div ng-if="sources.total > 0">
-            <ion-list id="newsFeed-list9" ng-repeat="article in articles | filter:userSearch">
-                <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article()">
+            <ion-list id="newsFeed-list9" ng-repeat="article in articles | filter: { Title:userSearch }">
+                <ion-item class="item-thumbnail-left item-icon-right" ui-sref="eyeReader.article({article : article})">
                     <img alt="img" ng-src="{{article.PictureSrc}}">
                     <h2 ng-class="getFontClass()">{{article.Title}}</h2>
                     <p class="sideLetters">{{article.Content}}</p>
@@ -20,14 +20,14 @@
                     <ion-option-button class="button-assertive">
                         <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
                     </ion-option-button>
-                    <ion-option-button class="button-balanced" ng-click="favoriteArticle()">
+                    <ion-option-button class="button-balanced" ng-click="saveArticle({{article.Id}})">
                         <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>
                     </ion-option-button>
                 </ion-item>
             </ion-list>
         </div>
         <div ng-if="sources.total == 0">
-            <ion-list id="newsFeed-list9">
+            <ion-list>
                 NO SOURCE SELECTED
             </ion-list>
         </div>
