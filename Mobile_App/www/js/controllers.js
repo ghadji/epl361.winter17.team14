@@ -39,6 +39,17 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            // if (sharedProps.getData("subFontsize") != undefined) {
+            //     $scope.subFontsizeVal = sharedProps.getData("subFontsize").value;
+            // }
+            if (sharedProps.getData("fontsize") != undefined) {
+                $scope.selectedFontsizeVal = sharedProps.getData("fontsize").value;
+            } else {
+                $scope.selectedFontsizeVal = 150;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.selectedFontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
         });
 
         $scope.showReportOptions = function() {
@@ -87,6 +98,13 @@ angular
             showSavedToast();
         };
 
+        $scope.isArticleSaved = function(id) {
+            if (_.contains(savedArticlesId, id))
+                return true;
+            else
+                false
+        }
+
         function unsaveArticle(id) {
             return savedArticlesId.filter(e => e !== id);
         }
@@ -134,19 +152,22 @@ angular
             cachenewsEnabled: sharedProps.getData("cachenewsEnabled") == undefined ?
                 false : sharedProps.getData("cachenewsEnabled").value,
             fontsize: sharedProps.getData("fontsize") == undefined ?
-                16 : sharedProps.getData("fontsize").value,
+                150 : sharedProps.getData("fontsize").value,
+            // subFontsize: sharedProps.getData("subFontsize") == undefined ?
+            //     70 : sharedProps.getData("subFontsize").value,
             markupEnabled: sharedProps.getData("markupEnabled") == undefined ?
                 false : sharedProps.getData("markupEnabled").value,
             hideEnabled: sharedProps.getData("hideEnabled") == undefined ?
-                false : sharedProps.getData("hideEnabled").valu,
+                false : sharedProps.getData("hideEnabled").value,
             tolerance: sharedProps.getData("tolerance") == undefined ?
                 50 : sharedProps.getData("tolerance").value
         };
 
         $scope.$on("$ionicView.beforeLeave", function() {
-            console.log("trying to leave....");
+            console.log("FONT SIZE IN SETTINGS: " + $scope.data.fontsize);
             sharedProps.addData("cachenewsEnabled", $scope.data.cachenewsEnabled);
-            sharedProps.addData("fontsize", $scope.data.fontsize);
+            sharedProps.addData("fontsize", $scope.textsize);
+            //sharedProps.addData("subFontsize", $scope.textsize - 80);
             sharedProps.addData("markupEnabled", $scope.data.markupEnabled);
             sharedProps.addData("hideEnabled", $scope.data.hideEnabled);
             sharedProps.addData("tolerance", $scope.data.tolerance);
@@ -171,20 +192,22 @@ angular
 
         $scope.$watch("data.fontsize", function() {
             console.log($scope.data.fontsize);
-            switch ($scope.data.fontsize) {
-                case 14:
-                    $scope.textsize = 120;
-                case 16:
-                    $scope.textsize = 140;
-                case 18:
-                    $scope.textsize = 150;
-                case 20:
-                    $scope.textsize = 160;
-                case 22:
-                    $scope.textsize = 180;
-                case 24:
-                    $scope.textsize = 200;
-            }
+            if ($scope.data.fontsize == 14)
+                $scope.textsize = 120;
+            else if ($scope.data.fontsize == 16)
+                $scope.textsize = 140;
+            else if ($scope.data.fontsize == 18)
+                $scope.textsize = 150;
+            else if ($scope.data.fontsize == 20)
+                $scope.textsize = 160;
+            else if ($scope.data.fontsize == 22)
+                $scope.textsize = 180;
+            else if ($scope.data.fontsize == 24)
+                $scope.textsize = 200;
+            $scope.selectedFontsize = { 'font-size': $scope.textsize + '%' }
+                //$scope.subSelectedFontsize = { 'font-size': $scope.textsize - 80 + '%' }
+            sharedProps.addData("fontsize", $scope.textsize);
+            //sharedProps.addData("subFontsize", $scope.textsize - 80);
         });
     }
 ])
@@ -375,7 +398,7 @@ angular
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function($scope, $stateParams, sharedProps, UserService, $window, $state) {
-        $window.localStorage.clear();
+        //$window.localStorage.clear();
         $scope.user = {};
         $scope.sexOptions = [{ name: "Female", id: 0 }, { name: "Male", id: 1 }, { name: "Other", id: 2 }];
         $scope.user.sex = 0;
@@ -401,7 +424,8 @@ angular
     "$location",
     "AuthenticationService",
     "$state",
-    "$window", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "$window",
+    "$ionicPopup", "$ionicActionSheet", "$timeout", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
     function(
@@ -411,16 +435,30 @@ angular
         $location,
         AuthenticationService,
         $state,
-        $window
+        $window,
+        $ionicPopup, $ionicActionSheet, $timeout
     ) {
         function createUserSettings() {
             sharedProps.addData("isNightmode", false);
             sharedProps.addData("cachenewsEnabled", false);
-            sharedProps.addData("fontsize", 16);
+            sharedProps.addData("fontsize", 150);
+            //sharedProps.addData("subFontsize", 70);
             sharedProps.addData("markupEnabled", false);
             sharedProps.addData("hideEnabled", false);
             sharedProps.addData("tolerance", 50);
         }
+
+        function showFailedToLoginPopup() {
+            var promptAlert = $ionicPopup.show({
+                title: "Error",
+                template: '<span>Failed to login!</span>',
+                buttons: [{
+                    text: "OK",
+                    type: "button-positive",
+                    onTap: function(e) {}
+                }]
+            });
+        };
 
         $scope.login = function() {
             AuthenticationService.Login(
@@ -436,6 +474,7 @@ angular
                         $state.go("eyeReader.newsFeed");
                         console.log("login successfull");
                     } else {
+                        showFailedToLoginPopup();
                         console.log("failed to login");
                     }
                 }
