@@ -39,17 +39,16 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
-            // if (sharedProps.getData("subFontsize") != undefined) {
-            //     $scope.subFontsizeVal = sharedProps.getData("subFontsize").value;
-            // }
-            if (sharedProps.getData("fontsize") != undefined) {
-                $scope.selectedFontsizeVal = sharedProps.getData("fontsize").value;
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
             } else {
-                $scope.selectedFontsizeVal = 150;
+                $scope.selectedFontsizeVal = 100;
             }
             console.log("fontsize: " + $scope.selectedFontsizeVal);
 
-            $scope.selectedFontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
+            $scope.fontsizeSmaller = {'font-size': ($scope.selectedFontsizeVal - 20) + '%'}
         });
 
         $scope.showReportOptions = function() {
@@ -58,7 +57,7 @@ angular
                 templateUrl: "templates/reportTemplate.html",
                 buttons: [{
                         text: "Cancel",
-                        type: "button-light",
+                        type: "button-stable button-outline",
                         onTap: function(e) {
                             //e.preventDefault();
                         }
@@ -103,6 +102,47 @@ angular
                 return true;
             else
                 false
+        }
+
+        function deleteArticle(id){
+            var article = _.find($scope.articles, function(a){
+                return a.Id == id;
+            })
+            article.Deleted = true;
+            console.log(article);
+            $scope.articles.splice(_.indexOf($scope.articles, article),1);
+        }
+
+        $scope.showDeleteConfirm = function(id) {
+            var promptAlert = $ionicPopup.show({
+                title: "Warning",
+                template: "<span>Are you sure you want to delete this article?</span>",
+                buttons: [{
+                        text: "Cancel",
+                        type: "button-stable button-outline",
+                        onTap: function(e) {
+                            //e.preventDefault();
+                        }
+                    },
+                    {
+                        text: "Confirm",
+                        type: "button-positive",
+                        onTap: function(e) {
+                            deleteArticle(id);
+                            showDeletedToast();
+                        }
+                    }
+                ]
+            });
+        };
+
+        function showDeletedToast() {
+            var hideSheet = $ionicActionSheet.show({
+                titleText: "Article deleted"
+            });
+            $timeout(function() {
+                hideSheet();
+            }, 500);
         }
 
         function unsaveArticle(id) {
@@ -152,7 +192,8 @@ angular
             cachenewsEnabled: sharedProps.getData("cachenewsEnabled") == undefined ?
                 false : sharedProps.getData("cachenewsEnabled").value,
             fontsize: sharedProps.getData("fontsize") == undefined ?
-                150 : sharedProps.getData("fontsize").value,
+                100 : sharedProps.getData("fontsize").value,
+            fontsizeRange : getFontsizeRangeVal(),
             // subFontsize: sharedProps.getData("subFontsize") == undefined ?
             //     70 : sharedProps.getData("subFontsize").value,
             markupEnabled: sharedProps.getData("markupEnabled") == undefined ?
@@ -163,10 +204,26 @@ angular
                 50 : sharedProps.getData("tolerance").value
         };
 
+        function getFontsizeRangeVal(){
+            var f = sharedProps.getData("fontsize");
+            if (f == undefined)
+                    return 16;
+                else{
+                    if (f.value == 87.5)
+                        return 14;
+                    else if (f.value == 100)
+                        return 16;
+                    else if (f.value == 112.5)
+                        return 18;
+                    else 
+                        return 20;
+                }      
+        }
+
         $scope.$on("$ionicView.beforeLeave", function() {
-            console.log("FONT SIZE IN SETTINGS: " + $scope.data.fontsize);
+            console.log("FONT SIZE IN SETTINGS: " + $scope.fontsize);
             sharedProps.addData("cachenewsEnabled", $scope.data.cachenewsEnabled);
-            sharedProps.addData("fontsize", $scope.textsize);
+            // sharedProps.addData("fontsize", $scope.fontsize);
             //sharedProps.addData("subFontsize", $scope.textsize - 80);
             sharedProps.addData("markupEnabled", $scope.data.markupEnabled);
             sharedProps.addData("hideEnabled", $scope.data.hideEnabled);
@@ -190,23 +247,20 @@ angular
                 "normalBlackLetters";
         };
 
-        $scope.$watch("data.fontsize", function() {
-            console.log($scope.data.fontsize);
-            if ($scope.data.fontsize == 14)
-                $scope.textsize = 120;
-            else if ($scope.data.fontsize == 16)
-                $scope.textsize = 140;
-            else if ($scope.data.fontsize == 18)
-                $scope.textsize = 150;
-            else if ($scope.data.fontsize == 20)
-                $scope.textsize = 160;
-            else if ($scope.data.fontsize == 22)
-                $scope.textsize = 180;
-            else if ($scope.data.fontsize == 24)
-                $scope.textsize = 200;
-            $scope.selectedFontsize = { 'font-size': $scope.textsize + '%' }
+        $scope.$watch("data.fontsizeRange", function() {
+            console.log($scope.data.fontsizeRange);
+            if ($scope.data.fontsizeRange == 14)
+                $scope.fontsize = 87.5;
+            else if ($scope.data.fontsizeRange == 16)
+                $scope.fontsize = 100;
+            else if ($scope.data.fontsizeRange == 18)
+                $scope.fontsize = 112.5;
+            else
+                $scope.fontsize = 125;
+            $scope.selectedFontsize = { 'font-size': $scope.fontsize + '%' }
+            $rootScope.$broadcast('fontsizeChange', $scope.fontsize + 20);
                 //$scope.subSelectedFontsize = { 'font-size': $scope.textsize - 80 + '%' }
-            sharedProps.addData("fontsize", $scope.textsize);
+            sharedProps.addData('fontsize', $scope.fontsize);
             //sharedProps.addData("subFontsize", $scope.textsize - 80);
         });
     }
@@ -235,6 +289,15 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
         });
 
         $scope.sources = {
@@ -298,6 +361,10 @@ angular
             $scope.isNightmode = args;
         });
 
+        $rootScope.$on("fontsizeChange", function(event, args) {
+            $scope.selectedFontsize = { 'font-size': args + '%' };
+        });
+
         $scope.getBackgroundClass = function() {
             return $scope.isNightmode ? "nightmodeBackground" : "normalBackground";
         };
@@ -341,6 +408,15 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
         });
 
         $scope.getBackgroundClass = function() {
@@ -374,6 +450,15 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
         });
 
         $scope.getBackgroundClass = function() {
@@ -441,7 +526,7 @@ angular
         function createUserSettings() {
             sharedProps.addData("isNightmode", false);
             sharedProps.addData("cachenewsEnabled", false);
-            sharedProps.addData("fontsize", 150);
+            sharedProps.addData("fontsize", 100);
             //sharedProps.addData("subFontsize", 70);
             sharedProps.addData("markupEnabled", false);
             sharedProps.addData("hideEnabled", false);
@@ -494,6 +579,15 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            console.log("fontsize article: " + f.value);
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+
+            $scope.fontsize = { 'font-size': ($scope.selectedFontsizeVal) + '%' }
         });
 
         $scope.article = $stateParams.article;
@@ -527,6 +621,16 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
+            $scope.fontsizeSmaller = { 'font-size': ($scope.selectedFontsizeVal - 20) + '%' }
         });
 
         $scope.getBackgroundClass = function() {
@@ -558,6 +662,16 @@ angular
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
             }
+            var f = sharedProps.getData("fontsize");
+            if (f != undefined) {
+                $scope.selectedFontsizeVal = f.value;
+            } else {
+                $scope.selectedFontsizeVal = 100;
+            }
+            console.log("fontsize: " + $scope.selectedFontsizeVal);
+
+            $scope.fontsize = { 'font-size': $scope.selectedFontsizeVal + '%' }
+            $scope.fontsizeSmaller = { 'font-size': ($scope.selectedFontsizeVal - 20) + '%' }
         });
 
         $scope.getBackgroundClass = function() {

@@ -2,19 +2,19 @@
     <ion-content padding="false" class="has-header" ng-controller="editProfileCtrl" ng-class="getBackgroundClass()">
         <div class="list">
             <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Username</span>
+              <span ng-class="getFontClass()" ng-style="fontsize" class="input-label">Username</span>
               <input class="placeholderLetters" type="text" placeholder="Username" ng-model="user.username">
             </label>
             <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Email</span>
+              <span ng-class="getFontClass()" ng-style="fontsize" class="input-label">Email</span>
               <input class="placeholderLetters" type="text" placeholder="userEmail@gmail.com" ng-model="user.email">
             </label>
             <label class="item item-input item-select" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Sex</span>
+              <span ng-class="getFontClass()" ng-style="fontsize" class="input-label">Sex</span>
               <select class="placeholderLetters" ng-model="user.sex" ng-options="o.name for o in sexOptions"></select>
             </label>
             <label class="item item-input" ng-class="getBackgroundClass()">
-              <span ng-class="getFontClass()" class="input-label">Birthday</span>
+              <span ng-class="getFontClass()" ng-style="fontsize" class="input-label">Birthday</span>
               <input class="placeholderLetters" type="date">
             </label>
         </div>

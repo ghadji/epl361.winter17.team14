@@ -8,7 +8,8 @@
     "Date": "04/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 1,
     "URL": "https://techblog.gr/mobile/apple-iphone-x-sold-out-in-three-minutes-in-south-korea-3881/",
@@ -19,7 +20,8 @@
     "Date": "17/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 2,
     "URL": "https://techblog.gr/mobile/apple-iphone-x-now-works-in-cold-weather-2348/",
@@ -30,7 +32,8 @@
     "Date": "17/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 3,
     "URL": "https://techblog.gr/mobile/iphone-x-waiting-time-2-to-3-weeks-7213/",
@@ -41,7 +44,8 @@
     "Date": "16/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 4,
     "URL": "https://techblog.gr/computers/china-has-more-supercomputers-than-anyone-2720/",
@@ -52,7 +56,7 @@
     "Date": "16/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, "Deleted" : false 
 }, {
     "Id": 5,
     "URL": "https://techblog.gr/gadgets/apple-is-the-top-wearable-manufacturer-4928/",
@@ -63,7 +67,8 @@
     "Date": "15/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 6,
     "URL": "https://techblog.gr/software/firefox-quantum-faster-version-available-3732/",
@@ -74,7 +79,8 @@
     "Date": "15/11/2017",
     "SourceWebsite": "www.techblog.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 7,
     "URL": "http://www.techgear.gr/tesla-roadster-announced-129235/",
@@ -85,7 +91,8 @@
     "Date": "17/11/2017",
     "SourceWebsite": "www.techgear.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 8,
     "URL": "http://www.techgear.gr/vimeo-hdr-and-8k-videos-support-129170/",
@@ -96,7 +103,8 @@
     "Date": "16/11/2017",
     "SourceWebsite": "www.techgear.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }, {
     "Id": 9,
     "URL": "http://www.techgear.gr/google-maps-redesign-129152/",
@@ -107,5 +115,6 @@
     "Date": "16/11/2017",
     "SourceWebsite": "www.techgear.gr",
     "Category": "Technology",
-    "Clicks": 0
+    "Clicks": 0, 
+    "Deleted" : false 
 }]

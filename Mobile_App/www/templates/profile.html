@@ -7,15 +7,15 @@
         <ul class="list">
             <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-person"></i>
-                <span ng-class="getFontClass()" class="normalBlackLetters">{{displaySex}}</span>
+                <span ng-class="getFontClass()" ng-style="fontsize">{{displaySex}}</span>
             </li>
             <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-bar"></i>
-                <span ng-class="getFontClass()" class="normalBlackLetters">{{user.birthday | date:"dd/MM/yyyy"}}</span>
+                <span ng-class="getFontClass()" ng-style="fontsize">{{user.birthday | date:"dd/MM/yyyy"}}</span>
             </li>
             <li ng-class="getBackgroundClass()" class="item item-icon-left">
                 <i style="color: #90A4AE;" class="icon ion-android-mail"></i>
-                <span ng-class="getFontClass()" class="normalBlackLetters">{{user.email}}</span>
+                <span ng-class="getFontClass()" ng-style="fontsize">{{user.email}}</span>
             </li>
         </ul>
     </ion-content>
