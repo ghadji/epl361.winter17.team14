@@ -40,7 +40,7 @@ angular
     }
 ])
 
-.factory("UserService", ["$timeout", "$filter", "$q", function($timeout, $filter, $q) {
+.factory("UserService", ["$timeout", "$q", "$rootScope", function($timeout, $q, $rootScope) {
     var service = {};
 
     service.GetAll = GetAll;
@@ -60,7 +60,7 @@ angular
 
     function GetById(id) {
         var deferred = $q.defer();
-        var filtered = $filter('filter')(getUsers(), { id: id });
+        var filtered = _.filter(getUsers(), function(user){return user.id == id;});
         var user = filtered.length ? filtered[0] : null;
         deferred.resolve(user);
         return deferred.promise;
@@ -68,7 +68,7 @@ angular
 
     function GetByUsername(username) {
         var deferred = $q.defer();
-        var filtered = $filter('filter')(getUsers(), { username: username });
+        var filtered = _.filter(getUsers(), function(user){return user.username == username; });
         var user = filtered.length ? filtered[0] : null;
         deferred.resolve(user);
         return deferred.promise;
@@ -113,7 +113,8 @@ angular
             }
         }
         setUsers(users);
-        deferred.resolve();
+        $rootScope.globals.currentUser.username = user.username;
+        deferred.resolve({success: true});
 
         return deferred.promise;
     }

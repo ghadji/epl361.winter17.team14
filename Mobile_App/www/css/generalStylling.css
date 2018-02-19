@@ -40,7 +40,7 @@
 */
 
 .nightmodeFontColor {
-    color: white;
+    color: white!important;
     font-size: 125% ;
 }
 
@@ -146,4 +146,12 @@
 /*Popup background*/
 .popup-container > .popup{
     background: white;
+}
+
+/*Select options*/
+.customSelect{
+    right:auto!important;
+    direction:ltr!important;
+    padding-left:0%!important;
+    padding-right:0%!important;
 }
