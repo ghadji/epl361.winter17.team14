@@ -1,5 +1,5 @@
 angular
-    .module("app.controllers", ["ngCordova", "ngStorage"])
+    .module("app.controllers", ["ngCordova", "ngStorage", "chart.js"])
 
 .controller("newsFeedCtrl", [
     "$scope",
@@ -682,10 +682,11 @@ angular
 .controller("statisticsCtrl", [
     "$scope",
     "$stateParams",
-    "sharedProps", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+    "sharedProps",
+    "$timeout", // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $stateParams, sharedProps) {
+    function($scope, $stateParams, sharedProps, $timeout) {
         $scope.$on("$ionicView.beforeEnter", function() {
             if (sharedProps.getData("isNightmode") != undefined) {
                 $scope.isNightmode = sharedProps.getData("isNightmode").value;
@@ -720,6 +721,19 @@ angular
                 "nightmodeHeaderClass" :
                 "normalHeaderClass";
         };
+
+        $scope.labels = ["January", "February", "March", "April", "May"];
+        $scope.series = ['Series A'];
+        $scope.data = [
+          [65, 59, 80, 81, 56]
+        ];
+        
+        // Simulate async data update
+        $timeout(function () {
+          $scope.data = [
+            [28, 48, 40, 19, 86]
+          ];
+        }, 3000);
     }
 ])
 

@@ -1,5 +1,5 @@
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
     font-size : 16px;
 }
 /* BASE FONT SIZE IS 16px*/
@@ -154,4 +154,35 @@
     direction:ltr!important;
     padding-left:0%!important;
     padding-right:0%!important;
+}
+
+.button.button-positive {
+    border-color: transparent;
+    background-color:#455A64 !important;
+    color: #fff;
+}
+
+.button.button-positive.active,
+.button.button-positive.activated {
+    border-color: #a2a2a2;
+    background-color: #0c60ee;
+}
+
+
+.button.button-positive.button-icon {
+    border-color: transparent;
+    background: none;
+}
+
+.button.button-positive.button-outline {
+    border-color: #455A64 !important;
+    background: transparent;
+    color: #387ef5;
+}
+
+.button.button-positive.button-outline.active,
+.button.button-positive.button-outline.activated {
+    background-color: #455A64 !important;
+    box-shadow: none;
+    color: #fff;
 }
