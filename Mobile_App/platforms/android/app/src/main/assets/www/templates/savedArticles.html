@@ -1,0 +1,27 @@
+<ion-view title="Saved Articles" id="page10">
+    <ion-header-bar ng-class="getBackgroundClass()" class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper" id="newsFeed-search1" name="searchArticles">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" class="placeholderLetters" placeholder="Search articles" ng-model-options="{debounce: 350}">
+        </label>
+    </ion-header-bar>
+    <ion-content padding="false" class="has-header generalPadding" ng-controller="savedArticlesCtrl" ng-class="getBackgroundClass()">
+        <ion-list id="savedArticles-list16">
+            <ion-item class="item-thumbnail-left item-icon-right" id="savedArticles-list-item31" ui-sref="eyeReader.article()">
+                <img alt="img">
+                <h2 ng-class="getFontClass()" ng-style="fontsize" class="normalBlackLetters">Saved article 1</h2>
+                <p class="sideLetters" ng-style="fontsizeSmaller">Saved article 1 description</p>
+                <i class=" icon ion-ios-arrow-right icon-accessory"></i>
+                <ion-option-button class="button-energized">
+                    <ion-icon name="report" class="icon ion-alert-circled"></ion-icon>
+                </ion-option-button>
+                <ion-option-button class="button-assertive">
+                    <ion-icon name="delete" class="icon ion-trash-a"></ion-icon>
+                </ion-option-button>
+                <ion-option-button class="button-balanced">
+                    <ion-icon name="favorite" class="icon ion-android-star-outline"></ion-icon>
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

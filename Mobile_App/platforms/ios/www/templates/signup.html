@@ -1,0 +1,36 @@
+<ion-view hide-back-button="false" title="Signup" id="page7">
+    <ion-content padding="false" class="has-header" ng-controller="signupCtrl">
+        <form name="signupform" id="signupform" class="list">
+            <ion-list id="signup-list10">
+                <label class="item item-input" id="signup-input9" name="suFullName">
+                    <span class="input-label">
+                        <i class="icon ion-android-contact"></i>
+                    </span>
+                    <div>
+                        <input type="text" name="uname" placeholder="username" ng-model="info.user.username" ng-minlength="3" required>
+                        <span ng-show="signupform.uname.$dirty && signupform.uname.$error.required" style="color:darkred; font-size:10px">Username is required</span>
+                    </div>
+                </label>
+                <label class="item item-input" id="signup-input10" name="suEmail">
+                    <span class="input-label">
+                        <i class="icon ion-at"></i>
+                    </span>
+                    <div>
+                        <input type="email" name="email" placeholder="email address" ng-model="info.user.email" required>
+                        <span ng-show="signupform.email.$dirty && signupform.email.$error.required" style="color:darkred; font-size:10px">Email is required</span>
+                    </div>
+                </label>
+                <label class="item item-input" id="signup-input11" name="suPassword">
+                    <span class="input-label">
+                        <i class="icon ion-key"></i>
+                    </span>
+                    <div>
+                        <input type="password" name="pword" placeholder="password" ng-model="info.user.password" required>
+                        <span ng-show="signupform.pword.$dirty && signupform.pword.$error.required" style="color:darkred; font-size:10px">Password is required</span>
+                    </div>
+                </label>
+            </ion-list>
+            <button ng-disabled="signupform.$invalid" id="signup-button2" class="button button-stable button-block" ng-click="register()">Sign up</button>
+        </form>
+    </ion-content>
+</ion-view>

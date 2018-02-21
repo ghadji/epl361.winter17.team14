@@ -1,0 +1,58 @@
+<ion-view title="Settings" id="page2">
+    <ion-content padding="false" class="has-header" ng-controller="settingsCtrl" ng-class="getBackgroundClass()">
+        <h3 id="settings-heading1" class="boldLetters">Display
+            <button style="display:inline-block" class="button button-outline button-stable button-small icon ion-help" ng-click="showDisplayInformation()"></button>
+        </h3>
+        <ul class="list">
+            <li name="Night Mode Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
+                <span ng-class="getFontClass()">Night Mode</span>
+                <label class="toggle toggle-light">
+                    <input type="checkbox" ng-model="isNightmode" ng-change="setNightmode()">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li name="Cashe News Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
+                <span ng-class="getFontClass()">Cache News</span>
+                <label class="toggle toggle-light">
+                    <input type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li ng-class="getBackgroundClass()" class="item range">
+                <span ng-class="getFontClass()">Font Size</span>
+                <input type="range" name="Font Size Range" min="14" max="24" step="2" value="16">
+            </li>
+        </ul>
+        <h3 id="settings-heading2" class="boldLetters">Filtering
+            <button style="display:inline-block" class="button button-outline button-stable button-small icon ion-help" ng-click="showFilteringInformation()"></button>
+        </h3>
+        <ul class="list">
+            <li name="Markup Toxic Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
+                <span ng-class="getFontClass()">Markup Toxic</span>
+                <label class="toggle toggle-light">
+                    <input ng-model="markupEnabled" ng-disabled="hideEnabled" type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li name="Hide Toxic Toggle" ng-class="getBackgroundClass()" class="item item-toggle">
+                <span ng-class="getFontClass()">Hide Toxic</span>
+                <label class="toggle toggle-light">
+                    <input ng-disabled="markupEnabled" ng-model="hideEnabled" type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+            <li ng-class="getBackgroundClass()" class="item range">
+                <span ng-class="getFontClass()">Tolerance</span>
+                <input type="range" value="50" min="0" max="100" step="1" name="Tolerance Level Range">
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
